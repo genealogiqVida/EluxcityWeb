@@ -1,0 +1,223 @@
+﻿ @font-face {
+            font-family: 'Electrolux Sans Thin';
+            src: url("../fonts/electroluxsans_1_thin-webfont.eot");
+            src: url("../fonts/electroluxsans_1_thin-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/electroluxsans_1_thin-webfont.woff2") format("woff2"), url("../fonts/electroluxsans_1_thin-webfont.woff") format("woff"), url("../fonts/electroluxsans_1_thin-webfont.ttf") format("truetype"), url("../fonts/electroluxsans_1_thin-webfont.svg#electrolux_sansthin") format("svg");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Electrolux Sans Light';
+            src: url("../fonts/electroluxsans_2_light-webfont.eot");
+            src: url("../fonts/electroluxsans_2_light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/electroluxsans_2_light-webfont.woff2") format("woff2"), url("../fonts/electroluxsans_2_light-webfont.woff") format("woff"), url("../fonts/electroluxsans_2_light-webfont.ttf") format("truetype"), url("../fonts/electroluxsans_2_light-webfont.svg#electrolux_sanslight") format("svg");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Electrolux Sans Regular';
+            src: url("../fonts/electroluxsans_3_regular-webfont.eot");
+            src: url("../fonts/electroluxsans_3_regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/electroluxsans_3_regular-webfont.woff2") format("woff2"), url("../fonts/electroluxsans_3_regular-webfont.woff") format("woff"), url("../fonts/electroluxsans_3_regular-webfont.ttf") format("truetype"), url("../fonts/electroluxsans_3_regular-webfont.svg#electrolux_sans_regularRg") format("svg");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Electrolux Sans Semibold';
+            src: url("../fonts/electroluxsans_4_semibold-webfont.eot");
+            src: url("../fonts/electroluxsans_4_semibold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/electroluxsans_4_semibold-webfont.woff2") format("woff2"), url("../fonts/electroluxsans_4_semibold-webfont.woff") format("woff"), url("../fonts/electroluxsans_4_semibold-webfont.ttf") format("truetype"), url("../fonts/electroluxsans_4_semibold-webfont.svg#electrolux_sanssemibold") format("svg");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Electrolux Sans Bold';
+            src: url("../fonts/electroluxsans_5_bold-webfont.eot");
+            src: url("../fonts/electroluxsans_5_bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/electroluxsans_5_bold-webfont.woff2") format("woff2"), url("../fonts/electroluxsans_5_bold-webfont.woff") format("woff"), url("../fonts/electroluxsans_5_bold-webfont.ttf") format("truetype"), url("../fonts/electroluxsans_5_bold-webfont.svg#electrolux_sansbold") format("svg");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Electrolux Sans Thin Oblique';
+            src: url("../fonts/electroluxsans_oblique_1_thin-webfont.eot");
+            src: url("../fonts/electroluxsans_oblique_1_thin-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/electroluxsans_oblique_1_thin-webfont.woff2") format("woff2"), url("../fonts/electroluxsans_oblique_1_thin-webfont.woff") format("woff"), url("../fonts/electroluxsans_oblique_1_thin-webfont.ttf") format("truetype"), url("../fonts/electroluxsans_oblique_1_thin-webfont.svg#electrolux_sansthin_oblique") format("svg");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Electrolux Sans Light Oblique';
+            src: url("../fonts/electroluxsans_oblique_2_light-webfont.eot");
+            src: url("../fonts/electroluxsans_oblique_2_light-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/electroluxsans_oblique_2_light-webfont.woff2") format("woff2"), url("../fonts/electroluxsans_oblique_2_light-webfont.woff") format("woff"), url("../fonts/electroluxsans_oblique_2_light-webfont.ttf") format("truetype"), url("../fonts/electroluxsans_oblique_2_light-webfont.svg#electrolux_sanslight_oblique") format("svg");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Electrolux Sans Regular Oblique';
+            src: url("../fonts/electroluxsans_oblique_3_regular-webfont.eot");
+            src: url("../fonts/electroluxsans_oblique_3_regular-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/electroluxsans_oblique_3_regular-webfont.woff2") format("woff2"), url("../fonts/electroluxsans_oblique_3_regular-webfont.woff") format("woff"), url("../fonts/electroluxsans_oblique_3_regular-webfont.ttf") format("truetype"), url("../fonts/electroluxsans_oblique_3_regular-webfont.svg#electrolux_sansRgOb") format("svg");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Electrolux Sans Semibold Oblique';
+            src: url("../fonts/electroluxsans_oblique_4_semibold-webfont.eot");
+            src: url("../fonts/electroluxsans_oblique_4_semibold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/electroluxsans_oblique_4_semibold-webfont.woff2") format("woff2"), url("../fonts/electroluxsans_oblique_4_semibold-webfont.woff") format("woff"), url("../fonts/electroluxsans_oblique_4_semibold-webfont.ttf") format("truetype"), url("../fonts/electroluxsans_oblique_4_semibold-webfont.svg#electrolux_sansSBdOb") format("svg");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Electrolux Sans Bold Oblique';
+            src: url("../fonts/electroluxsans_oblique_5_bold-webfont.eot");
+            src: url("../fonts/electroluxsans_oblique_5_bold-webfont.eot?#iefix") format("embedded-opentype"), url("../fonts/electroluxsans_oblique_5_bold-webfont.woff2") format("woff2"), url("../fonts/electroluxsans_oblique_5_bold-webfont.woff") format("woff"), url("../fonts/electroluxsans_oblique_5_bold-webfont.ttf") format("truetype"), url("../fonts/electroluxsans_oblique_5_bold-webfont.svg#electrolux_sansbold_oblique") format("svg");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+body {
+    margin: 0;
+    font-family: "Electrolux Sans Regular", sans-serif; color: #041e41;
+}
+
+@media (max-width: @screen-xs) {
+    body{font-size: 10px;}
+}
+
+@media (max-width: @screen-sm) {
+    body{font-size: 14px;}
+}
+
+h5{
+    font-size: 1.4em;
+}
+
+@viewport {
+  width: device-width;
+  zoom: 1;
+}
+ 
+@media screen and (min-width: 400px) {
+  @import url(desktop.css);
+}
+ 
+@media screen and (max-width: 400px) {
+  @import url(mobile.css);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #041E50;
+    position: relative;
+    top: 0;
+    width: 100%;
+}
+
+li {
+    float: left;
+}
+
+
+.liMenu {
+    display: block;
+    color: white !important;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none !important;
+    font-family: "Electrolux Sans Semibold", sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+    .liMenu:hover:not(.active) {
+        background-color: #2AD2FF;
+    }
+
+.activeMenu {
+    background-color: #2AD2FF;
+    display: block;
+    color: white !important;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none !important;
+    font-weight: bold;
+    font-family: "Electrolux Sans Semibold", sans-serif; color: #2AD2FF;
+}
+
+#editor {
+    max-height: 125px;
+    height: 125px;
+    background-color: white;
+    border-collapse: separate;
+    border: 1px solid rgb(204, 204, 204);
+    padding: 3px;
+    box-sizing: border-box;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+    box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+    overflow: scroll;
+    outline: none;
+}
+
+#voiceBtn {
+    width: 20px;
+    color: transparent;
+    background-color: transparent;
+    transform: scale(2.0, 2.0);
+    -webkit-transform: scale(2.0, 2.0);
+    -moz-transform: scale(2.0, 2.0);
+    border: transparent;
+    cursor: pointer;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+div[data-role="editor-toolbar"] {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.dropdown-menu a {
+    cursor: pointer;
+}
+
+#labelUsuario {
+    color: #041E50;
+    font-family: "Electrolux Sans Regular", sans-serif;
+}
+
+#conteudoUsuario {
+    color: #2AD2FF;
+    font-family: "Electrolux Sans Regular", sans-serif;
+}
+
+#labelCliente {
+    color: #0000;
+    font-family: "Electrolux Sans Regular", sans-serif;
+}
+
+.table-loading-inner {
+    width: 100%;
+    height: 100%;
+}
+.table-loading-overlay {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: block;
+    z-index: 10;
+    background:  #000000;
+    z-index: 100;
+    opacity: 0.5;
+}

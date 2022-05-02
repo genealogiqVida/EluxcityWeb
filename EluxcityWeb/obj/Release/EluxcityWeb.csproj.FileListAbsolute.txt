@@ -1,0 +1,13 @@
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityWeb\bin\EluxcityWeb.dll.config
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityWeb\bin\EluxcityWeb.dll
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityWeb\bin\EluxcityWeb.pdb
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityWeb\bin\EluxcityService.dll
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityWeb\bin\EluxcityService.pdb
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityWeb\obj\Release\EluxcityWeb.csprojResolveAssemblyReference.cache
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityWeb\obj\Release\EluxcityWeb.dll
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityWeb\obj\Release\EluxcityWeb.pdb
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityWeb\bin\Newtonsoft.Json.dll
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityWeb\bin\RestSharp.dll
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityWeb\bin\Newtonsoft.Json.xml
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityWeb\bin\RestSharp.xml
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityWeb\bin\NPOI.dll

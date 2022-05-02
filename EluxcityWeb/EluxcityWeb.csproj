@@ -1,0 +1,888 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4EB07988-249F-4695-AE2C-0F786DFB655A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EluxcityWeb</RootNamespace>
+    <AssemblyName>EluxcityWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\..\ArvoreDecisao\ArvoreDecisaoWeb\bin\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=104.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RestSharp.104.0\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".well-known\pki-validation\B5BF9D3ED2417D2902590333942CD8A1.txt" />
+    <Content Include="includes\arvore\css\bootstrap-fileinput.css" />
+    <Content Include="includes\arvore\css\bootstrap-multiselect.css" />
+    <Content Include="includes\arvore\css\bootstrap-table.css" />
+    <Content Include="includes\arvore\css\bootstrap-tagsinput.css" />
+    <Content Include="includes\arvore\css\bootstrap.css" />
+    <Content Include="includes\arvore\css\bootstrap.min.css" />
+    <Content Include="includes\arvore\css\chosen.css" />
+    <Content Include="includes\arvore\css\estilo.css" />
+    <Content Include="includes\arvore\css\estiloCoroas.css" />
+    <Content Include="includes\arvore\css\ext-all.css" />
+    <Content Include="includes\arvore\css\importacao.css" />
+    <Content Include="includes\arvore\css\jquery-ui-1.10.4.custom.css" />
+    <Content Include="includes\arvore\css\jquery.alerts.css" />
+    <Content Include="includes\arvore\css\jquery.dataTables.min.css" />
+    <Content Include="includes\arvore\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="includes\arvore\imagens\avaliar.png" />
+    <Content Include="includes\arvore\imagens\blank.png" />
+    <Content Include="includes\arvore\imagens\comentario.png" />
+    <Content Include="includes\arvore\imagens\coroas.png" />
+    <Content Include="includes\arvore\imagens\edit.png" />
+    <Content Include="includes\arvore\imagens\Electrolux_logo_master_black_RGB.jpg" />
+    <Content Include="includes\arvore\imagens\help.gif" />
+    <Content Include="includes\arvore\imagens\home.png" />
+    <Content Include="includes\arvore\imagens\important.gif" />
+    <Content Include="includes\arvore\imagens\info.gif" />
+    <Content Include="includes\arvore\imagens\loading-sm.gif" />
+    <Content Include="includes\arvore\imagens\loading-upload.gif" />
+    <Content Include="includes\arvore\imagens\loading.gif" />
+    <Content Include="includes\arvore\imagens\logo.png" />
+    <Content Include="includes\arvore\imagens\lupa.png" />
+    <Content Include="includes\arvore\imagens\nao.png" />
+    <Content Include="includes\arvore\imagens\naoutil.png" />
+    <Content Include="includes\arvore\imagens\pergunta.png" />
+    <Content Include="includes\arvore\imagens\remove.png" />
+    <Content Include="includes\arvore\imagens\required.gif" />
+    <Content Include="includes\arvore\imagens\rodape.png" />
+    <Content Include="includes\arvore\imagens\sair.png" />
+    <Content Include="includes\arvore\imagens\seta.png" />
+    <Content Include="includes\arvore\imagens\sim.png" />
+    <Content Include="includes\arvore\imagens\title.gif" />
+    <Content Include="includes\arvore\imagens\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="includes\arvore\imagens\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="includes\arvore\imagens\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="includes\arvore\imagens\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="includes\arvore\imagens\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="includes\arvore\imagens\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="includes\arvore\imagens\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="includes\arvore\imagens\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="includes\arvore\imagens\ui-icons_222222_256x240.png" />
+    <Content Include="includes\arvore\imagens\ui-icons_2e83ff_256x240.png" />
+    <Content Include="includes\arvore\imagens\ui-icons_454545_256x240.png" />
+    <Content Include="includes\arvore\imagens\ui-icons_888888_256x240.png" />
+    <Content Include="includes\arvore\imagens\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="includes\arvore\imagens\util.png" />
+    <Content Include="includes\arvore\imagens\warning.png" />
+    <Content Include="includes\arvore\js\ajaxupload.js" />
+    <Content Include="includes\arvore\js\bootstrap-multiselect-esp.js" />
+    <Content Include="includes\arvore\js\bootstrap-multiselect-ing.js" />
+    <Content Include="includes\arvore\js\bootstrap-multiselect.js" />
+    <Content Include="includes\arvore\js\bootstrap-table-esp.js" />
+    <Content Include="includes\arvore\js\bootstrap-table-ing.js" />
+    <Content Include="includes\arvore\js\bootstrap-table.js" />
+    <Content Include="includes\arvore\js\bootstrap-tagsinput.js" />
+    <Content Include="includes\arvore\js\bootstrap.js" />
+    <Content Include="includes\arvore\js\bootstrap.min.js" />
+    <Content Include="includes\arvore\js\canvas-to-blob.min.js" />
+    <Content Include="includes\arvore\js\chosen.jquery.js" />
+    <Content Include="includes\arvore\js\ext-all.js" />
+    <Content Include="includes\arvore\js\ext-base.js" />
+    <Content Include="includes\arvore\js\fileinput.js" />
+    <Content Include="includes\arvore\js\fileinput_esp.js" />
+    <Content Include="includes\arvore\js\fileinput_ing.js" />
+    <Content Include="includes\arvore\js\fileinput_locale_en-US.js" />
+    <Content Include="includes\arvore\js\fileinput_locale_es-ES.js" />
+    <Content Include="includes\arvore\js\fileinput_locale_pt-BR.js" />
+    <Content Include="includes\arvore\js\importacao.js" />
+    <Content Include="includes\arvore\js\jquery-1.10.2.js" />
+    <Content Include="includes\arvore\js\jquery-ui-1.10.4.custom.js" />
+    <Content Include="includes\arvore\js\jquery.alerts.js" />
+    <Content Include="includes\arvore\js\jquery.dataTables.min.js" />
+    <Content Include="includes\arvore\js\jquery.min.js" />
+    <Content Include="includes\arvore\js\jquery.modal.js" />
+    <Content Include="includes\arvore\tinymce\changelog.txt" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\jquery.tinymce.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\license.txt" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\codesample\css\prism.css" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\example\dialog.html" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\example\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\layer\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\media\moxieplayer.swf" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\themes\modern\theme.min.js" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\tinymce.min.js" />
+    <Content Include="includes\arvore\tinymce\LICENSE.TXT" />
+    <Content Include="includes\css\app.min.css" />
+    <Content Include="includes\css\bootstrap-fileinput.css" />
+    <Content Include="includes\css\bootstrap-multiselect.css" />
+    <Content Include="includes\css\bootstrap-tagsinput.css" />
+    <Content Include="includes\css\bootstrap5.min.css" />
+    <Content Include="includes\css\chosen.css" />
+    <Content Include="includes\css\estiloCoroas.css" />
+    <Content Include="includes\css\ext-all.css" />
+    <Content Include="includes\css\importacao.css" />
+    <Content Include="includes\css\jquery-ui-1.10.4.custom.css" />
+    <Content Include="includes\css\jquery.dataTables.min.css" />
+    <Content Include="includes\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="includes\imagens\avaliar.png" />
+    <Content Include="includes\imagens\blank.png" />
+    <Content Include="includes\imagens\comentario.png" />
+    <Content Include="includes\imagens\coroas.png" />
+    <Content Include="includes\imagens\edit.png" />
+    <Content Include="includes\imagens\Electrolux_logo_master_black_RGB.jpg" />
+    <Content Include="includes\imagens\help.gif" />
+    <Content Include="includes\imagens\home.png" />
+    <Content Include="includes\imagens\important.gif" />
+    <Content Include="includes\imagens\info.gif" />
+    <Content Include="includes\imagens\loading-sm.gif" />
+    <Content Include="includes\imagens\loading-upload.gif" />
+    <Content Include="includes\imagens\loading.gif" />
+    <Content Include="includes\imagens\logo.png" />
+    <Content Include="includes\imagens\lupa.png" />
+    <Content Include="includes\imagens\nao.png" />
+    <Content Include="includes\imagens\naoutil.png" />
+    <Content Include="includes\imagens\pergunta.png" />
+    <Content Include="includes\imagens\remove.png" />
+    <Content Include="includes\imagens\required.gif" />
+    <Content Include="includes\imagens\rodape.png" />
+    <Content Include="includes\imagens\sair.png" />
+    <Content Include="includes\imagens\seta.png" />
+    <Content Include="includes\imagens\sim.png" />
+    <Content Include="includes\imagens\title.gif" />
+    <Content Include="includes\imagens\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="includes\imagens\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="includes\imagens\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="includes\imagens\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="includes\imagens\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="includes\imagens\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="includes\imagens\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="includes\imagens\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="includes\imagens\ui-icons_222222_256x240.png" />
+    <Content Include="includes\imagens\ui-icons_2e83ff_256x240.png" />
+    <Content Include="includes\imagens\ui-icons_454545_256x240.png" />
+    <Content Include="includes\imagens\ui-icons_888888_256x240.png" />
+    <Content Include="includes\imagens\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="includes\imagens\util.png" />
+    <Content Include="includes\imagens\warning.png" />
+    <Content Include="includes\images\circulares.png" />
+    <Content Include="includes\images\img_defaul.png" />
+    <Content Include="includes\images\loading.gif" />
+    <Content Include="includes\images\logo_administrativo.png" />
+    <Content Include="includes\images\logo_contactcenter.png" />
+    <Content Include="includes\images\manuais.png" />
+    <Content Include="includes\images\proprietario.png" />
+    <Content Include="includes\images\rodape.png" />
+    <Content Include="includes\js\ajaxupload.js" />
+    <Content Include="includes\js\bootstrap-multiselect-esp.js" />
+    <Content Include="includes\js\bootstrap-multiselect-ing.js" />
+    <Content Include="includes\js\bootstrap-multiselect.js" />
+    <Content Include="includes\js\bootstrap-table-esp.js" />
+    <Content Include="includes\js\bootstrap-table-ing.js" />
+    <Content Include="includes\js\bootstrap-tagsinput.js" />
+    <Content Include="includes\js\bootstrap.bundle.min.js" />
+    <Content Include="includes\js\bootstrap5.min.js" />
+    <Content Include="includes\js\canvas-to-blob.min.js" />
+    <Content Include="includes\js\chosen.jquery.js" />
+    <Content Include="includes\js\ext-all.js" />
+    <Content Include="includes\js\ext-base.js" />
+    <Content Include="includes\js\fileinput.js" />
+    <Content Include="includes\js\fileinput_esp.js" />
+    <Content Include="includes\js\fileinput_ing.js" />
+    <Content Include="includes\js\fileinput_locale_en-US.js" />
+    <Content Include="includes\js\fileinput_locale_es-ES.js" />
+    <Content Include="includes\js\fileinput_locale_pt-BR.js" />
+    <Content Include="includes\js\importacao.js" />
+    <Content Include="includes\js\index_28.js" />
+    <Content Include="includes\js\index_27.js" />
+    <Content Include="includes\js\index_26.js" />
+    <Content Include="includes\js\index_25.js" />
+    <Content Include="includes\js\index_24.js" />
+    <Content Include="includes\js\index_23.js" />
+    <Content Include="includes\js\index_22.js" />
+    <Content Include="includes\js\index_21.js" />
+    <Content Include="includes\js\index_20.js" />
+    <Content Include="includes\js\jquery-1.10.2.js" />
+    <Content Include="includes\js\jquery-ui-1.10.4.custom.js" />
+    <Content Include="includes\js\jquery.dataTables.min.js" />
+    <Content Include="includes\js\jquery.modal.js" />
+    <Content Include="includes\js\popper.min.js" />
+    <Content Include="includes\slick\ajax-loader.gif" />
+    <Content Include="includes\slick\fonts\slick.svg" />
+    <Content Include="includes\slick\slick-theme.css" />
+    <Content Include="includes\slick\slick.css" />
+    <Content Include="includes\slick\slick.js" />
+    <Content Include="includes\slick\slick.min.js" />
+    <Content Include="includes\tinymce\changelog.txt" />
+    <Content Include="includes\tinymce\js\tinymce\jquery.tinymce.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\license.txt" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\advlist\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\anchor\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\autolink\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\autoresize\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\autosave\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\bbcode\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\charmap\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\codesample\css\prism.css" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\codesample\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\code\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\colorpicker\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\contextmenu\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\directionality\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\emoticons\img\smiley-cool.gif" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\emoticons\img\smiley-cry.gif" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\emoticons\img\smiley-embarassed.gif" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\emoticons\img\smiley-foot-in-mouth.gif" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\emoticons\img\smiley-frown.gif" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\emoticons\img\smiley-innocent.gif" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\emoticons\img\smiley-kiss.gif" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\emoticons\img\smiley-laughing.gif" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\emoticons\img\smiley-money-mouth.gif" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\emoticons\img\smiley-sealed.gif" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\emoticons\img\smiley-smile.gif" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\emoticons\img\smiley-surprised.gif" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\emoticons\img\smiley-tongue-out.gif" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\emoticons\img\smiley-undecided.gif" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\emoticons\img\smiley-wink.gif" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\emoticons\img\smiley-yell.gif" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\emoticons\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\example\dialog.html" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\example\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\example_dependency\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\fullpage\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\fullscreen\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\hr\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\imagetools\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\image\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\importcss\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\insertdatetime\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\layer\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\legacyoutput\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\link\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\lists\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\media\moxieplayer.swf" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\media\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\nonbreaking\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\noneditable\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\pagebreak\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\paste\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\preview\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\print\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\save\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\searchreplace\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\spellchecker\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\tabfocus\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\table\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\template\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\textcolor\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\textpattern\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\visualblocks\css\visualblocks.css" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\visualblocks\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\visualchars\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\plugins\wordcount\plugin.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\skins\lightgray\content.inline.min.css" />
+    <Content Include="includes\tinymce\js\tinymce\skins\lightgray\content.min.css" />
+    <Content Include="includes\tinymce\js\tinymce\skins\lightgray\fonts\tinymce-small.svg" />
+    <Content Include="includes\tinymce\js\tinymce\skins\lightgray\fonts\tinymce.svg" />
+    <Content Include="includes\tinymce\js\tinymce\skins\lightgray\img\anchor.gif" />
+    <Content Include="includes\tinymce\js\tinymce\skins\lightgray\img\loader.gif" />
+    <Content Include="includes\tinymce\js\tinymce\skins\lightgray\img\object.gif" />
+    <Content Include="includes\tinymce\js\tinymce\skins\lightgray\img\trans.gif" />
+    <Content Include="includes\tinymce\js\tinymce\skins\lightgray\skin.ie7.min.css" />
+    <Content Include="includes\tinymce\js\tinymce\skins\lightgray\skin.min.css" />
+    <Content Include="includes\tinymce\js\tinymce\themes\modern\theme.min.js" />
+    <Content Include="includes\tinymce\js\tinymce\tinymce.min.js" />
+    <Content Include="includes\tinymce\LICENSE.TXT" />
+    <Content Include="pages\administrador.aspx" />
+    <Content Include="pages\boletim.aspx" />
+    <Content Include="pages\consultar.aspx" />
+    <Content Include="pages\contactcenter.aspx" />
+    <Content Include="pages\default.aspx" />
+    <Content Include="pages\engine1\ws-ctrl-convex.eot" />
+    <Content Include="pages\engine1\ws-ctrl-convex.ttf" />
+    <Content Include="pages\engine1\ws-ctrl-convex.woff" />
+    <Content Include="pages\engine1\ws-ctrl-mfglabs.eot" />
+    <Content Include="pages\engine1\ws-ctrl-mfglabs.ttf" />
+    <Content Include="pages\engine1\ws-ctrl-mfglabs.woff" />
+    <Content Include="includes\slick\config.rb" />
+    <Content Include="includes\slick\fonts\slick.eot" />
+    <Content Include="includes\slick\fonts\slick.ttf" />
+    <Content Include="includes\slick\slick-theme.less" />
+    <Content Include="includes\slick\slick-theme.scss" />
+    <Content Include="includes\slick\slick.less" />
+    <Content Include="includes\slick\slick.scss" />
+    <Content Include="packages.config" />
+    <Content Include=".ebextensions\https-redirect-single-instance-dotnet.config" />
+    <Content Include=".ebextensions\https-singleinstance-securitygroup.config" />
+    <Content Include=".ebextensions\https-instancecert.config" />
+    <Content Include="pages\UploadHandler.ashx" />
+    <Content Include="includes\fonts\electroluxsans_1_thin-webfont.eot" />
+    <Content Include="includes\fonts\electroluxsans_1_thin-webfont.ttf" />
+    <Content Include="includes\fonts\electroluxsans_1_thin-webfont.woff" />
+    <Content Include="includes\fonts\electroluxsans_1_thin-webfont.woff2" />
+    <Content Include="includes\fonts\electroluxsans_2_light-webfont.eot" />
+    <Content Include="includes\fonts\electroluxsans_2_light-webfont.ttf" />
+    <Content Include="includes\fonts\electroluxsans_2_light-webfont.woff" />
+    <Content Include="includes\fonts\electroluxsans_2_light-webfont.woff2" />
+    <Content Include="includes\fonts\ElectroluxSans_2_Light.otf" />
+    <Content Include="includes\fonts\electroluxsans_3_regular-webfont.eot" />
+    <Content Include="includes\fonts\electroluxsans_3_regular-webfont.ttf" />
+    <Content Include="includes\fonts\electroluxsans_3_regular-webfont.woff" />
+    <Content Include="includes\fonts\electroluxsans_3_regular-webfont.woff2" />
+    <Content Include="includes\fonts\ElectroluxSans_3_Regular.otf" />
+    <Content Include="includes\fonts\electroluxsans_4_semibold-webfont.eot" />
+    <Content Include="includes\fonts\electroluxsans_4_semibold-webfont.ttf" />
+    <Content Include="includes\fonts\electroluxsans_4_semibold-webfont.woff" />
+    <Content Include="includes\fonts\electroluxsans_4_semibold-webfont.woff2" />
+    <Content Include="includes\fonts\ElectroluxSans_4_Semibold.otf" />
+    <Content Include="includes\fonts\electroluxsans_5_bold-webfont.eot" />
+    <Content Include="includes\fonts\electroluxsans_5_bold-webfont.ttf" />
+    <Content Include="includes\fonts\electroluxsans_5_bold-webfont.woff" />
+    <Content Include="includes\fonts\electroluxsans_5_bold-webfont.woff2" />
+    <Content Include="includes\fonts\ElectroluxSans_5_Bold.otf" />
+    <Content Include="includes\fonts\electroluxsans_oblique_1_thin-webfont.eot" />
+    <Content Include="includes\fonts\electroluxsans_oblique_1_thin-webfont.ttf" />
+    <Content Include="includes\fonts\electroluxsans_oblique_1_thin-webfont.woff" />
+    <Content Include="includes\fonts\electroluxsans_oblique_1_thin-webfont.woff2" />
+    <Content Include="includes\fonts\electroluxsans_oblique_2_light-webfont.eot" />
+    <Content Include="includes\fonts\electroluxsans_oblique_2_light-webfont.ttf" />
+    <Content Include="includes\fonts\electroluxsans_oblique_2_light-webfont.woff" />
+    <Content Include="includes\fonts\electroluxsans_oblique_2_light-webfont.woff2" />
+    <Content Include="includes\fonts\electroluxsans_oblique_3_regular-webfont.eot" />
+    <Content Include="includes\fonts\electroluxsans_oblique_3_regular-webfont.ttf" />
+    <Content Include="includes\fonts\electroluxsans_oblique_3_regular-webfont.woff2" />
+    <Content Include="includes\fonts\electroluxsans_oblique_5_bold-webfont.eot" />
+    <Content Include="includes\fonts\electroluxsans_oblique_5_bold-webfont.ttf" />
+    <Content Include="includes\fonts\electroluxsans_oblique_5_bold-webfont.woff" />
+    <Content Include="includes\fonts\electroluxsans_oblique_5_bold-webfont.woff2" />
+    <Content Include="includes\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="includes\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="includes\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="includes\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="includes\less\bootstrap-multiselect.less" />
+    <Content Include="includes\tinymce\js\tinymce\langs\readme.md" />
+    <Content Include="includes\tinymce\js\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="includes\tinymce\js\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="includes\tinymce\js\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="includes\tinymce\js\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="includes\tinymce\js\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="includes\tinymce\js\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <Content Include="includes\arvore\fonts\electroluxsans_1_thin-webfont.eot" />
+    <Content Include="includes\arvore\fonts\electroluxsans_1_thin-webfont.ttf" />
+    <Content Include="includes\arvore\fonts\electroluxsans_1_thin-webfont.woff" />
+    <Content Include="includes\arvore\fonts\electroluxsans_1_thin-webfont.woff2" />
+    <Content Include="includes\arvore\fonts\electroluxsans_2_light-webfont.eot" />
+    <Content Include="includes\arvore\fonts\electroluxsans_2_light-webfont.ttf" />
+    <Content Include="includes\arvore\fonts\electroluxsans_2_light-webfont.woff" />
+    <Content Include="includes\arvore\fonts\electroluxsans_2_light-webfont.woff2" />
+    <Content Include="includes\arvore\fonts\ElectroluxSans_2_Light.otf" />
+    <Content Include="includes\arvore\fonts\electroluxsans_3_regular-webfont.eot" />
+    <Content Include="includes\arvore\fonts\electroluxsans_3_regular-webfont.ttf" />
+    <Content Include="includes\arvore\fonts\electroluxsans_3_regular-webfont.woff" />
+    <Content Include="includes\arvore\fonts\electroluxsans_3_regular-webfont.woff2" />
+    <Content Include="includes\arvore\fonts\ElectroluxSans_3_Regular.otf" />
+    <Content Include="includes\arvore\fonts\electroluxsans_4_semibold-webfont.eot" />
+    <Content Include="includes\arvore\fonts\electroluxsans_4_semibold-webfont.ttf" />
+    <Content Include="includes\arvore\fonts\electroluxsans_4_semibold-webfont.woff" />
+    <Content Include="includes\arvore\fonts\electroluxsans_4_semibold-webfont.woff2" />
+    <Content Include="includes\arvore\fonts\ElectroluxSans_4_Semibold.otf" />
+    <Content Include="includes\arvore\fonts\electroluxsans_5_bold-webfont.eot" />
+    <Content Include="includes\arvore\fonts\electroluxsans_5_bold-webfont.ttf" />
+    <Content Include="includes\arvore\fonts\electroluxsans_5_bold-webfont.woff" />
+    <Content Include="includes\arvore\fonts\electroluxsans_5_bold-webfont.woff2" />
+    <Content Include="includes\arvore\fonts\ElectroluxSans_5_Bold.otf" />
+    <Content Include="includes\arvore\fonts\electroluxsans_oblique_1_thin-webfont.eot" />
+    <Content Include="includes\arvore\fonts\electroluxsans_oblique_1_thin-webfont.ttf" />
+    <Content Include="includes\arvore\fonts\electroluxsans_oblique_1_thin-webfont.woff" />
+    <Content Include="includes\arvore\fonts\electroluxsans_oblique_1_thin-webfont.woff2" />
+    <Content Include="includes\arvore\fonts\electroluxsans_oblique_2_light-webfont.eot" />
+    <Content Include="includes\arvore\fonts\electroluxsans_oblique_2_light-webfont.ttf" />
+    <Content Include="includes\arvore\fonts\electroluxsans_oblique_2_light-webfont.woff" />
+    <Content Include="includes\arvore\fonts\electroluxsans_oblique_2_light-webfont.woff2" />
+    <Content Include="includes\arvore\fonts\electroluxsans_oblique_3_regular-webfont.eot" />
+    <Content Include="includes\arvore\fonts\electroluxsans_oblique_3_regular-webfont.ttf" />
+    <Content Include="includes\arvore\fonts\electroluxsans_oblique_3_regular-webfont.woff2" />
+    <Content Include="includes\arvore\fonts\electroluxsans_oblique_5_bold-webfont.eot" />
+    <Content Include="includes\arvore\fonts\electroluxsans_oblique_5_bold-webfont.ttf" />
+    <Content Include="includes\arvore\fonts\electroluxsans_oblique_5_bold-webfont.woff" />
+    <Content Include="includes\arvore\fonts\electroluxsans_oblique_5_bold-webfont.woff2" />
+    <Content Include="includes\arvore\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="includes\arvore\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="includes\arvore\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="includes\arvore\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="includes\arvore\less\bootstrap-multiselect.less" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\langs\readme.md" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\skins\lightgray\fonts\tinymce-small.eot" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\skins\lightgray\fonts\tinymce-small.ttf" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\skins\lightgray\fonts\tinymce-small.woff" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\skins\lightgray\fonts\tinymce.eot" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\skins\lightgray\fonts\tinymce.ttf" />
+    <Content Include="includes\arvore\tinymce\js\tinymce\skins\lightgray\fonts\tinymce.woff" />
+    <None Include="Properties\PublishProfiles\eluxcity.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="includes\css\bootstrap-datepicker.css" />
+    <Content Include="includes\css\bootstrap-datetimepicker.css" />
+    <Content Include="includes\css\bootstrap-table.css" />
+    <Content Include="includes\css\bootstrap.css" />
+    <Content Include="includes\css\bootstrap.min.css" />
+    <Content Include="includes\css\cropme.css" />
+    <Content Include="includes\css\demos.css" />
+    <Content Include="includes\css\editor.css" />
+    <Content Include="includes\css\estilo.css" />
+    <Content Include="includes\css\estiloIE.css" />
+    <Content Include="includes\css\font-awesome.min.css" />
+    <Content Include="includes\css\form.css" />
+    <Content Include="includes\css\Jcrop.gif" />
+    <Content Include="includes\css\jquery.alerts.css" />
+    <Content Include="includes\css\jquery.Jcrop.css" />
+    <Content Include="includes\css\jquery.Jcrop.min.css" />
+    <Content Include="includes\css\loading.css" />
+    <Content Include="includes\css\normalize.css" />
+    <Content Include="includes\css\select.css" />
+    <Content Include="includes\css\select2-bootstrap.css" />
+    <Content Include="includes\css\select2-spinner.gif" />
+    <Content Include="includes\css\select2.css" />
+    <Content Include="includes\css\select2.png" />
+    <Content Include="includes\css\select2x2.png" />
+    <Content Include="includes\css\superboxselect.css" />
+    <Content Include="includes\css\themaEdit.css" />
+    <Content Include="includes\css\theme.css" />
+    <Content Include="includes\css\themeSaba.css" />
+    <Content Include="includes\css\tooltipster-sideTip-borderless.min.css" />
+    <Content Include="includes\css\tooltipster-sideTip-light.min.css" />
+    <Content Include="includes\css\tooltipster-sideTip-noir.min.css" />
+    <Content Include="includes\css\tooltipster-sideTip-punk.min.css" />
+    <Content Include="includes\css\tooltipster-sideTip-shadow.min.css" />
+    <Content Include="includes\css\tooltipster.bundle.css" />
+    <Content Include="includes\css\tooltipster.bundle.min.css" />
+    <Content Include="includes\css\tooltipster.main.css" />
+    <Content Include="includes\css\tooltipster.main.min.css" />
+    <Content Include="includes\css\w3.css" />
+    <Content Include="includes\images\breadcrumb_left.png" />
+    <Content Include="includes\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="includes\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="includes\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="includes\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="includes\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="includes\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="includes\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="includes\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="includes\images\ui-icons_222222_256x240.png" />
+    <Content Include="includes\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="includes\images\ui-icons_454545_256x240.png" />
+    <Content Include="includes\images\ui-icons_888888_256x240.png" />
+    <Content Include="includes\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="includes\js\bootstrap-datepicker.js" />
+    <Content Include="includes\js\bootstrap-datepicker.pt-BR.min.js" />
+    <Content Include="includes\js\bootstrap-datetimepicker.js" />
+    <Content Include="includes\js\bootstrap-datetimepicker.pt-BR.js" />
+    <Content Include="includes\js\bootstrap-table.js" />
+    <Content Include="includes\js\bootstrap-typeahead.js" />
+    <Content Include="includes\js\bootstrap.js" />
+    <Content Include="includes\js\bootstrap.min.js" />
+    <Content Include="includes\js\cropme.js" />
+    <Content Include="includes\js\editor.js" />
+    <Content Include="includes\js\index_0.js" />
+    <Content Include="includes\js\index_1.js" />
+    <Content Include="includes\js\index_10.js" />
+    <Content Include="includes\js\index_11.js" />
+    <Content Include="includes\js\index_18.js" />
+    <Content Include="includes\js\index_2.js" />
+    <Content Include="includes\js\index_3.js" />
+    <Content Include="includes\js\index_4.js" />
+    <Content Include="includes\js\index_5.js" />
+    <Content Include="includes\js\index_6.js" />
+    <Content Include="includes\js\index_7.js" />
+    <Content Include="includes\js\index_8.js" />
+    <Content Include="includes\js\index_9.js" />
+    <Content Include="includes\js\input-mask.js" />
+    <Content Include="includes\js\jquery.alerts.js" />
+    <Content Include="includes\js\jquery.color.js" />
+    <Content Include="includes\js\jquery.Jcrop.js" />
+    <Content Include="includes\js\jquery.Jcrop.min.js" />
+    <Content Include="includes\js\jquery.js" />
+    <Content Include="includes\js\jquery.min.js" />
+    <Content Include="includes\js\loading.js" />
+    <Content Include="includes\js\select.js" />
+    <Content Include="includes\js\select2.js" />
+    <Content Include="includes\js\select2_locale_pt-BR.js" />
+    <Content Include="includes\js\tooltipster.bundle.js" />
+    <Content Include="includes\js\tooltipster.bundle.min.js" />
+    <Content Include="includes\js\tooltipster.main.js" />
+    <Content Include="includes\js\tooltipster.main.min.js" />
+    <Content Include="pages\data1\images\imagem1.jpg" />
+    <Content Include="pages\data1\images\imagem1_mobile.jpg" />
+    <Content Include="pages\data1\images\imagem2.jpg" />
+    <Content Include="pages\data1\images\imagem2_mobile.jpg" />
+    <Content Include="pages\data1\images\imagem3.jpg" />
+    <Content Include="pages\data1\images\imagem3_mobile.jpg" />
+    <Content Include="pages\data1\images\imagem4.jpg" />
+    <Content Include="pages\data1\images\imagem4_mobile.jpg" />
+    <Content Include="pages\data1\tooltips\imagem1.jpg" />
+    <Content Include="pages\data1\tooltips\imagem2.jpg" />
+    <Content Include="pages\data1\tooltips\imagem3.jpg" />
+    <Content Include="pages\data1\tooltips\imagem4.jpg" />
+    <Content Include="pages\engine1\arrows.png" />
+    <Content Include="pages\engine1\bullet.png" />
+    <Content Include="pages\engine1\jquery.js" />
+    <Content Include="pages\engine1\pause.png" />
+    <Content Include="pages\engine1\play.png" />
+    <Content Include="pages\engine1\script.js" />
+    <Content Include="pages\engine1\style.css" />
+    <Content Include="pages\engine1\style.mod.css" />
+    <Content Include="pages\engine1\triangle.png" />
+    <Content Include="pages\engine1\wowslider.js" />
+    <Content Include="pages\engine1\wowslider.mod.js" />
+    <Content Include="pages\engine1\ws-ctrl-convex.svg" />
+    <Content Include="pages\engine1\ws-ctrl-mfglabs.svg" />
+    <Content Include="pages\exportar.aspx" />
+    <Content Include="pages\importacao.aspx" />
+    <Content Include="pages\impulse.aspx" />
+    <Content Include="pages\index.aspx" />
+    <Content Include="pages\linha.aspx" />
+    <Content Include="pages\linhaUsuario.aspx" />
+    <Content Include="pages\loading.css" />
+    <Content Include="pages\loading.js" />
+    <Content Include="pages\manual.aspx" />
+    <Content Include="pages\minhacoroa.aspx" />
+    <Content Include="pages\modelo.aspx" />
+    <Content Include="pages\modeloUsuario.aspx" />
+    <Content Include="pages\ocorrencia.aspx" />
+    <Content Include="pages\ocorrenciaUsuario.aspx" />
+    <Content Include="pages\pergunta.aspx" />
+    <Content Include="pages\perguntaUsuario.aspx" />
+    <Content Include="pages\principal.aspx" />
+    <Content Include="pages\produto.aspx" />
+    <Content Include="pages\produtoUsuario.aspx" />
+    <Content Include="pages\proprietario.aspx" />
+    <Content Include="pages\relatorios.aspx" />
+    <Content Include="pages\tecnico.aspx" />
+    <Content Include="pages\transferir.aspx" />
+    <Content Include="pages\videos.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="pages\administrador.aspx.cs">
+      <DependentUpon>administrador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\administrador.aspx.designer.cs">
+      <DependentUpon>administrador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\boletim.aspx.cs">
+      <DependentUpon>boletim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\boletim.aspx.designer.cs">
+      <DependentUpon>boletim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\consultar.aspx.cs">
+      <DependentUpon>consultar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\consultar.aspx.designer.cs">
+      <DependentUpon>consultar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\contactcenter.aspx.cs">
+      <DependentUpon>contactcenter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\contactcenter.aspx.designer.cs">
+      <DependentUpon>contactcenter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\exportar.aspx.cs">
+      <DependentUpon>exportar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\exportar.aspx.designer.cs">
+      <DependentUpon>exportar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\importacao.aspx.cs">
+      <DependentUpon>importacao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\impulse.aspx.cs">
+      <DependentUpon>impulse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\linha.aspx.cs">
+      <DependentUpon>linha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\linhaUsuario.aspx.cs">
+      <DependentUpon>linhaUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\manual.aspx.cs">
+      <DependentUpon>manual.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\manual.aspx.designer.cs">
+      <DependentUpon>manual.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\minhacoroa.aspx.cs">
+      <DependentUpon>minhacoroa.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\minhacoroa.aspx.designer.cs">
+      <DependentUpon>minhacoroa.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\modelo.aspx.cs">
+      <DependentUpon>modelo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\modeloUsuario.aspx.cs">
+      <DependentUpon>modeloUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\ocorrencia.aspx.cs">
+      <DependentUpon>ocorrencia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\ocorrenciaUsuario.aspx.cs">
+      <DependentUpon>ocorrenciaUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\pergunta.aspx.cs">
+      <DependentUpon>pergunta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\perguntaUsuario.aspx.cs">
+      <DependentUpon>perguntaUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\principal.aspx.cs">
+      <DependentUpon>principal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\produto.aspx.cs">
+      <DependentUpon>produto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\produtoUsuario.aspx.cs">
+      <DependentUpon>produtoUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\proprietario.aspx.cs">
+      <DependentUpon>proprietario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\proprietario.aspx.designer.cs">
+      <DependentUpon>proprietario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\relatorios.aspx.cs">
+      <DependentUpon>relatorios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\tecnico.aspx.cs">
+      <DependentUpon>tecnico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\tecnico.aspx.designer.cs">
+      <DependentUpon>tecnico.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\transferir.aspx.cs">
+      <DependentUpon>transferir.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\transferir.aspx.designer.cs">
+      <DependentUpon>transferir.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\UploadHandler.ashx.cs">
+      <DependentUpon>UploadHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\videos.aspx.cs">
+      <DependentUpon>videos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\videos.aspx.designer.cs">
+      <DependentUpon>videos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EluxcityService\EluxcityService.csproj">
+      <Project>{d265aae7-cb97-4226-a345-e92ea60e99fc}</Project>
+      <Name>EluxcityService</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UploadFile\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>24783</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:24783/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

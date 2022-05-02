@@ -1,0 +1,5 @@
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityService\bin\Debug\EluxcityService.dll
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityService\bin\Debug\EluxcityService.pdb
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityService\obj\Debug\EluxcityService.csprojResolveAssemblyReference.cache
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityService\obj\Debug\EluxcityService.dll
+D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityService\obj\Debug\EluxcityService.pdb

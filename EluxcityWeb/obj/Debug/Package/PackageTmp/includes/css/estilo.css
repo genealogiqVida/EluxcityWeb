@@ -1,0 +1,393 @@
+body {
+
+  margin: 0;
+  padding: 0;
+  margin: auto;
+}
+
+div.items {
+  white-space: nowrap;
+  flex-flow: row nowrap;
+ 
+  overflow: hidden;
+  display: flex;
+ width: 95.5%;
+  align-self: center;
+}
+div.items:hover .item {
+  opacity: 1;
+}
+div.items:hover .item:hover {
+  opacity: 0.7;
+}
+div.control-container {
+  height: 300px;
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+div.container {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  
+  position: relative;
+
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+div.left-scroll {
+  left: 0;
+}
+div.left-scroll i {
+  -webkit-transform: translate(-60%, -50%);
+          transform: translate(-60%, -50%);
+}
+div.right-scroll {
+  right: 0;
+}
+div.right-scroll i {
+  -webkit-transform: translate(-40%, -50%);
+          transform: translate(-40%, -50%);
+}
+div.scroll {
+position: absolute;
+    display: inline-block;
+    background: transparent;
+    top: 25%;
+    -webkit-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 60px;
+    margin: 0 10px;
+    z-index: 951;
+}
+div.scroll i {
+ font-size: 28px;
+    color: a3bcca;
+    position: relative;
+    left: 50%;
+    top: 50%;
+}
+
+.item {
+ position: relative;
+    align-self: center;
+    width: 250px;
+    height: 205px;
+    margin: 0 5px;
+   
+    cursor: pointer;
+    z-index: 899;
+}
+.item:hover {
+  
+}
+.item:hover .opacity-none {
+  opacity: 1;
+}
+.item .item-load-icon {
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.item .opacity-none {
+  opacity: 1;
+}
+.item img.item-image {
+     width: 250px;
+    height: 140.625px;
+  
+}
+.item .item-title {
+  color: #f6f6f6;
+  position: absolute;
+  margin: 5px 0;
+  padding: 10px 0;
+  width: 100%;
+  left: 50%;
+  top: 0;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+.item .item-description {
+         color: #011737;
+    font-weight: bold;
+    position: relative;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    white-space: pre-wrap;
+    width: 100%;
+    background: transparent;
+  top:5px;
+    font-family: Verdana;
+
+
+}
+
+.text {
+
+    /* color: #ffffffe0; */
+    font-size: 10px;
+    font-weight: bold;
+    /* text-transform: lowercase; */
+    /* font-weight: 550; */
+    /* font-style: initial; */
+    padding: 0px;
+    font-family: Arial;
+}
+
+.button {
+  position: absolute;
+  color: #f6f6f6;
+  font-size: 30px;
+  border: 1px solid #f6f6f6;
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  z-index: 950;
+  background-color: rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease-in-out;
+}
+.button i {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-35%, -55%);
+          transform: translate(-35%, -55%);
+  z-index: 950;
+}
+.button:hover {
+  box-shadow: 0px 0px 50px #FFFFFF;
+}
+
+
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.loading {
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading {
+}
+
+
+
+div.itemsEscola {
+  white-space: nowrap;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  overflow: hidden;
+  display: flex;
+  margin-right: 4px;
+  left: 5px;
+    position: relative;
+    width: 96%;
+  align-self: center;
+}
+
+
+.itemEscola {
+ position: relative;
+    align-self: center;
+    width: 250px;
+    height: 200px;
+    margin: 0 3px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    z-index: 899;
+}
+
+
+
+.itemEscola img.item-image:hover{
+     opacity: 0.5;
+    transition: 1s;
+     -webkit-filter:grayscale(60%);
+}
+
+.itemEscola img.item-image {
+     width: 250px;
+    height: 140.625px;
+  -o-object-fit: cover;
+     object-fit: cover;
+    
+}
+.itemEscola .item-title {
+  color: #f6f6f6;
+  position: absolute;
+  margin: 5px 0;
+  padding: 10px 0;
+  width: 100%;
+  left: 50%;
+  top: 0;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+.itemEscola .item-description {
+        color: #f5f5f5;
+    font-size: 8px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    white-space: pre-wrap;
+    width: 100%;
+       top: 140px;
+    margin: 9px 0;
+    padding: 0px 5px;
+    font-family: Verdana;
+
+
+}
+
+
+button {
+
+    margin-bottom: 10px !important;
+}
+
+.slider-pagination {
+	margin: 1.5em 0;
+	text-align: center;	
+}
+
+.slider-pagination span {
+	width: 2em;
+	height: 2em;
+	line-height: 2;
+	text-align: center;
+	border: 1px solid #ddd;
+	color: #000000;
+	text-decoration: none;
+	background: #f5f5f5;
+	background: linear-gradient( #f5f5f5, #fff );
+	display: inline-block;
+    margin-right: 3px;
+	
+}
+
+.slider-pagination span:hover{
+     opacity: 0.5;
+    transition: 1s;
+     -webkit-filter:grayscale(60%);
+}
+
+.slider-pagination span.current {
+	border-color: #000;
+	background: #fff;
+	background: linear-gradient( #fff, #f5f5f5 );
+}
+
+.lblCarrossel {
+    color:#051833; 
+    font-size:24px;
+    padding: 20px 10px 10px 68px;
+
+}
+
+.imgTopo {
+    width:1200px;
+}
+
+
+@media screen and (max-width: 759px) and (min-width: 579px) {
+    .lblCarrossel {
+        color:#051833; 
+        font-size: 15px;
+        padding: 20px 10px 10px 352px;
+
+    }
+     .imgTopo {
+    width:600px;
+}
+}
+
+@media screen and (max-width: 991px) and (min-width: 760px) {
+    .lblCarrossel {
+        color:#051833; 
+        font-size: 15px;
+        padding: 20px 10px 10px 266px;
+
+    }
+
+     .imgTopo {
+    width:800px;
+}
+}
+
+
+@media screen and (max-width: 1200px) and (min-width: 990px) {
+    .lblCarrossel {
+        color:#051833; 
+        font-size:24px;
+        padding: 20px 10px 10px 152px;
+
+    }
+
+     .imgTopo {
+    width:1000px;
+}
+}
+
+
+@media screen and (max-width: 580px) and (min-width: 340px) {
+    div.container {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        position: relative;
+        max-width: 390px;
+        box-sizing: border-box;
+        overflow: hidden;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+    }
+
+    div.items {
+        white-space: nowrap;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        overflow: hidden;
+        display: flex;
+        width: 90.5%;
+        align-self: center;
+    }
+
+    .lblCarrossel {
+        color:#051833; 
+        font-size:13px;
+        padding: 20px 10px 10px 433px;
+
+    }
+
+    .imgTopo {
+    width:420px;
+}
+}

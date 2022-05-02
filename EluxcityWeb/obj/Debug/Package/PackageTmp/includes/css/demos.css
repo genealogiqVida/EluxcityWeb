@@ -1,0 +1,401 @@
+/* Jcrop Demo Site CSS - 2012 Tapmodo Interactive LLC - MIT License
+   Not required to run Jcrop - contains twitter bootstrap code */
+/* To build these CSS files you must have LESS and run
+ * $ git submodule init
+ * $ git submodule update
+ * ...to pull in the Twitter bootstrap files
+ */
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* JCROP DEMOS CSS */
+li small {
+  color: #f07878;
+}
+.inline-labels label {
+  display: inline;
+}
+div#interface.span3 fieldset {
+  margin-bottom: 1.5em;
+}
+div#interface.span3 fieldset legend {
+  margin-bottom: 2px;
+  padding-bottom: 2px;
+  line-height: 1.2;
+}
+.article h1 {
+  color: #333;
+  margin-top: .2em;
+}
+.jc-demo {
+  text-align: center;
+}
+.jcropper-holder {
+  border: 1px #bbb solid;
+}
+.jc-demo-box {
+  text-align: left;
+ margin: 8px 5px 5px 10px;
+  background: white;
+  border: 1px #bbb solid;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.25);
+  padding: 1em 2em 2em;
+      width: 98.4%;
+}
+form {
+  margin: 1.5em 0;
+}
+form.coords label {
+  margin-right: 1em;
+  font-weight: bold;
+  color: #900;
+}
+form.coords input {
+  width: 3em;
+}
+.ui-widget-overlay {
+  opacity: 0.80;
+  filter: alpha(opacity=70);
+}
+.jc-dialog {
+  padding-top: 1em;
+}
+.ui-dialog p tt {
+  color: yellow;
+}
+.jcrop-light .jcrop-selection {
+  -moz-box-shadow: 0px 0px 15px #999;
+  /* Firefox */
+
+  -webkit-box-shadow: 0px 0px 15px #999;
+  /* Safari, Chrome */
+
+  box-shadow: 0px 0px 15px #999;
+  /* CSS3 */
+
+}
+.jcrop-dark .jcrop-selection {
+  -moz-box-shadow: 0px 0px 15px #000;
+  /* Firefox */
+
+  -webkit-box-shadow: 0px 0px 15px #000;
+  /* Safari, Chrome */
+
+  box-shadow: 0px 0px 15px #000;
+  /* CSS3 */
+
+}
+.jcrop-fancy .jcrop-handle.ord-e {
+  -webkit-border-top-left-radius: 0px;
+  -webkit-border-bottom-left-radius: 0px;
+}
+.jcrop-fancy .jcrop-handle.ord-w {
+  -webkit-border-top-right-radius: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+}
+.jcrop-fancy .jcrop-handle.ord-nw {
+  -webkit-border-bottom-right-radius: 0px;
+}
+.jcrop-fancy .jcrop-handle.ord-ne {
+  -webkit-border-bottom-left-radius: 0px;
+}
+.jcrop-fancy .jcrop-handle.ord-sw {
+  -webkit-border-top-right-radius: 0px;
+}
+.jcrop-fancy .jcrop-handle.ord-se {
+  -webkit-border-top-left-radius: 0px;
+}
+.jcrop-fancy .jcrop-handle.ord-s {
+  -webkit-border-top-left-radius: 0px;
+  -webkit-border-top-right-radius: 0px;
+}
+.jcrop-fancy .jcrop-handle.ord-n {
+  -webkit-border-bottom-left-radius: 0px;
+  -webkit-border-bottom-right-radius: 0px;
+}
+.description {
+  margin: 16px 0;
+}
+.jcrop-droptarget canvas {
+  background-color: #f0f0f0;
+}
+
+
+.modal-open {
+  overflow: hidden;
+}
+
+.modal-open .modal {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+}
+
+.modal-dialog {
+  position: relative;
+  width: auto;
+  margin: 0.5rem;
+  pointer-events: none;
+}
+
+.modal.fade .modal-dialog {
+  transition: -webkit-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+  -webkit-transform: translate(0, -50px);
+  transform: translate(0, -50px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal.fade .modal-dialog {
+    transition: none;
+  }
+}
+
+.modal.show .modal-dialog {
+  -webkit-transform: none;
+  transform: none;
+}
+
+.modal-dialog-scrollable {
+  display: -ms-flexbox;
+  display: flex;
+  max-height: calc(100% - 1rem);
+}
+
+.modal-dialog-scrollable .modal-content {
+  max-height: calc(100vh - 1rem);
+  overflow: hidden;
+}
+
+.modal-dialog-scrollable .modal-header,
+.modal-dialog-scrollable .modal-footer {
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+}
+
+.modal-dialog-scrollable .modal-body {
+  overflow-y: auto;
+}
+
+.modal-dialog-centered {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  min-height: calc(100% - 1rem);
+}
+
+.modal-dialog-centered::before {
+  display: block;
+  height: calc(100vh - 1rem);
+  content: "";
+}
+
+.modal-dialog-centered.modal-dialog-scrollable {
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.modal-dialog-centered.modal-dialog-scrollable .modal-content {
+  max-height: none;
+}
+
+.modal-dialog-centered.modal-dialog-scrollable::before {
+  content: none;
+}
+
+.modal-content {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1040;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+}
+
+.modal-backdrop.fade {
+  opacity: 0;
+}
+
+.modal-backdrop.show {
+  opacity: 0.5;
+}
+
+.modal-header {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  border-bottom: 1px solid #dee2e6;
+  border-top-left-radius: 0.3rem;
+  border-top-right-radius: 0.3rem;
+}
+
+.modal-header .close {
+  padding: 1rem 1rem;
+  margin: -1rem -1rem -1rem auto;
+}
+
+.modal-title {
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+.modal-body {
+  position: relative;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+
+.modal-footer {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: 1rem;
+  border-top: 1px solid #dee2e6;
+  border-bottom-right-radius: 0.3rem;
+  border-bottom-left-radius: 0.3rem;
+}
+
+.modal-footer > :not(:first-child) {
+  margin-left: .25rem;
+}
+
+.modal-footer > :not(:last-child) {
+  margin-right: .25rem;
+}
+
+.modal-scrollbar-measure {
+  position: absolute;
+  top: -9999px;
+  width: 50px;
+  height: 50px;
+  overflow: scroll;
+}
+
+@media (min-width: 576px) {
+  .modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+  .modal-dialog-scrollable {
+    max-height: calc(100% - 3.5rem);
+  }
+  .modal-dialog-scrollable .modal-content {
+    max-height: calc(100vh - 3.5rem);
+  }
+  .modal-dialog-centered {
+    min-height: calc(100% - 3.5rem);
+  }
+  .modal-dialog-centered::before {
+    height: calc(100vh - 3.5rem);
+  }
+  .modal-sm {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 992px) {
+  .modal-lg,
+  .modal-xl {
+    max-width: 800px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .modal-xl {
+    max-width: 1140px;
+  }
+}
+
+
+
+.close:not(:disabled):not(.disabled) {
+    cursor: pointer;
+}
+.close:hover {
+    color: #000;
+    text-decoration: none;
+}
+.close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+    display: none;
+}
+
+.modal-open .modal {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
