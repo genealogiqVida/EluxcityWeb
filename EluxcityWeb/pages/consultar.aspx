@@ -176,13 +176,37 @@
          
 </div>
 
-     <div class="container" style="margin-top: 15%;">
-         <div class="row">
-              <div class="col"> 
-                    <img src="../includes/arvore/imagens/rodape.png"  class="imgTopo" />
-
-              </div>
-          </div>
-       </div>  
+     <footer class="footer">
+            <div class="container" style="background: #011E41; justify-content: flex-start; padding-left: 50px; display: flex; flex-wrap: wrap">
+                <div class="row" style="margin-top: 30px; width: 100%">
+                    <div class="col-md-12">
+                        <div class="row" style="flex-wrap: nowrap;">
+                            <div class="col-3">
+                                <ul class="list-unstyled">
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="https://eluxcitysb.sabacloud.com/Saba/Web_spf/NA1TNB0106/app/me/plans" style="color: #FFF; text-decoration: solid">Treinamentos</a></li>
+                                    <!--<li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Fale com a engenharia</a></li>-->
+                                    <!--<li style="margin-bottom: 10px; font-size: 20px;"><a href="https://eluxcitysb.sabacloud.com/Saba/Web_spf/NA1TNB0106/app/dashboard" style="color: #FFF; text-decoration: solid">Check list</a></li>-->
+                                    <li style="font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Peças e acessórios</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-9">
+                                <ul class="list-unstyled">
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Política de privacidade</a></li>
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Termos de uso</a></li>
+                                    <!--<li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Ajuda</a></li>-->
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12" style="display: flex; justify-content: right">
+                                <img src="../includes/images/logo_rodape_resize.png" style="height: 60px"/>
+                            </div>
+                            
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </footer> 
 </body>
 </html>
