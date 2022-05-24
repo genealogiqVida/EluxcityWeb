@@ -3,3 +3,9 @@ D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityService\
 D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityService\obj\Debug\EluxcityService.csprojResolveAssemblyReference.cache
 D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityService\obj\Debug\EluxcityService.dll
 D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityService\obj\Debug\EluxcityService.pdb
+D:\Impulse\EluxcityWeb\EluxcityService\bin\Debug\EluxcityService.dll
+D:\Impulse\EluxcityWeb\EluxcityService\bin\Debug\EluxcityService.pdb
+D:\Impulse\EluxcityWeb\EluxcityService\obj\Debug\EluxcityService.csproj.AssemblyReference.cache
+D:\Impulse\EluxcityWeb\EluxcityService\obj\Debug\EluxcityService.csproj.CoreCompileInputs.cache
+D:\Impulse\EluxcityWeb\EluxcityService\obj\Debug\EluxcityService.dll
+D:\Impulse\EluxcityWeb\EluxcityService\obj\Debug\EluxcityService.pdb

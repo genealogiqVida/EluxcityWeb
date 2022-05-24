@@ -13,13 +13,15 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EluxcityWeb</RootNamespace>
     <AssemblyName>EluxcityWeb</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,6 +31,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,6 +40,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
@@ -287,10 +291,12 @@
     <Content Include="includes\imagens\util.png" />
     <Content Include="includes\imagens\warning.png" />
     <Content Include="includes\images\circulares.png" />
+    <Content Include="includes\images\logo_rodape_resize.png" />
     <Content Include="includes\images\img_defaul.png" />
     <Content Include="includes\images\loading.gif" />
     <Content Include="includes\images\logo_administrativo.png" />
     <Content Include="includes\images\logo_contactcenter.png" />
+    <Content Include="includes\images\logo_rodape.png" />
     <Content Include="includes\images\manuais.png" />
     <Content Include="includes\images\proprietario.png" />
     <Content Include="includes\images\rodape.png" />

@@ -11,3 +11,17 @@ D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityWeb\bin\
 D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityWeb\bin\Newtonsoft.Json.xml
 D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityWeb\bin\RestSharp.xml
 D:\Gabriel Trabalho\Desenvolvimento\Projetos DotNet\EluxcityWeb\EluxcityWeb\bin\NPOI.dll
+D:\Impulse\EluxcityWeb\EluxcityWeb\bin\EluxcityWeb.dll.config
+D:\Impulse\EluxcityWeb\EluxcityWeb\bin\EluxcityWeb.dll
+D:\Impulse\EluxcityWeb\EluxcityWeb\bin\EluxcityWeb.pdb
+D:\Impulse\EluxcityWeb\EluxcityWeb\bin\EluxcityService.dll
+D:\Impulse\EluxcityWeb\EluxcityWeb\bin\Newtonsoft.Json.dll
+D:\Impulse\EluxcityWeb\EluxcityWeb\bin\RestSharp.dll
+D:\Impulse\EluxcityWeb\EluxcityWeb\bin\EluxcityService.pdb
+D:\Impulse\EluxcityWeb\EluxcityWeb\bin\Newtonsoft.Json.xml
+D:\Impulse\EluxcityWeb\EluxcityWeb\bin\RestSharp.xml
+D:\Impulse\EluxcityWeb\EluxcityWeb\obj\Debug\EluxcityWeb.csproj.AssemblyReference.cache
+D:\Impulse\EluxcityWeb\EluxcityWeb\obj\Debug\EluxcityWeb.csproj.CoreCompileInputs.cache
+D:\Impulse\EluxcityWeb\EluxcityWeb\obj\Debug\EluxcityWeb.csproj.CopyComplete
+D:\Impulse\EluxcityWeb\EluxcityWeb\obj\Debug\EluxcityWeb.dll
+D:\Impulse\EluxcityWeb\EluxcityWeb\obj\Debug\EluxcityWeb.pdb
