@@ -351,7 +351,7 @@
                                   <table style="width:70%">
                                        <tr>
                                            <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('https://eluxcitysb-teste.sabacloud.com/Saba/Web_spf/NA1TNB0106/app/team/overview')"><label style="cursor: pointer"><b>Gestão da equipe</b></label></button></td>
-                                           <td><button type="button" class="btn btn-warning" style="cursor: pointer"><label style="cursor: pointer"><b>Service Plus</b></label></button></td>
+                                           <!--<td><button type="button" class="btn btn-warning" style="cursor: pointer"><label style="cursor: pointer"><b>Service Plus</b></label></button></td>-->
                                            <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('manual.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')"><label style="cursor: pointer"><b>Manual de serviços</b></label></button></td>
                                            <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('boletim.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')"><label style="cursor: pointer"><b>Boletins técnicos</b></label></button></td>
                                            <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('videos.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')"><label style="cursor: pointer"><b>Vídeos</b></label></button></td>
@@ -366,7 +366,7 @@
 
 <table style="width:52%">
        <tr>
-           <td><button type="button" class="btn btn-warning" style="cursor: pointer"><label style="cursor: pointer"><b>Service Plus</b></label></button></td>
+           <!--<td><button type="button" class="btn btn-warning" style="cursor: pointer"><label style="cursor: pointer"><b>Service Plus</b></label></button></td>-->
            <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('manual.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')"><label style="cursor: pointer"><b>Manual de serviços</b></label></button></td>
            <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('boletim.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')"><label style="cursor: pointer"><b>Boletins técnicos</b></label></button></td>
            <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('videos.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')"><label style="cursor: pointer"><b>Vídeos</b></label></button></td>
@@ -401,7 +401,7 @@
                           </div>
                           <div class="row">
                                  <div class="col" style="text-align: center;">
-                                           <label class="lblCarrossel" style="font-size: 16px; color: red; text-align: center;"><b>Desculpe, não foi possível encontrar nenhum resultado neste momento para esse conteúdo</b></label>
+                                           <label class="lblCarrossel" style="font-size: 16px; color: red; text-align: center;"><b>Não existem conteúdos/cursos a serem exibidos aqui</b></label>
                                 </div>
                           </div> 
                             
@@ -428,7 +428,7 @@
                           </div>
                           <div class="row">
                                  <div class="col" style="text-align: center;">
-                                           <label class="lblCarrossel" style="font-size: 16px; color: red; text-align: center;"><b>Desculpe, não foi possível encontrar nenhum resultado neste momento para esse conteúdo</b></label>
+                                           <label class="lblCarrossel" style="font-size: 16px; color: red; text-align: center;"><b>Não existem conteúdos/cursos a serem exibidos aqui</b></label>
                                 </div>
                           </div> 
                             
@@ -458,7 +458,7 @@
                           </div>
                           <div class="row">
                                  <div class="col" style="text-align: center;">
-                                           <label class="lblCarrossel" style="font-size: 16px; color: red; text-align: center;"><b>Desculpe, não foi possível encontrar nenhum resultado neste momento para esse conteúdo</b></label>
+                                           <label class="lblCarrossel" style="font-size: 16px; color: red; text-align: center;"><b>Não existem conteúdos/cursos a serem exibidos aqui</b></label>
                                 </div>
                           </div> 
                             
@@ -488,7 +488,7 @@
                           </div>
                           <div class="row">
                                  <div class="col" style="text-align: center;">
-                                           <label class="lblCarrossel" style="font-size: 16px; color: red; text-align: center;"><b>Desculpe, não foi possível encontrar nenhum resultado neste momento para esse conteúdo</b></label>
+                                           <label class="lblCarrossel" style="font-size: 16px; color: red; text-align: center;"><b>Não existem conteúdos/cursos a serem exibidos aqui</b></label>
                                 </div>
                           </div> 
                             
@@ -519,7 +519,7 @@
                           </div>
                           <div class="row">
                                  <div class="col" style="text-align: center;">
-                                           <label class="lblCarrossel" style="font-size: 16px; color: red; text-align: center;"><b>Desculpe, não foi possível encontrar nenhum resultado neste momento para esse conteúdo</b></label>
+                                           <label class="lblCarrossel" style="font-size: 16px; color: red; text-align: center;"><b>Não existem conteúdos/cursos a serem exibidos aqui</b></label>
                                 </div>
                           </div> 
                             
@@ -549,7 +549,7 @@
                           </div>
                           <div class="row">
                                  <div class="col" style="text-align: center;">
-                                           <label class="lblCarrossel" style="font-size: 16px; color: red; text-align: center;"><b>Desculpe, não foi possível encontrar nenhum resultado neste momento para esse conteúdo</b></label>
+                                           <label class="lblCarrossel" style="font-size: 16px; color: red; text-align: center;"><b>Não existem conteúdos/cursos a serem exibidos aqui</b></label>
                                 </div>
                           </div> 
                             
@@ -578,7 +578,7 @@
                           </div>
                           <div class="row">
                                  <div class="col" style="text-align: center;">
-                                           <label class="lblCarrossel" style="font-size: 16px; color: red; text-align: center;"><b>Desculpe, não foi possível encontrar nenhum resultado neste momento para esse conteúdo</b></label>
+                                           <label class="lblCarrossel" style="font-size: 16px; color: red; text-align: center;"><b>Não existem conteúdos/cursos a serem exibidos aqui</b></label>
                                 </div>
                           </div> 
                             
@@ -608,7 +608,7 @@
                           </div>
                           <div class="row">
                                  <div class="col" style="text-align: center;">
-                                           <label class="lblCarrossel" style="font-size: 16px; color: red; text-align: center;"><b>Desculpe, não foi possível encontrar nenhum resultado neste momento para esse conteúdo</b></label>
+                                           <label class="lblCarrossel" style="font-size: 16px; color: red; text-align: center;"><b>Não existem conteúdos/cursos a serem exibidos aqui</b></label>
                                 </div>
                           </div> 
                             
