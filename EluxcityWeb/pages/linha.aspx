@@ -76,6 +76,37 @@
    // tipoArvore = Session["tipoArvore"].ToString();
     tipoArvore = tipoArvore.Replace("%20", " ");
 
+    username = Request.Params.Get("username");
+    if (username.IndexOf(',') != -1)
+    {
+        username = username.Split(',')[0];
+    }
+
+    tipoArvore = Request.Params.Get("tipoArvore");
+    if(tipoArvore != null)
+    {
+        if (tipoArvore.IndexOf(',') != -1)
+        {
+            tipoArvore = tipoArvore.Split(',')[0];
+        }
+
+        tipoArvore = tipoArvore.Replace("%20", " ");
+
+        Session["tipoArvore"] = tipoArvore;
+    }else
+    {
+        tipoArvore = "Arvore Produtos";
+    }
+
+    idioma = Request.Params.Get("idioma");
+    if(idioma != null)
+    {
+        idioma = idioma.Replace("%20", " ");
+    }else
+    {
+        idioma = "pt-BR";
+    }
+
     string lblTitulo = "Listagem das Linhas";
     string lblCadastro = "Cadastro de Linha";
     string lblCancelar = "Cancelar";
@@ -258,10 +289,14 @@
 
             telaAtual = "linha";
 
+            var idioma = "<%=idioma.ToString()%>";
+            var tipoArvore = "<%=tipoArvore.ToString()%>";
+            var dataStr = (idioma.indexOf("'") != -1 && tipoArvore.indexOf("'") != -1) ? "{limit: " + limit + ", offset: " + paginaAtual + " ,tipoArvore:" + tipoArvore + ", idioma:" + idioma + ", codPais:'<%=pais %>'}" : "{limit: " + limit + ", offset: " + paginaAtual + " ,tipoArvore:'" + tipoArvore + "', idioma:'" + idioma + "', codPais:'<%=pais %>'}"
+
             $j.ajax({
                 type: "POST",
                 url: "linha.aspx/carregaLinhas",
-                data: "{limit: " + limit + ", offset: " + paginaAtual + " ,tipoArvore:'<%=tipoArvore %>', idioma:'<%=idioma %>', codPais:'<%=pais %>'}",
+                data: dataStr,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (jasonResult) {
@@ -527,7 +562,7 @@
     </script>
 <body style="overflow: hidden;">
     <div class="container-fluid">
-     <table border=0 style="width: 100%"><Tr>
+     <%--<table border=0 style="width: 100%"><Tr>
           <Td  align="left" style="width: 5%">  <img src="../includes/arvore/imagens/logo.png" class="img-responsive"/></img></Td>
           
            <Td  align="center" style="width: 45%" align="center"><span id="labelCliente">&nbsp;</span></Td>
@@ -539,7 +574,7 @@
           
           
           
-      </Tr></table>
+      </Tr></table>--%>
     
     
     
@@ -578,7 +613,12 @@
 
                          <ul>
                               <li><a class="liMenu" href="<%=urlVolta%>"  ><img src="../includes/arvore/imagens/home.png" class="img-responsive" style="cursor: pointer;" /></a></li>
-                            <li><a href="ocorrencia.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>" class="liMenu"><%=lblMenu2 %></a></li>
+                            <li><a class="liMenu" href="linha.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>"  ><%=tipoMenu0 %></a></li>
+                            <li><a href="produto.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>" class="liMenu"><%=tipoMenu1 %></a></li>
+                            <li><a href="modelo.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>" class="liMenu"><%=tipoMenu2 %></a></li>
+                            <li><a href="ocorrencia.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>" class="liMenu"><%=tipoMenu3 %></a></li>
+                            <li><a href="importacao.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>" class="liMenu"><%=tipoMenu4 %></a></li>
+                            <li><a href="relatorios.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>" class="liMenu"><%=tipoMenu5 %></a></li>
                            
                         </ul>    
 

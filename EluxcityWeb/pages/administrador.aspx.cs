@@ -16,10 +16,11 @@ namespace EluxcityWeb.pages
     {
         protected String idUser = "";
         protected String username = "";
+        protected String personNO = "";
         protected String certificate = "";
 
-        protected String url = "https://eluxcitysb-api.sabacloud.com";
-        protected String usuario = "felipe.miranda";
+        protected String url = "https://use-api.sabacloud.com";
+        protected String usuario = "administrador";
         protected String senha = "elux123";
 
         protected String equipe = "N";
@@ -34,6 +35,10 @@ namespace EluxcityWeb.pages
         protected StringBuilder myStringBuilderSegunda = new StringBuilder();
         protected StringBuilder myStringBuilderTerceira = new StringBuilder();
 
+        protected String dominio = "";
+
+        protected String nomeCompleto = "";
+
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -41,6 +46,12 @@ namespace EluxcityWeb.pages
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+
+            dominio = this.Request.Params.Get("dominio");
+            if (dominio == null)
+            {
+                dominio = "";
+            }
 
             equipe = this.Request.Params.Get("equipe");
             if (equipe == null)
@@ -60,10 +71,22 @@ namespace EluxcityWeb.pages
                 username = "";
             }
 
+            personNO = this.Request.Params.Get("personNO");
+            if(personNO == null)
+            {
+                personNO = "";
+            }
+
             certificate = this.Request.Params.Get("certificate");
             if (certificate == null)
             {
                 certificate = "";
+            }
+
+            nomeCompleto = this.Request.Params.Get("nomeCompleto");
+            if (nomeCompleto == null)
+            {
+                nomeCompleto = "";
             }
 
             EluxcityAction action = new EluxcityAction();
@@ -86,11 +109,11 @@ namespace EluxcityWeb.pages
 
 
             //carrega carrossel lançamentos
-            List<ConteudoDTO> list = action.carregaLancamentos(username);
+            List<ConteudoDTO> list = action.carregaLancamentos(personNO);
             foreach (ConteudoDTO conteudoDTO in list)
             {
                 myStringBuilderLancamento.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                myStringBuilderLancamento.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/img_defaul.png\" />");
+                myStringBuilderLancamento.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderLancamento.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
                 myStringBuilderLancamento.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
                 myStringBuilderLancamento.Append(" </div>");
@@ -119,7 +142,7 @@ namespace EluxcityWeb.pages
             myStringBuilderSugestao.Append("<div class=\"items\" id=\"carousel_4-items\"  >");
 
             //carrega carrossel sugestao
-            list = action.carregaSugestao(username);
+            list = action.carregaSugestao(personNO);
             foreach (ConteudoDTO conteudoDTO in list)
             {
 
@@ -150,13 +173,13 @@ namespace EluxcityWeb.pages
             myStringBuilderRecente.Append("<div class=\"items\" id=\"carousel_5-items\"  >");
 
             //carrega carrossel sugestao
-            list = action.carregaCirculares(username);
+            list = action.carregaCirculares(personNO);
             foreach (ConteudoDTO conteudoDTO in list)
             {
 
 
                 myStringBuilderRecente.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                myStringBuilderRecente.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/circulares.png\" />");
+                myStringBuilderRecente.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderRecente.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
                 myStringBuilderRecente.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
                 myStringBuilderRecente.Append(" </div>");
@@ -182,13 +205,13 @@ namespace EluxcityWeb.pages
             myStringBuilderPopular.Append("<div class=\"items\" id=\"carousel_6-items\"  >");
 
             //carrega carrossel sugestao
-            list = action.carregaBoletins(username);
+            list = action.carregaBoletins(personNO);
             foreach (ConteudoDTO conteudoDTO in list)
             {
 
 
                 myStringBuilderPopular.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                myStringBuilderPopular.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/img_defaul.png\" />");
+                myStringBuilderPopular.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderPopular.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
                 myStringBuilderPopular.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
                 myStringBuilderPopular.Append(" </div>");
@@ -213,13 +236,13 @@ namespace EluxcityWeb.pages
             myStringBuilderPrimeira.Append("<div class=\"items\" id=\"carousel_7-items\"  >");
 
             //carrega carrossel sugestao
-            list = action.carregaManuais(username);
+            list = action.carregaManuais(personNO);
             foreach (ConteudoDTO conteudoDTO in list)
             {
 
 
                 myStringBuilderPrimeira.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                myStringBuilderPrimeira.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/manuais.png\" />");
+                myStringBuilderPrimeira.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderPrimeira.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
                 myStringBuilderPrimeira.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
                 myStringBuilderPrimeira.Append(" </div>");

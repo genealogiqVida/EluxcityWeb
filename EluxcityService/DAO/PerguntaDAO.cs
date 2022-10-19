@@ -266,8 +266,10 @@ namespace EluxcityWeb.DAO
         public string verificaExisteComentarioUsuario(string nome, string codigoPergunta)
         {
             string codigo = "0";
-            String stringConnection = ConfigurationManager.ConnectionStrings["conexaoArvore"].ConnectionString;
-            SqlConnection conUser = new SqlConnection(stringConnection);
+            //String stringConnection = ConfigurationManager.ConnectionStrings["conexaoArvore"].ConnectionString;
+            String ConnectionFormat = "Data Source=aayu1i6nz8t6qh.cquw2frjvx7u.us-west-2.rds.amazonaws.com;Initial Catalog=eluxcity-prod;User ID=administrador;Password=eluxcity123";
+
+            SqlConnection conUser = new SqlConnection(ConnectionFormat);
             try
             {
                // conUser = getConexao();

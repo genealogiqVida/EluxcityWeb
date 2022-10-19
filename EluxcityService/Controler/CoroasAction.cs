@@ -20,6 +20,26 @@ namespace EluxcityWeb.Controller
 
         }
 
+        public List<CoroasEspeciaisDTO> carregaCoroasEspeciais(string username)
+        {
+            this.getInstance();
+            return service.carregaCoroasEspeciais(username);
+
+
+        }
+
+        public String carregaDataAtualizacao(string username)
+        {
+            this.getInstance();
+            return service.carregaDataAtualizacao(username);
+        }
+
+        public bool verificaPerfilAdministrador(string username)
+        {
+            this.getInstance();
+            return service.verificaPerfilAdministrador(username);
+        }
+
 
         private void getInstance()
         {

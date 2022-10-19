@@ -18,10 +18,14 @@
     <link rel="stylesheet" type="text/css" href="../includes/arvore/css/jquery-ui-1.10.4.custom.css" /> 
     <link rel="stylesheet" type="text/css" href="../includes/arvore/css/jquery.alerts.css"/> 
     <link rel="stylesheet" type="text/css" href="../includes/arvore/css/bootstrap.css"/> 
-    <link rel="stylesheet" type="text/css" href="../includes/arvore/css/bootstrap-table.css"/> 
-    <link rel="stylesheet" type="text/css" href="../includes/arvore/css/bootstrap-tagsinput.css"/> 
-    <link rel="stylesheet" type="text/css" href="../includes/arvore/css/estilo.css"/> 
-    <link rel="stylesheet" type="text/css" href="../includes/arvore/css/estiloCoroas.css"/> 
+    <link rel="stylesheet" type="text/css" href="../includes/arvore/css/bootstrap-table.css"/>
+    <link rel="stylesheet" type="text/css" href="../includes/arvore/css/bootstrap-tagsinput.css" />
+    <link rel="stylesheet" type="text/css" href="../includes/arvore/css/estilo.css" />
+    <link rel="stylesheet" type="text/css" href="../includes/arvore/css/estiloCoroas.css" />
+    <script src="../includes/js/bootstrap5.min.js"></script>
+    <link href="../includes/css/bootstrap5.min.css" type="text/css" rel="stylesheet">
+
+    <script src="../includes/js/index_0.js"></script>
 
     <style>
         hr {
@@ -42,16 +46,22 @@
     
      <br />
                       <ul>
-                                     <li><a class="liMenu" href="index.aspx?idUser=<%=idUser %>&username=<%=username %>"  ><img src="../includes/arvore/imagens/home.png" class="img-responsive" style="cursor: pointer;" /></a></li>
+                          <li><a class="liMenu" onclick="carregaTela('index.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&dominio=<%=dominio%>')" style="margin-right: 5px; height: 100%; padding: 17px 16px;"  ><img src="../includes/arvore/imagens/home.png" class="img-responsive" style="cursor: pointer;" /></a></li>
           
-                          <li><a class="liMenu activeMenu" href="minhacoroa.aspx?idUser=<%=idUser %>&username=<%=username %>"  >Minhas Coroas</a></li>
-                            <li><a href="consultar.aspx?idUser=<%=idUser %>&username=<%=username %>" class="liMenu">Consultar</a></li>
-                            <li><a href="transferir.aspx?idUser=<%=idUser %>&username=<%=username %>" class="liMenu">Transferir</a></li>
-                            <li><a href="exportar.aspx?idUser=<%=idUser %>&username=<%=username %>" class="liMenu">Exportar</a></li>
+                          <li><a class="liMenu activeMenu" onclick="carregaTela('minhacoroa.aspx?url=https://use-api.sabacloud.com&certificate=<%=certificate %>&userName=<%=username%>&nomeCompleto=<%=nomeCompleto %>&equipe=<%=equipe %>&idUser=<%=idUser %>')"  >Minhas Coroas</a></li>
+                            <%if (isAdmin == true)
+                              { %>
+                                <%--<li><a href="consultar.aspx?idUser=<%=idUser %>&username=<%=username %>" class="liMenu">Consultar</a></li>
+                                <li><a href="transferir.aspx?idUser=<%=idUser %>&username=<%=username %>" class="liMenu">Transferir</a></li>
+                                <li><a href="exportar.aspx?idUser=<%=idUser %>&username=<%=username %>" class="liMenu">Exportar</a></li>--%>
+                                <li><a class="liMenu">Consultar</a></li>
+                                <li><a class="liMenu">Transferir</a></li>
+                                <li><a class="liMenu">Exportar</a></li>
+                            <%} %>
                          </ul>    
 
 
-      <div class="modal-body">
+      <div class="modal-body" style="overflow-y: auto;">
   
         <table style="width: 100%">   
             <tr>
@@ -59,7 +69,10 @@
                 <td>      
                      <div id="cadastro" style="position: absolute; top:0px;" >
                          <br /><br />
-                         <label style="font-size: 18px;"><b>Felipe Miranda</b></label>
+                         <div style="display: flex; justify-content: space-between">
+                             <label style="font-size: 18px;"><b><%=nomeCompleto%></b></label>
+                             <label style="font-size: 18px;"><b><%=dataAtualizacao%></b></label>
+                         </div>
                          <hr />
                          <table style="width: 100%">   
                              <tr>
@@ -67,13 +80,24 @@
                                  <td align="center">
                                  <table style="width: 100%">   
                                      <tr><td align="center"><span style="font-size: 28px; font-style: normal; font-weight: 500;">Saldo</span></td></tr>
-                                     <tr><td align="center"><span style="font-size: 32px; font-style: normal; font-weight: 500; color:#2AD2FF;"><b>1.600</b></span></td></tr>
+                                     <tr><td align="center"><span style="font-size: 32px; font-style: normal; font-weight: 500; color:#2AD2FF;"><b><%=saldo %></b></span></td></tr>
                                  </table>
                              </td>
-                             <td align="center">
-                                   <button type="button" class="btn" style="background-color: #2AD2FF;
-    font-weight: bold;" ><span style="color:#FFFFFF;">Transferir Coroas</span></button>
-                             </td>
+                                 <td align="center">
+                                     <table style="width: 100%">
+                                         <tbody>
+                                             <tr>
+                                                 <td align="center">
+                                                     <button type="button" class="btn" style="background-color: #2AD2FF; font-weight: bold;">
+                                                     <span style="color: #FFFFFF;">Transferir Coroas</span></button></td>
+                                             </tr>
+                                             <tr>
+                                                 <td align="center"><span>Shopclub</span></td>
+                                             </tr>
+                                         </tbody>
+                                     </table>
+
+                                 </td>
                                  <td style="width:25%">&nbsp;</td>
                          </tr>
                         </table>
@@ -91,7 +115,10 @@
                            <table><tr><td><label style="color:#051D50; font-size: 18px;"><b>Coroas especiais</b></label></td><td><img src="../includes/arvore/imagens/coroas.png" class="img-responsive" style="width:32px;" /></td></tr></table>
                          <hr />
 
-                         <table style="width:100%">
+                         <% HttpContext.Current.Response.Write(myStringBuilderCoroasEspeciais.ToString());
+                                             HttpContext.Current.Response.Flush(); %>
+
+                         <%--<table style="width:100%">
                              <tr>
                                  <td style="padding: 0px 0px 0px 10px; height: 30px;"><b>Data</b></td><td><b>Administrador</b></td><td><b>Motivo</b></td><td><b>Pontos</b></td>
                              </tr>
@@ -116,7 +143,7 @@
                                 <td style="padding:0px 0px 0px 10px;">01/01/2022</td><td>José Maria Silva</td><td>Colaboração em projeto</td><td>100</td>
                              </tr>
 
-                         </table>
+                         </table>--%>
 
 
 
@@ -140,26 +167,27 @@
             <div class="container" style="background: #011E41; justify-content: flex-start; padding-left: 50px; display: flex; flex-wrap: wrap">
                 <div class="row" style="margin-top: 30px; width: 100%">
                     <div class="col-md-12">
-                        <div class="row" style="flex-wrap: nowrap;">
-                            <div class="col-3">
-                                <ul class="list-unstyled">
-                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="https://eluxcitysb.sabacloud.com/Saba/Web_spf/NA1TNB0106/app/me/plans" target="_top" style="color: #FFF; text-decoration: solid">Treinamentos</a></li>
+                        <div class="row flex-container" style="flex-wrap: nowrap;">
+                            <div class="col-4">
+                                <ul class="list-unstyled" style="display: flex; flex-direction: column; background-color: #011E41 !important;">
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/me/plans" target="_top" style="color: #FFF; text-decoration: solid">Treinamentos</a></li>
                                     <li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Fale com a engenharia</a></li>
-                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" target="_top" style="color: #FFF; text-decoration: solid">Check list</a></li>
-                                    <li style="font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Peças e acessórios</a></li>
+                                    <li style="margin-bottom: 10px; font-size: 20px; cursor: pointer;"><a onclick="carregaTela('default.aspx?url=https://use-api.sabacloud.com&certificate=<%=certificate%>&userName=<%=username%>&idioma=pt-BR&urlVolta=https://www.eluxcity.com/home.aspx&tipoArvore=Arvore%20Produtos&idUser=<%=idUser%>')" target="_top" style="color: #FFF; text-decoration: solid">Check list</a></li>
+                                    <li style="font-size: 20px;"><a target="_blank"s href="http://vistaexplodida.eluxinfo.com.br/" style="color: #FFF; text-decoration: solid">Peças e acessórios</a></li>
                                 </ul>
                             </div>
-                            <div class="col-9">
-                                <ul class="list-unstyled">
-                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Política de privacidade</a></li>
+                            <div class="col-8">
+                                <ul class="list-unstyled" style="display: flex; flex-direction: column; background-color: #011E41 !important;">
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid; cursor: pointer">Extrato de Coroas</a></li>
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a target="_blank" href="https://institucional.electrolux.com.br/politicas" style="color: #FFF; text-decoration: solid">Política de privacidade</a></li>
                                     <li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Termos de uso</a></li>
-                                    <!--<li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Ajuda</a></li>-->
+                                    <li style="margin-bottom: 10px; font-size: 20px; cursor: pointer;"><a onclick="carregaTela('contactcenter.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')" style="color: #FFF; text-decoration: solid">Ajuda</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12" style="display: flex; justify-content: right">
-                                <img src="../includes/images/logo_rodape_resize.png" style="height: 60px"/>
+                                <img src="../includes/images/logo_rodape_resize.png" style="height: 35px"/>
                             </div>
                             
                         </div>

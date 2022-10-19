@@ -3,8 +3,8 @@
 <%
     string tipoAcesso = "administrador";
     string nome = "";
-    string pais = "";
-    string idioma = "";
+    string pais = "Brazil";
+    string idioma = "pt-BR";
     string tipoArvore = "";
     string username = "";
     HttpCookie cookie = Request.Cookies["tipoAcesso"];
@@ -13,10 +13,17 @@
 
 
     tipoAcesso = Request.Params.Get("tipoAcesso");
-    if (tipoAcesso.IndexOf(',') != -1)
+    if(tipoAcesso != null)
     {
-        tipoAcesso = tipoAcesso.Split(',')[0];
+        if (tipoAcesso.IndexOf(',') != -1)
+        {
+            tipoAcesso = tipoAcesso.Split(',')[0];
+        }
+    }else
+    {
+        tipoAcesso = "usuario";
     }
+
 
     cookie = Request.Cookies["nome"];
     if (cookie != null)
@@ -27,19 +34,19 @@
 
     string urlVolta = "";
     //try
-   // {
-       // urlVolta = Session["urlVolta"].ToString();
+    // {
+    // urlVolta = Session["urlVolta"].ToString();
     //}
     //catch (Exception ex)
     //{
 
-        cookie = Request.Cookies["urlVolta"];
-        if (cookie != null)
-        {
-            urlVolta = cookie.Value.ToString();
-            urlVolta = urlVolta.Replace("%3A", ":");
-        }
-   // }
+    cookie = Request.Cookies["urlVolta"];
+    if (cookie != null)
+    {
+        urlVolta = cookie.Value.ToString();
+        urlVolta = urlVolta.Replace("%3A", ":");
+    }
+    // }
 
 
     cookie = Request.Cookies["pais"];
@@ -47,6 +54,9 @@
     {
         pais = cookie.Value.ToString();
         pais = pais.Replace("%20", " ");
+    }else
+    {
+        pais = "Brazil";
     }
 
     cookie = Request.Cookies["idioma"];
@@ -54,6 +64,9 @@
     {
         idioma = cookie.Value.ToString();
         idioma = idioma.Replace("%20", " ");
+    }else
+    {
+        idioma = "pt-BR";
     }
 
 
@@ -71,15 +84,17 @@
         tipoArvore = tipoArvore.Replace("%20", " ");
     }
 
-      // pega os dados do cookie
+    tipoArvore = "Arvore Produtos";
+
+    // pega os dados do cookie
 
     string codUsuario = username;
 
     // pega os dados do cookie
 
     string nomeUsuario = nome;
-   // try { tipoArvore = Session["tipoArvore"].ToString(); }
-   // catch (Exception ex) { }
+    // try { tipoArvore = Session["tipoArvore"].ToString(); }
+    // catch (Exception ex) { }
     tipoArvore = tipoArvore.Replace("%20", " ");
 
     string lblUsuario = "Usuário";
@@ -122,13 +137,13 @@
         lblMenu1 = "Model";
         lblMenu2 = "Ocurrencia";
         lblFiltro = "Filter search Ocurrencia";
-       
-         lblLinha = "Line";
-         lblProduto = "Product";
-         lblOcorrencia = "Search by keyword";
-         lblModelo = "Model";
-         lblPesquisa = "Search";
-         lblLimpar = "Clean";
+
+        lblLinha = "Line";
+        lblProduto = "Product";
+        lblOcorrencia = "Search by keyword";
+        lblModelo = "Model";
+        lblPesquisa = "Search";
+        lblLimpar = "Clean";
     }
     else if (idioma.Equals("es-ES"))
     {
@@ -152,7 +167,7 @@
 
     string codigoPais = pais;
     if (pais.Equals("Brazil"))
-        codigoPais = "0";
+        codigoPais = "2";
 
 
 
@@ -239,9 +254,9 @@
 
                 var dados = jasonResult.d;
 
-                //document.getElementById('ocorrencia').innerHTML = dados;
-
-
+                if (document.getElementById('ocorrencia') != null && document.getElementById('ocorrencia') != undefined) {
+                    document.getElementById('ocorrencia').innerHTML = dados;
+                }
             }
         });
 
@@ -250,7 +265,6 @@
     });
 
     $j('document').ready(function () {
-
         // esse trecho carrega os dados do combo Linha
         $l.ajax({
             type: "POST",
@@ -261,6 +275,11 @@
             success: function (jasonResult) {
 
                 var dados = jasonResult.d;
+
+                console.log('dadosLinha: ', dados);
+
+                console.log('linha: ', document.getElementById('linha'));
+
                 document.getElementById('linha').innerHTML = dados;
 
 
@@ -283,6 +302,10 @@
             success: function (jasonResult) {
 
                 var dados = jasonResult.d;
+
+                console.log('dadosProdutos: ', dados);
+
+                console.log('produto: ', document.getElementById('produto'));
 
               //  alert(dados);
                 document.getElementById('produto').innerHTML = dados;
@@ -318,9 +341,7 @@
 
                 var codPesquisa = jasonResult.d;
 
-                document.location.href = "perguntaUsuario.aspx?codigoOcorrencia=" + codOcorrencia + "&codPesquisa=" + codPesquisa + "&codModelo=" + codModelo + "&codLinha=" + codLinha + "&codProduto=" + codProduto;
-
-
+                document.location.href = "perguntaUsuario.aspx?codigoOcorrencia=" + codOcorrencia + "&codPesquisa=" + codPesquisa + "&codModelo=" + codModelo + "&codLinha=" + codLinha + "&codProduto=" + codProduto + "&tipoAcesso= '<%=tipoAcesso%>'&tipoArvore='<%=tipoArvore%>'&pais='<%=pais%>'&idioma='<%=idioma%>'";
             }
         });
 
@@ -335,12 +356,16 @@
         $j.ajax({
             type: "POST",
             url: "ocorrencia.aspx/carregaComboModelo",
-            data: "{codigo:'" + codProduto + "' , idioma:'<%=idioma %>' , tipoArvore:'<%=tipoArvore %>',  pais:'" + codPais + "'}",
+            data: "{codigo:'" + codProduto + "' , idioma:'<%=idioma %>' , tipoArvore:'<%=tipoArvore %>',  pais:'<%=pais %>'}",
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (jasonResult) {
 
                 var dados = jasonResult.d;
+
+                console.log('dadosModelos: ', dados);
+
+                console.log('modelo: ', document.getElementById('modelo'));
 
                 document.getElementById('modelo').innerHTML = dados;
 
@@ -373,7 +398,8 @@
     }
 
     function carregaDadosTabela(codLinha, codProduto) {
-
+        console.log('codLinha: ', codLinha);
+        console.log('codProduto: ', codProduto);
         var descOcorrencia = document.getElementById('descOcorrencia').value.trim();
 
         $j.ajax({
@@ -385,12 +411,17 @@
             dataType: "json",
             success: function (jasonResult) {
                 var dados = jasonResult.d;
+                console.log('dados tabela ', codLinha, ' : ', codProduto, '= ', dados);
                 var total = dados.substring(0, dados.indexOf(","));
                 dados = dados.replace(total + ",", '');
 
                 $j('#table-ocorrencia').bootstrapTable('destroy');
 
                 var obj = eval(dados);
+                var idiomaTest = '<%=idioma%>';
+                var paisTest = '<%=pais%>';
+                console.log('idiomaTest: ', idiomaTest);
+                console.log('paisTest: ', paisTest);
 
                  <% if (idioma.Equals("en-US")){ %>
 
@@ -508,9 +539,9 @@
                 $j('#table-ocorrencia').bootstrapTable('hideColumn', 'cod_ocorrencia');
                 $j('#table-ocorrencia').bootstrapTable('refresh');
                 <% } else { %>
-
+                  
                 <% if (pais.Equals("Brazil")){ %>
-
+                console.log('obj data: ', obj);
                 $j('#table-ocorrencia').bootstrapTable({
                     data: obj,
                     cache: false,

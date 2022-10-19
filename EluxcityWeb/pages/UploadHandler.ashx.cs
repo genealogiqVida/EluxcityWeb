@@ -20,6 +20,7 @@ namespace EluxcityWeb.pages
         {
             context.Response.ContentType = "text/plain";
           
+#pragma warning disable CS0168 // A variável "e" está declarada, mas nunca é usada
             try
             {
                     LinhaDAO linhaDAO = new LinhaDAO();
@@ -117,12 +118,14 @@ namespace EluxcityWeb.pages
 
 
                                 int sim = 0; int nao = 0;
+#pragma warning disable CS0168 // A variável "e" está declarada, mas nunca é usada
                                 try
                                 {
                                     sim = (int)sheet.GetRow(row).GetCell(19).NumericCellValue;
                                     nao = (int)sheet.GetRow(row).GetCell(20).NumericCellValue;
                                 }
                                 catch (Exception e) { }
+#pragma warning restore CS0168 // A variável "e" está declarada, mas nunca é usada
                                 string tipo = "2";
                                 if (sim > 0 && nao > 0)
                                 {
@@ -130,6 +133,7 @@ namespace EluxcityWeb.pages
                                 }
 
                                 string codPais = "2";
+#pragma warning disable CS0168 // A variável "e" está declarada, mas nunca é usada
                                 try
                                 {
                                     string pais = sheet.GetRow(row).GetCell(21).StringCellValue;
@@ -139,6 +143,7 @@ namespace EluxcityWeb.pages
                                 {
 
                                 }
+#pragma warning restore CS0168 // A variável "e" está declarada, mas nunca é usada
 
                                 // insere a linha 
                                 string cod_linha = linhaDAO.verificaExiste(linha, tipoArvore, codPais);
@@ -240,6 +245,7 @@ namespace EluxcityWeb.pages
                                         sim.ToString(), nao.ToString(), pergunta, pergunta, pergunta,
                                        resposta, resposta_esp, resposta_ing, codPais, tipoArvore, "", "");
 
+#pragma warning disable CS0168 // A variável "e" está declarada, mas nunca é usada
                                     try
                                     {
                                         perguntaDAO.inserindoDadosModelo(cod_pergunta, cod_modelo);
@@ -248,12 +254,14 @@ namespace EluxcityWeb.pages
                                     {
                                         //context.Response.Write(e.StackTrace);
                                     }
+#pragma warning restore CS0168 // A variável "e" está declarada, mas nunca é usada
 
 
                                 }
                                 else
                                 {
 
+#pragma warning disable CS0168 // A variável "e" está declarada, mas nunca é usada
                                     try
                                     {
                                         perguntaDAO.inserindoDadosModelo(cod_pergunta, cod_modelo);
@@ -262,6 +270,7 @@ namespace EluxcityWeb.pages
                                     {
                                         //context.Response.Write(e.StackTrace);
                                     }
+#pragma warning restore CS0168 // A variável "e" está declarada, mas nunca é usada
                                 }
 
 
@@ -298,6 +307,7 @@ namespace EluxcityWeb.pages
             {
                 //context.Response.Write(e.StackTrace);
             }
+#pragma warning restore CS0168 // A variável "e" está declarada, mas nunca é usada
         }
 
         public bool IsReusable

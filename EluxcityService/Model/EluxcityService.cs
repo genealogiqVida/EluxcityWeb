@@ -25,6 +25,11 @@ namespace EluxcityWeb.Model
             this.getInstance();
             return dao.carregandoLancamento(username);
         }
+        public List<ConteudoOrdenadoAnoDTO> carregaCircularesOrdenadoAno(string username)
+        {
+            this.getInstance();
+            return dao.carregandoCircularesOrdenadoAno(username);
+        }
 
         public List<ConteudoDTO> carregaCirculares(string username)
         {
@@ -76,7 +81,7 @@ namespace EluxcityWeb.Model
             return dao.carregandoVideoServico(tipo, username);
         }
 
-        public List<ConteudoDTO> carregaBoletimServico(string username)
+        public List<ConteudoOrdenadoAnoDTO> carregaBoletimServico(string username)
         {
             this.getInstance();
             return dao.carregandoBoletimServico(username);

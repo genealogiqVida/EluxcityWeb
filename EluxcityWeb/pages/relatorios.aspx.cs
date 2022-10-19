@@ -27,6 +27,7 @@ namespace EluxcityWeb.pages
 
         protected void btnExportToExcel_Click(object sender, EventArgs e)
         {
+#pragma warning disable CS0168 // A variável "ex" está declarada, mas nunca é usada
             try
             {
                 string datahora = "relatorio";
@@ -141,12 +142,14 @@ namespace EluxcityWeb.pages
                 myfileinf.Delete();
             }
             catch (Exception ex) { }
+#pragma warning restore CS0168 // A variável "ex" está declarada, mas nunca é usada
         }
 
 
 
         protected void btnExportToExcelQualidade_Click(object sender, EventArgs e)
         {
+#pragma warning disable CS0168 // A variável "ex" está declarada, mas nunca é usada
             try
             {
                 string datahora = "relatorio_qualidade";
@@ -280,11 +283,13 @@ namespace EluxcityWeb.pages
                 myfileinf.Delete();
             }
             catch (Exception ex) { }
+#pragma warning restore CS0168 // A variável "ex" está declarada, mas nunca é usada
         }
 
         protected void btnExportToExcelDados_Click(object sender, EventArgs e)
         {
 
+#pragma warning disable CS0168 // A variável "ex" está declarada, mas nunca é usada
             try
             {
                 string datahora = "relatorio_dados";
@@ -437,6 +442,7 @@ namespace EluxcityWeb.pages
                 myfileinf.Delete();
             }
             catch (Exception ex) { }
+#pragma warning restore CS0168 // A variável "ex" está declarada, mas nunca é usada
 
         }
 

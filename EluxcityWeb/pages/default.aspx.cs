@@ -47,6 +47,11 @@ namespace EluxcityWeb.pages
                 tipoArvore = tipoArvore.Split(',')[0];
             }
 
+            HttpCookie cookieTipoArvore = new HttpCookie("tipoArvore");
+            cookieTipoArvore.Value = tipoArvore;
+            cookieTipoArvore.Domain = "use.sabacloud.com";
+            Response.Cookies.Add(cookieTipoArvore);
+
             urlVolta = this.Request.Params.Get("urlVolta");
             if (urlVolta == null)
             {

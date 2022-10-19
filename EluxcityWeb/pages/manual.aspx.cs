@@ -15,8 +15,8 @@ namespace EluxcityWeb.pages
     public partial class manual : System.Web.UI.Page
     {
         protected String idUser = "";
-        protected String url = "https://eluxcitysb-api.sabacloud.com";
-        protected String usuario = "felipe.miranda";
+        protected String url = "https://use-api.sabacloud.com";
+        protected String usuario = "administrador";
         protected String senha = "elux123";
         protected String equipe = "N";
         protected String username = "";
@@ -32,6 +32,8 @@ namespace EluxcityWeb.pages
         protected StringBuilder myStringBuilderSegunda = new StringBuilder();
         protected StringBuilder myStringBuilderTerceira = new StringBuilder();
 
+        protected String dominio = "";
+
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -39,6 +41,12 @@ namespace EluxcityWeb.pages
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+
+            dominio = this.Request.Params.Get("dominio");
+            if (dominio == null)
+            {
+                dominio = "";
+            }
 
             idUser = this.Request.Params.Get("idUser");
             if (idUser == null)
@@ -88,7 +96,7 @@ namespace EluxcityWeb.pages
             foreach (ConteudoDTO conteudoDTO in list)
             {
                 myStringBuilderLancamento.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                myStringBuilderLancamento.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/manuais.png\" />");
+                myStringBuilderLancamento.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderLancamento.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
                 myStringBuilderLancamento.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
                 myStringBuilderLancamento.Append(" </div>");
@@ -118,7 +126,7 @@ namespace EluxcityWeb.pages
             {
 
                 myStringBuilderProva.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                myStringBuilderProva.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/manuais.png\" />");
+                myStringBuilderProva.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderProva.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
                 myStringBuilderProva.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
                 myStringBuilderProva.Append(" </div>");
@@ -150,7 +158,7 @@ namespace EluxcityWeb.pages
             {
 
                 myStringBuilderTreinamento.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                myStringBuilderTreinamento.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/manuais.png\" />");
+                myStringBuilderTreinamento.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderTreinamento.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
                 myStringBuilderTreinamento.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
                 myStringBuilderTreinamento.Append(" </div>");
@@ -183,7 +191,7 @@ namespace EluxcityWeb.pages
 
 
                 myStringBuilderSugestao.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                myStringBuilderSugestao.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/manuais.png\" />");
+                myStringBuilderSugestao.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderSugestao.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
                 myStringBuilderSugestao.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
                 myStringBuilderSugestao.Append(" </div>");
@@ -214,7 +222,7 @@ namespace EluxcityWeb.pages
 
 
                 myStringBuilderRecente.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                myStringBuilderRecente.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/manuais.png\" />");
+                myStringBuilderRecente.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderRecente.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
                 myStringBuilderRecente.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
                 myStringBuilderRecente.Append(" </div>");
@@ -246,7 +254,7 @@ namespace EluxcityWeb.pages
 
 
                 myStringBuilderPopular.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                myStringBuilderPopular.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/manuais.png\" />");
+                myStringBuilderPopular.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderPopular.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
                 myStringBuilderPopular.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
                 myStringBuilderPopular.Append(" </div>");
@@ -277,7 +285,7 @@ namespace EluxcityWeb.pages
 
 
                 myStringBuilderPrimeira.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                myStringBuilderPrimeira.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/manuais.png\" />");
+                myStringBuilderPrimeira.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderPrimeira.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
                 myStringBuilderPrimeira.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
                 myStringBuilderPrimeira.Append(" </div>");
@@ -308,7 +316,7 @@ namespace EluxcityWeb.pages
             {
 
                 myStringBuilderSegunda.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                myStringBuilderSegunda.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/manuais.png\" />");
+                myStringBuilderSegunda.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderSegunda.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
                 myStringBuilderSegunda.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
                 myStringBuilderSegunda.Append(" </div>");
@@ -340,7 +348,7 @@ namespace EluxcityWeb.pages
 
 
                 myStringBuilderTerceira.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                myStringBuilderTerceira.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/manuais.png\" />");
+                myStringBuilderTerceira.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderTerceira.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
                 myStringBuilderTerceira.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
                 myStringBuilderTerceira.Append(" </div>");

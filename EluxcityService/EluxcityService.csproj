@@ -61,7 +61,10 @@
     <Compile Include="DAO\PesquisaDAO.cs" />
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="DTO\ConteudoDTO.cs" />
+    <Compile Include="DTO\ConteudoOrdenadoAnoDTO.cs" />
     <Compile Include="DTO\CoroasDTO.cs" />
+    <Compile Include="DTO\CoroasEspeciaisDTO.cs" />
+    <Compile Include="DTO\StringBuilderPorAnoDTO.cs" />
     <Compile Include="Model\ComentarioService.cs" />
     <Compile Include="Model\CoroasService.cs" />
     <Compile Include="Model\EluxcityService.cs" />

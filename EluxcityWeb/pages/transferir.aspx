@@ -94,7 +94,7 @@
                                                         <td><b>Coroas</b></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>felipe.miranda</td>
+                                                        <td>administrador</td>
                                                         <td>Felipe Miranda</td>
                                                         <td>1563</td>
                                                     </tr>
@@ -173,25 +173,26 @@
                 <div class="row" style="margin-top: 30px; width: 100%">
                     <div class="col-md-12">
                         <div class="row" style="flex-wrap: nowrap;">
-                            <div class="col-3">
+                            <div class="col-4">
                                 <ul class="list-unstyled">
-                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="https://eluxcitysb.sabacloud.com/Saba/Web_spf/NA1TNB0106/app/me/plans" target="_top" style="color: #FFF; text-decoration: solid">Treinamentos</a></li>
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/me/plans" target="_top" style="color: #FFF; text-decoration: solid">Treinamentos</a></li>
                                     <li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Fale com a engenharia</a></li>
-                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" target="_top" style="color: #FFF; text-decoration: solid">Check list</a></li>
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a onclick="carregaTela('default.aspx?url=https://use-api.sabacloud.com&certificate=<%=certificate%>&userName=<%=username%>&idioma=pt-BR&urlVolta=https://www.eluxcity.com/home.aspx&tipoArvore=Arvore%20Produtos&idUser=<%=idUser%>')" style="color: #FFF; text-decoration: solid">Check list</a></li>
                                     <li style="font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Peças e acessórios</a></li>
                                 </ul>
                             </div>
-                            <div class="col-9">
+                            <div class="col-8">
                                 <ul class="list-unstyled">
-                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Política de privacidade</a></li>
-                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Termos de uso</a></li>
-                                    <!--<li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Ajuda</a></li>-->
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" onclick="alert('Em breve - Página em construção');" style="color: #FFF; text-decoration: solid; cursor: pointer">Extrato de Coroas</a></li>
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a target="_blank" href="https://institucional.electrolux.com.br/politicas" style="color: #FFF; text-decoration: solid">Política de privacidade</a></li>
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" onclick="alert('Em breve - Página em construção');" style="color: #FFF; text-decoration: solid">Termos de uso</a></li>
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Ajuda</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12" style="display: flex; justify-content: right">
-                                <img src="../includes/images/logo_rodape_resize.png" style="height: 60px"/>
+                                <img src="../includes/images/logo_rodape_resize.png" style="height: 35px"/>
                             </div>
                             
                         </div>

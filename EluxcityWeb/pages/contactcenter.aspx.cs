@@ -11,8 +11,8 @@ namespace EluxcityWeb.pages
     {
 
         protected String idUser = "";
-        protected String url = "https://eluxcitysb-api.sabacloud.com";
-        protected String usuario = "felipe.miranda";
+        protected String url = "https://use-api.sabacloud.com";
+        protected String usuario = "administrador";
         protected String senha = "elux123";
         protected String username = "";
         protected String equipe = "";

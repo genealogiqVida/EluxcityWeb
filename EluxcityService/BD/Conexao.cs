@@ -22,7 +22,7 @@ namespace EluxcityWeb.BD
             {
 
 
-                string ConnectionFormat = "Data Source=aayu1i6nz8t6qh.cquw2frjvx7u.us-west-2.rds.amazonaws.com;Initial Catalog=eluxcity;User ID=administrador;Password=eluxcity123";
+                string ConnectionFormat = "Data Source=aayu1i6nz8t6qh.cquw2frjvx7u.us-west-2.rds.amazonaws.com;Initial Catalog=eluxcity-prod;User ID=administrador;Password=eluxcity123";
 
                 con = new SqlConnection(ConnectionFormat);
 

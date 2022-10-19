@@ -8,11 +8,26 @@ function carregaTela(tela) {
         location.href = tela;
     } else if (tela.indexOf('index.aspx?') != -1) {
         location.href = tela;
-
-    }else if (tela.indexOf('default.aspx?') != -1) {
+    } else if (tela.indexOf('circulares.aspx?') != -1) {
         location.href = tela;
 
-        
+    } else if (tela.indexOf('default.aspx?') != -1) {
+        console.log('tela: ', tela);
+        indexUserName = tela.indexOf('userName=');
+        if (indexUserName != -1) {
+            var indexFinal = tela.indexOf('&', indexUserName);
+            if (indexFinal != -1) {
+                var userNameValue = tela.substring(indexUserName, indexFinal);
+                userNameValue = userNameValue.replaceAll(".", "");
+                userNameValue = userNameValue.replaceAll("-", "");
+                console.log("username: ", userNameValue);
+                var telaModificada = tela.substring(0, indexUserName);
+                telaModificada = telaModificada + userNameValue + tela.substring(indexFinal);
+                tela = telaModificada;
+                console.log('tela modificada: ', telaModificada);
+            }
+        }
+        location.href = tela;
     }else if (tela.indexOf('minhacoroa.aspx?') != -1) {
         location.href = tela;
 
@@ -34,11 +49,12 @@ function carregaTela(tela) {
 
 function carregaConteudo(idConteudo) {
     if(idConteudo.indexOf('spage') != -1) {
-        window.top.location.href = "https://eluxcitysb.sabacloud.com/Saba/Web_spf/NA1TNB0106/app/shared;spf-url=pages%2Fvideodetailview%2F" + idConteudo;
+        window.top.location.href = "https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/shared;spf-url=pages%2Fvideodetailview%2F" + idConteudo;
 
-    }else{
-        window.top.location.href = "https://eluxcitysb.sabacloud.com/Saba/Web_spf/NA1TNB0106/common/resources/resourcedetail/" + idConteudo;
-
+    } else if (idConteudo.indexOf('cours') != -1) {
+        window.top.location.href = "https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/common/ledetail/" + idConteudo;
+    }else {
+        window.top.location.href = "https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/common/resources/resourcedetail/" + idConteudo + "/true";
     }
  
 
@@ -49,10 +65,10 @@ function carregaConteudo(idConteudo) {
 
 function carregaCurso(idCurso) {
     if (idCurso.indexOf("curra") != -1) {
-        window.top.location.href = "https://eluxcitysb.sabacloud.com/Saba/Web_spf/NA1TNB0106/app/shared;spf-url=common%2Flearningeventdetail%2F" + idCurso;
+        window.top.location.href = "https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/shared;spf-url=common%2Flearningeventdetail%2F" + idCurso;
         
     }else{
-        window.top.location.href = "https://eluxcitysb.sabacloud.com/Saba/Web_spf/NA1TNB0106/common/ledetail/" + idCurso;
+        window.top.location.href = "https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/common/ledetail/" + idCurso;
     }
 
    

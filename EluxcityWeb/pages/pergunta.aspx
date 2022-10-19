@@ -6,15 +6,33 @@
     string idioma = "";
     string tipoArvore = "";
     string username = "";
+    string codModelo = "";
+    string codOcorrencia = "";
+
     HttpCookie cookie = Request.Cookies["tipoAcesso"];
     if (cookie != null)
         tipoAcesso = cookie.Value.ToString();
 
 
     tipoAcesso = Request.Params.Get("tipoAcesso");
-    if (tipoAcesso.IndexOf(',') != -1)
+    if(tipoAcesso != null)
     {
-        tipoAcesso = tipoAcesso.Split(',')[0];
+        if (tipoAcesso.IndexOf(',') != -1)
+        {
+            tipoAcesso = tipoAcesso.Split(',')[0];
+        }
+    }
+
+    codModelo = Request.Params.Get("codModelo");
+    if(codModelo == null)
+    {
+        codModelo = "";
+    }
+
+    codOcorrencia = Request.Params.Get("codigoOcorrencia");
+    if(codOcorrencia == null)
+    {
+        codOcorrencia = "";
     }
 
     cookie = Request.Cookies["nome"];
@@ -22,6 +40,18 @@
     {
         nome = cookie.Value.ToString();
         nome = nome.Replace("%20", " ");
+    }
+
+    nome = Request.Params.Get("nome");
+    if(nome == null)
+    {
+        nome = "";
+    }else
+    {
+        if(nome.IndexOf(',') != -1)
+        {
+            nome = nome.Split(',')[0];
+        }
     }
 
 
@@ -64,6 +94,16 @@
         username = username.Replace("%20", " ");
     }
 
+    username = Request.Params.Get("username");
+    if (username != null)
+    {
+        if (username.IndexOf(',') != -1)
+        {
+            username = username.Split(',')[0];
+        }
+    }
+
+
     cookie = Request.Cookies["tipoArvore"];
     if (cookie != null)
     {
@@ -72,6 +112,45 @@
     }
     //tipoArvore = Session["tipoArvore"].ToString();
     tipoArvore = tipoArvore.Replace("%20", " ");
+
+    tipoArvore = Request.Params.Get("tipoArvore");
+    if(tipoArvore != null)
+    {
+        if (tipoArvore.IndexOf(',') != -1)
+        {
+            tipoArvore = tipoArvore.Split(',')[0];
+        }
+
+        Session["tipoArvore"] = tipoArvore;
+    }else
+    {
+        tipoArvore = "Arvore Produtos";
+    }
+
+    idioma = Request.Params.Get("idioma");
+    if(idioma != null)
+    {
+        if(idioma.IndexOf(',') != -1)
+        {
+            idioma = idioma.Split(',')[0];
+        }
+        idioma = idioma.Replace("%20", " ");
+    }else
+    {
+        idioma = "pt-BR";
+    }
+
+    pais = Request.Params.Get("pais");
+    if(pais != null)
+    {
+        if (pais.IndexOf(',') != -1)
+        {
+            pais = pais.Split(',')[0];
+        }
+    }else
+    {
+        pais = "Brazil";
+    }
 
     string lblUsuario = "Usuário";
     string lblTitulo = "Cadastro de Perguntas/Respostas";
@@ -90,68 +169,76 @@
     string lblFechar = "Fechar";
     string proxima = "Vai para a próxima pergunta: ";
 
-    
-        if (idioma.Equals("en-US"))
+
+    if (idioma.Equals("en-US"))
+    {
+        proxima = "Go to the next question: ";
+        lblUsuario = "User";
+        lblNova = "New Question";
+        lblTitulo = "Register of Questions / Answers";
+        lblLista = "List of Questions";
+        lblCancelar = "Cancel";
+        lblSalvar = "Save";
+        lblArvore = "Decision tree";
+        lblComentario = "Comment";
+        lblFechar = "Close";
+        lblMenu1 = "Model";
+        lblMenu2 = "Ocurrencia";
+        lblCadastro = "Register";
+        lblListagem = "List";
+        lblVoltar = "Back";
+    }
+    else if (idioma.Equals("es-ES"))
+    {
+        proxima = "Ir a la siguiente pregunta: ";
+        lblUsuario = "Usuario";
+        lblTitulo = "Register de Preguntas / Respuestas";
+        lblLista = "Lista de Preguntas";
+        lblCancelar = "Cancel";
+        lblSalvar = "Guardar";
+        lblMenu1 = "Model";
+        lblMenu2 = "Ocurrencia";
+        lblCadastro = "Register";
+        lblListagem = "Lista";
+        lblNova = "Nueva Pregunta";
+        lblVoltar = "Retorno";
+        lblArvore = "Árbol de decisión";
+        lblFechar = "Cierra";
+    }
+
+
+    string tipoMenu1 = "Categoria";
+    string tipoMenu2 = "SubCategoria";
+    if (pais.Equals("Brazil"))
+    {
+
+        if (tipoArvore.Equals("Arvore Solution Center"))
         {
-            proxima = "Go to the next question: ";
-            lblUsuario = "User";
-            lblNova = "New Question";
-            lblTitulo = "Register of Questions / Answers";
-            lblLista = "List of Questions";
-            lblCancelar = "Cancel";
-            lblSalvar = "Save";
-            lblArvore = "Decision tree";
-            lblComentario = "Comment";
-            lblFechar = "Close";
-            lblMenu1 = "Model";
-            lblMenu2 = "Ocurrencia";
-             lblCadastro = "Register";
-             lblListagem = "List";
-             lblVoltar = "Back";
+            tipoMenu1 = "Produto";
+            tipoMenu2 = "Modelo";
         }
-        else if (idioma.Equals("es-ES"))
-        {
-            proxima = "Ir a la siguiente pregunta: ";
-            lblUsuario = "Usuario";
-            lblTitulo = "Register de Preguntas / Respuestas";
-            lblLista = "Lista de Preguntas";
-            lblCancelar = "Cancel";
-            lblSalvar = "Guardar";
-            lblMenu1 = "Model";
-            lblMenu2 = "Ocurrencia";
-            lblCadastro = "Register";
-            lblListagem = "Lista";
-            lblNova = "Nueva Pregunta";
-            lblVoltar = "Retorno";
-            lblArvore = "Árbol de decisión";
-            lblFechar = "Cierra";
-        }
+    }
 
 
-        string tipoMenu1 = "Categoria";
-        string tipoMenu2 = "SubCategoria";
-        if (pais.Equals("Brazil"))
-        {
-
-            if (tipoArvore.Equals("Arvore Solution Center"))
-            {
-                tipoMenu1 = "Produto";
-                tipoMenu2 = "Modelo";
-            }
-        }
-
-
-        string idUser = Request.Params.Get("idUser");
-        string user = Request.Params.Get("usuario");
+    string idUser = Request.Params.Get("idUser");
+    string user = Request.Params.Get("usuario");
+    if(idUser != null)
+    {
         if (idUser.IndexOf(',') != -1)
         {
             idUser = idUser.Split(',')[0];
         }
+    }
+
+    if(user != null)
+    {
         if (user.IndexOf(',') != -1)
         {
             user = user.Split(',')[0];
         }
-        urlVolta = "index.aspx?idUser=" + idUser + "&username=" + user;
+    }
+
+    urlVolta = "index.aspx?idUser=" + idUser + "&username=" + user;
 
 %>
 <!DOCTYPE html>
@@ -199,16 +286,24 @@
         var codigoOcorrencia = location.search.substring(18);
         codigoOcorrencia = codigoOcorrencia.replace('&codModelo=', ',');
         var aDados = codigoOcorrencia.split(",");
-        codigoOcorrencia = aDados[0];
-        var codModelo = aDados[1];
+        codigoOcorrencia = <%=codOcorrencia%>;
+        var codModelo = <%=codModelo%>;
         var nomeOcorrencia = "";
 
         telaAtual = "perguntas";
 
+        var idioma = "<%=idioma.ToString()%>";
+        var dataStr = "";
+        if (idioma.indexOf("'") != -1) {
+            dataStr = "{codigo:'" + codigoOcorrencia + "',  idioma:<%=idioma %>}";
+        } else {
+            dataStr = "{codigo:'" + codigoOcorrencia + "',  idioma:'<%=idioma %>'}";
+        }
+
         $j.ajax({
             type: "POST",
             url: "pergunta.aspx/carregaNomeOcorrencia",
-            data: "{codigo:'" + codigoOcorrencia + "',  idioma:'<%=idioma %>'}",
+            data: dataStr,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (jasonResult) {
@@ -353,10 +448,14 @@
 
         function carregaDadosTabela(){
 
+        var idioma = "<%=idioma.ToString()%>";
+            var tipoArvore = "<%=tipoArvore.ToString()%>";
+            console.log('tipoArvore', tipoArvore);
+        var dataStr = (idioma.indexOf("'") != -1 && tipoArvore.indexOf("'") != -1) ? "{limit: " + limit + ", offset: " + paginaAtual + " , usuario:'<%=nome %>',  codPergunta:'0', codigoOcorrencia:'" + codigoOcorrencia + "', codigoPesquisa:'0', codPais:'" + codPais + "' , tipoArvore:" + tipoArvore + ", idioma:" + idioma + ", codModelo:'" + codModelo + "'}" : "{limit: " + limit + ", offset: " + paginaAtual + " , usuario:'<%=nome %>',  codPergunta:'0', codigoOcorrencia:'" + codigoOcorrencia + "', codigoPesquisa:'0', codPais:'" + codPais + "' , tipoArvore:'" + tipoArvore + "', idioma:'" + idioma + "', codModelo:'" + codModelo + "'}"
         $j.ajax({
             type: "POST",
             url: "pergunta.aspx/carregaPerguntas",
-            data: "{limit: " + limit + ", offset: " + paginaAtual + " , usuario:'<%=nome %>',  codPergunta:'0', codigoOcorrencia:'" + codigoOcorrencia + "', codigoPesquisa:'0', codPais:'" + codPais + "' , tipoArvore:'<%=tipoArvore %>', idioma:'<%=idioma %>', codModelo:'" + codModelo + "'}",
+            data: dataStr,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (jasonResult) {
@@ -615,11 +714,14 @@
             carregaDadosTabela();
 
             telaAtual = "perguntas";
+            var idioma = "<%=idioma.ToString()%>";
+            var tipoArvore = "<%=tipoArvore.ToString()%>";
+            var dataStr = (idioma.indexOf("'") != -1 && tipoArvore.indexOf("'") != - 1 && codPais.indexOf("'") != -1) ? "{codigoOcorrencia:'" + codigoOcorrencia + "', codPais:" + codPais + ",  tipoArvore:" + tipoArvore + ", idioma:" + idioma + "}" : "{codigoOcorrencia:'" + codigoOcorrencia + "', codPais:'" + codPais + "',  tipoArvore:'" + tipoArvore + "', idioma:'" + idioma + "'}";
 
             $l.ajax({
                 type: "POST",
                 url: "pergunta.aspx/carregaComboOrdem",
-                data: "{codigoOcorrencia:'" + codigoOcorrencia + "', codPais:'" + codPais + "',  tipoArvore:'<%=tipoArvore %>', idioma:'<%=idioma %>'}",
+                data: dataStr,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (jasonResult) {
@@ -673,7 +775,7 @@
         }
 
         function voltar() {
-            window.location.href = "ocorrencia.aspx";
+            window.location.href = "ocorrencia.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>&nome=<%=nome%>&pais=<%=pais%>";
         }
 
 
@@ -681,12 +783,14 @@
             //cod_pergunta = codPergunta;
             // carregaDadosTabela(codPergunta);
 
+            var idioma = "<%=idioma.ToString()%>";
+            var dataStr = (idioma.indexOf("'") != -1) ? "{codigo:'" + codPergunta + "',  idioma:" + idioma + ", tipo:'C'}" : "{codigo:'" + codPergunta + "',  idioma:'" + idioma + "', tipo:'C'}";
 
             // esse trecho carrega a resposta da pergunta para ser exibida na tela
             $j.ajax({
                 type: "POST",
                 url: "pergunta.aspx/carregaResposta",
-                data: "{codigo:'" + codPergunta + "',  idioma:'<%=idioma %>', tipo:'C'}",
+                data: dataStr,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (jasonResult) {
@@ -966,14 +1070,15 @@
         }
 
         function visualizarRegistro(codigo) {
-
-
+            
+            var idioma = "<%=idioma.ToString()%>";
+            var dataStr = (idioma.indexOf("'") != -1) ? "{codigo:'" + codigo + "',  idioma:" + idioma + ", tipo:'A'}" : "{codigo:'" + codigo + "',  idioma:'" + idioma + "', tipo:'A'}";
 
             // esse trecho carrega a resposta da pergunta para ser exibida na tela
             $j.ajax({
                 type: "POST",
                 url: "pergunta.aspx/carregaResposta",
-                data: "{codigo:'" + codigo + "',  idioma:'<%=idioma %>', tipo:'A'}",
+                data: dataStr,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (jasonResult) {
@@ -1122,7 +1227,7 @@
     </script>
 <body>
     <div class="container-fluid">
-    <table border=0 style="width: 100%"><Tr>
+    <%--<table border=0 style="width: 100%"><Tr>
           <Td  align="left" style="width: 5%">  <img src="../includes/arvore/imagens/logo.png" class="img-responsive"/></img></Td>
           
               <Td  align="center" style="width: 45%" align="center"><span id="labelCliente">&nbsp;</span></Td>
@@ -1132,7 +1237,7 @@
          
   
           
-      </Tr></table>
+      </Tr></table>--%>
     
     
     
@@ -1170,7 +1275,12 @@
 
                          <ul>
                               <li><a class="liMenu" href="<%=urlVolta%>"  ><img src="../includes/arvore/imagens/home.png" class="img-responsive" style="cursor: pointer;" /></a></li>
-                            <li><a href="ocorrencia.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>" class="liMenu"><%=lblMenu2 %></a></li>
+                            <li><a class="liMenu" href="linha.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>"  >Linha</a></li>
+                            <li><a href="produto.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>" class="liMenu"><%=tipoMenu1 %></a></li>
+                            <li><a href="modelo.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>" class="liMenu"><%=tipoMenu2 %></a></li>
+                            <li><a href="ocorrencia.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>" class="liMenu">Ocorr&ecirc;ncias</a></li>
+                            <li><a href="importacao.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>" class="liMenu">Importa&ccedil;&atilde;o de Dados</a></li>
+                            <li><a href="relatorios.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>" class="liMenu">Relat&oacute;rios de uso do Sistema</a></li>
                            
                         </ul>    
 

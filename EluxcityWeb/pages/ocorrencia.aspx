@@ -17,6 +17,18 @@
         nome = nome.Replace("%20", " ");
     }
 
+    nome = Request.Params.Get("nome");
+    if(nome == null)
+    {
+        nome = "";
+    }else
+    {
+        if(nome.IndexOf(',') != -1)
+        {
+            nome = nome.Split(',')[0];
+        }
+    }
+
     tipoAcesso = Request.Params.Get("tipoAcesso");
     if (tipoAcesso.IndexOf(',') != -1)
     {
@@ -39,7 +51,7 @@
     }
 
     //  }
-    
+
 
     cookie = Request.Cookies["pais"];
     if (cookie != null)
@@ -48,7 +60,7 @@
         pais = pais.Replace("%20", " ");
     }
 
-    
+
     cookie = Request.Cookies["idioma"];
     if (cookie != null)
     {
@@ -70,9 +82,57 @@
         tipoArvore = cookie.Value.ToString();
         tipoArvore = tipoArvore.Replace("%20", " ");
     }
-   // try { tipoArvore = Session["tipoArvore"].ToString(); }
-   // catch (Exception ex) { }
+    // try { tipoArvore = Session["tipoArvore"].ToString(); }
+    // catch (Exception ex) { }
     tipoArvore = tipoArvore.Replace("%20", " ");
+
+    username = Request.Params.Get("username");
+    if (username.IndexOf(',') != -1)
+    {
+        username = username.Split(',')[0];
+    }
+
+    tipoArvore = Request.Params.Get("tipoArvore");
+    if(tipoArvore != null)
+    {
+        if (tipoArvore.IndexOf(',') != -1)
+        {
+            tipoArvore = tipoArvore.Split(',')[0];
+        }
+        tipoArvore = tipoArvore.Replace("%20", " ");
+
+        Session["tipoArvore"] = tipoArvore;
+    }else
+    {
+        tipoArvore = "Arvore Produtos";
+    }
+
+    idioma = Request.Params.Get("idioma");
+    if(idioma != null)
+    {
+        if(idioma.IndexOf(',') != -1)
+        {
+            idioma = idioma.Split(',')[0];
+        }
+        idioma = idioma.Replace("%20", " ");
+    }else
+    {
+        idioma = "pt-BR";
+    }
+
+    pais = Request.Params.Get("pais");
+    if(pais != null)
+    {
+        if (pais.IndexOf(',') != -1)
+        {
+            pais = pais.Split(',')[0];
+        }
+
+        pais = pais.Replace("%20", " ");
+    }else
+    {
+        pais = "Brazil";
+    }
 
     string lblUsuario = "Usuário";
     string lblTitulo = "Cadastro de Ocorrências";
@@ -89,121 +149,121 @@
     string tipoMenu2 = "SubCategoria";
     if (pais.Equals("Brazil"))
     {
-     
+
         if (tipoArvore.Equals("Arvore Solution Center"))
         {
             tipoMenu1 = "Produto";
             tipoMenu2 = "Modelo";
 
             lblMenu3 = "Produto:&nbsp;&nbsp;&nbsp;&nbsp;";
-             lblMenu4 = "Modelo:";
+            lblMenu4 = "Modelo:";
         }
     }
 
-    
+
+    if (idioma.Equals("en-US"))
+    {
+        lblUsuario = "User";
+        lblTitulo = "Ocurrencia Registration";
+        lblLista = "List of Ocurrencia";
+        lblCancelar = "Cancel";
+        lblSalvar = "Save";
+        lblPais = "Country:&nbsp;&nbsp;";
+        lblMenu1 = "Model";
+        lblMenu2 = "Ocurrencia";
+    }
+    else if (idioma.Equals("es-ES"))
+    {
+        lblUsuario = "Usuario";
+        lblTitulo = "Registro del Ocurrencia";
+        lblLista = "Lista de Ocurrencias";
+        lblCancelar = "Cancel";
+        lblSalvar = "Guardar";
+        lblPais = "País:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        lblMenu1 = "Modelo";
+        lblMenu2 = "Ocurrencia";
+    }
+
+    if (lblMenu4.Equals("SubCategoria:"))
+    {
+        lblPais = "País:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+
+        lblMenu8 = "Linha:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+
+        lblMenu4 = lblMenu4 + "";
+    }
+    else
+    {
+        lblMenu4 = lblMenu4 + "&nbsp; &nbsp; &nbsp; &nbsp;";
+    }
+
+    string tipoMenu3 = "Ocorrência";
+    string tipoMenu4 = "Importação de Dados";
+    string tipoMenu5 = "Relatórios de uso do Sistema";
+
+    string tipoMenu0 = "Linha";
+    tipoMenu1 = "Categoria";
+    tipoMenu2 = "SubCategoria";
+
+    if (idioma.Equals("en-US"))
+    {
+        tipoMenu0 = "Line";
+
+        tipoMenu3 = "Ocurrencia";
+        tipoMenu4 = "Data Import";
+        tipoMenu5 = "System usage reports";
+
+        tipoMenu1 = "Category";
+        tipoMenu2 = "Subcategory";
+    }
+    else if (idioma.Equals("es-ES"))
+    {
+        tipoMenu0 = "Línea";
+
+
+        tipoMenu3 = "Ocurrencia";
+        tipoMenu4 = "Importación de datos";
+        tipoMenu5 = "Informes de uso del sistema";
+
+        tipoMenu1 = "Categoría";
+        tipoMenu2 = "SubCategoría";
+    }
+
+    if (tipoArvore.Equals("Arvore Solution Center"))
+    {
+        tipoMenu1 = "Produto";
+        tipoMenu2 = "Modelo";
+
         if (idioma.Equals("en-US"))
         {
-            lblUsuario = "User";
-            lblTitulo = "Ocurrencia Registration";
-            lblLista = "List of Ocurrencia";
-            lblCancelar = "Cancel";
-            lblSalvar = "Save";
-            lblPais = "Country:&nbsp;&nbsp;";
-            lblMenu1 = "Model";
-            lblMenu2 = "Ocurrencia";
+            tipoMenu1 = "Product";
+            tipoMenu2 = "Model";
         }
         else if (idioma.Equals("es-ES"))
         {
-            lblUsuario = "Usuario";
-            lblTitulo = "Registro del Ocurrencia";
-            lblLista = "Lista de Ocurrencias";
-            lblCancelar = "Cancel";
-            lblSalvar = "Guardar";
-            lblPais = "País:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-            lblMenu1 = "Modelo";
-            lblMenu2 = "Ocurrencia";
-        }
-
-        if (lblMenu4.Equals("SubCategoria:"))
-        {
-            lblPais = "País:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-
-            lblMenu8 = "Linha:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-
-            lblMenu4 = lblMenu4 + "";
-        }
-        else
-        {
-            lblMenu4 = lblMenu4 + "&nbsp; &nbsp; &nbsp; &nbsp;";
-        }
-
-        string tipoMenu3 = "Ocorrência";
-        string tipoMenu4 = "Importação de Dados";
-        string tipoMenu5 = "Relatórios de uso do Sistema";
-
-        string tipoMenu0 = "Linha";
-         tipoMenu1 = "Categoria";
-         tipoMenu2 = "SubCategoria";
-
-        if (idioma.Equals("en-US"))
-        {
-            tipoMenu0 = "Line";
-
-            tipoMenu3 = "Ocurrencia";
-            tipoMenu4 = "Data Import";
-            tipoMenu5 = "System usage reports";
-
-            tipoMenu1 = "Category";
-            tipoMenu2 = "Subcategory";
-        }
-        else if (idioma.Equals("es-ES"))
-        {
-            tipoMenu0 = "Línea";
-
-
-            tipoMenu3 = "Ocurrencia";
-            tipoMenu4 = "Importación de datos";
-            tipoMenu5 = "Informes de uso del sistema";
-
-            tipoMenu1 = "Categoría";
-            tipoMenu2 = "SubCategoría";
-        }
-
-        if (tipoArvore.Equals("Arvore Solution Center"))
-        {
-            tipoMenu1 = "Produto";
+            tipoMenu1 = "Producto";
             tipoMenu2 = "Modelo";
-
-            if (idioma.Equals("en-US"))
-            {
-                tipoMenu1 = "Product";
-                tipoMenu2 = "Model";
-            }
-            else if (idioma.Equals("es-ES"))
-            {
-                tipoMenu1 = "Producto";
-                tipoMenu2 = "Modelo";
-            }
-
         }
-        string codigoPais = pais;
-        if (pais.Equals("Brazil"))
-            codigoPais = "0";
 
-
+    }
+    string codigoPais = pais;
+    if (pais.Equals("Brazil"))
         codigoPais = "0";
 
-        string idUser = Request.Params.Get("idUser");
-        string user = Request.Params.Get("usuario");
-        if (idUser.IndexOf(',') != -1)
-        {
-            idUser = idUser.Split(',')[0];
-        }
-        if (user.IndexOf(',') != -1)
-        {
-            user = user.Split(',')[0];
-        }
-        urlVolta = "index.aspx?idUser=" + idUser + "&username=" + user;
+
+    codigoPais = "0";
+
+    string idUser = Request.Params.Get("idUser");
+    string user = Request.Params.Get("usuario");
+    if (idUser.IndexOf(',') != -1)
+    {
+        idUser = idUser.Split(',')[0];
+    }
+    if (user.IndexOf(',') != -1)
+    {
+        user = user.Split(',')[0];
+    }
+    urlVolta = "index.aspx?idUser=" + idUser + "&username=" + user;
 
 %>
 <!DOCTYPE html>
@@ -309,11 +369,14 @@
 
         $j('document').ready(function () {
 
+            var idioma = "<%=idioma.ToString()%>";
+            var tipoArvore = "<%=tipoArvore.ToString()%>";
+            var dataStr = (idioma.indexOf("'") != -1 && tipoArvore.indexOf("'") != 1) ? "{idioma:" + idioma + ", tipoArvore:" + tipoArvore + ", codPais:'<%=pais %>'}" : "{idioma:'" + idioma + "', tipoArvore:'" + tipoArvore + "', codPais:'<%=pais %>'}";
             // esse trecho carrega os dados do combo Linha
             $l.ajax({
                 type: "POST",
                 url: "modelo.aspx/carregaComboLinha",
-                data: "{idioma:'<%=idioma %>', tipoArvore:'<%=tipoArvore %>', codPais:'<%=pais %>'}",
+                data: dataStr,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (jasonResult) {
@@ -332,10 +395,14 @@
 
         function preencherComboProdutos(codLinha, codProduto) {
 
+            var idioma = "<%=idioma.ToString()%>";
+            var tipoArvore = "<%=tipoArvore.ToString()%>";
+            var dataStr = (idioma.indexOf("'") != -1 && tipoArvore.indexOf("'") != 1) ? "{codigo:'" + codLinha + "', idioma:" + idioma + ", tipoArvore:" + tipoArvore + ", codPais:'<%=pais %>'}" : "{codigo:'" + codLinha + "', idioma:'" + idioma + "', tipoArvore:'" + tipoArvore + "', codPais:'<%=pais %>'}";
+
             $j.ajax({
                 type: "POST",
                 url: "modelo.aspx/carregaComboProduto",
-                data: "{codigo:'" + codLinha + "', idioma:'<%=idioma %>', tipoArvore:'<%=tipoArvore %>', codPais:'<%=pais %>'}",
+                data: dataStr,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (jasonResult) {
@@ -366,16 +433,19 @@
             var codLinha = aDados[2];
             var codProduto = aDados[3];
 
-            document.location.href = "pergunta.aspx?codigoOcorrencia=" + codOcorrencia + "&codModelo="+codModelo;
+            document.location.href = "pergunta.aspx?codigoOcorrencia=" + codOcorrencia + "&codModelo="+codModelo + "&tipoAcesso=administrador" + "&idUser=&usuario=<%=username%>&nome=<%=nome%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>&pais=<%=pais%>";
 
         }
 
         function preencherComboModelos(codProduto, codModelo) {
+            var idioma = "<%=idioma.ToString()%>";
+            var tipoArvore = "<%=tipoArvore.ToString()%>";
+            var dataStr = (idioma.indexOf("'") != -1 && tipoArvore.indexOf("'") != 1) ? "{codigo:'" + codProduto + "' , idioma:" + idioma + " , tipoArvore:" + tipoArvore + ",  pais:'" + codPais + "'}" : "{codigo:'" + codProduto + "' , idioma:'" + idioma + "' , tipoArvore:'" + tipoArvore + "',  pais:'" + codPais + "'}"
 
             $j.ajax({
                 type: "POST",
                 url: "ocorrencia.aspx/carregaComboModelo",
-                data: "{codigo:'" + codProduto + "' , idioma:'<%=idioma %>' , tipoArvore:'<%=tipoArvore %>',  pais:'" + codPais + "'}",
+                data: dataStr,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (jasonResult) {
@@ -416,13 +486,22 @@
 
             //  var descOcorrencia = document.getElementById('descOcorrencia').value.trim();
             var descOcorrencia = "";
+            idioma = "<%=idioma.ToString()%>";
+            var tipoArvore = "<%=tipoArvore.ToString()%>";
+            console.log('tipoArvore', tipoArvore);
+            var dataStr = "";
+            if (idioma.indexOf("'") != -1 && tipoArvore.indexOf("'") != -1) {
+                dataStr = dataStr = "{ limit: " + limit + ", offset: " + paginaAtual + " , tipo:'administrador' , codModelos:[" + codigoModelo + "], idioma:" + idioma + ", pais:'" + codPais + "' , tipoArvore:" + tipoArvore + ",  codLinha:'" + codLinha + "' ,  codProduto:'" + codProduto + "' ,   descOcorrencia:'" + descOcorrencia + "'  }"
+            } else {
+                dataStr = "{ limit: " + limit + ", offset: " + paginaAtual + " , tipo:'administrador' , codModelos:[" + codigoModelo + "], idioma:'" + idioma + "', pais:'" + codPais + "' , tipoArvore:'" + tipoArvore + "',  codLinha:'" + codLinha + "' ,  codProduto:'" + codProduto + "' ,   descOcorrencia:'" + descOcorrencia + "'  }"
+            }
 
-
+            console.log('dataStr: ', dataStr);
             $j.ajax({
                 type: "POST",
                 url: "ocorrencia.aspx/carregaOcorrencias",
-                data: "{ limit: " + limit + ", offset: " + paginaAtual + " , tipo:'administrador' , codModelos:[" + codigoModelo + "], idioma:'<%=idioma %>', pais:'" + codPais + "' , tipoArvore:'<%=tipoArvore %>',  codLinha:'" + codLinha + "' ,  codProduto:'" + codProduto + "' ,   descOcorrencia:'" + descOcorrencia + "'  }",
-                 contentType: "application/json; charset=utf-8",
+                data: dataStr,
+                contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (jasonResult) {
                     $j('#table-ocorrencia').bootstrapTable('destroy');
@@ -1036,7 +1115,7 @@
     </script>
 <body style="overflow: hidden;">
     <div class="container-fluid">
-     <table border=0 style="width: 100%"><Tr>
+     <%--<table border=0 style="width: 100%"><Tr>
           <Td  align="left" style="width: 5%">  <img src="../includes/arvore/imagens/logo.png" class="img-responsive"/></img></Td>
              <Td  align="center" style="width: 45%" align="center"><span id="labelCliente">&nbsp;</span></Td>
           
@@ -1044,7 +1123,7 @@
      
 
           
-      </Tr></table>
+      </Tr></table>--%>
     
     
     
@@ -1059,12 +1138,12 @@
               <% if(pais.Equals("Brazil")){  %>
                          <ul>
                               <li><a class="liMenu" href="<%=urlVolta%>"  ><img src="../includes/arvore/imagens/home.png" class="img-responsive" style="cursor: pointer;" /></a></li>
-                          <li><a class="liMenu" href="linha.aspx?idUser=<%=idUser%>&username=<%=user%>&usuario=<%=user%>"  ><%=tipoMenu0 %></a></li>
-                            <li><a href="produto.aspx?idUser=<%=idUser%>&username=<%=user%>&usuario=<%=user%>" class="liMenu"><%=tipoMenu1 %></a></li>
-                            <li><a href="modelo.aspx?idUser=<%=idUser%>&username=<%=user%>&usuario=<%=user%>" class="liMenu"><%=tipoMenu2 %></a></li>
-                            <li><a href="ocorrencia.aspx?idUser=<%=idUser%>&username=<%=user%>&usuario=<%=user%>" class="liMenu"><%=tipoMenu3 %></a></li>
-                            <li><a href="importacao.aspx?idUser=<%=idUser%>&username=<%=user%>&usuario=<%=user%>" class="liMenu"><%=tipoMenu4 %></a></li>
-                            <li><a href="relatorios.aspx?idUser=<%=idUser%>&username=<%=user%>&usuario=<%=user%>" class="liMenu"><%=tipoMenu5 %></a></li>
+                          <li><a class="liMenu" href="linha.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>"  ><%=tipoMenu0 %></a></li>
+                            <li><a href="produto.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>" class="liMenu"><%=tipoMenu1 %></a></li>
+                            <li><a href="modelo.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>" class="liMenu"><%=tipoMenu2 %></a></li>
+                            <li><a href="ocorrencia.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>" class="liMenu"><%=tipoMenu3 %></a></li>
+                            <li><a href="importacao.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>" class="liMenu"><%=tipoMenu4 %></a></li>
+                            <li><a href="relatorios.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>" class="liMenu"><%=tipoMenu5 %></a></li>
                         </ul>    
 
               
@@ -1082,7 +1161,12 @@
 
                          <ul>
                               <li><a class="liMenu" href="<%=urlVolta%>"  ><img src="../includes/arvore/imagens/home.png" class="img-responsive" style="cursor: pointer;" /></a></li>
-                            <li><a href="ocorrencia.aspx?idUser=<%=idUser%>&username=<%=user%>&usuario=<%=user%>" class="liMenu"><%=lblMenu2 %></a></li>
+                            <li><a class="liMenu" href="linha.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>"  ><%=tipoMenu0 %></a></li>
+                            <li><a href="produto.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>" class="liMenu"><%=tipoMenu1 %></a></li>
+                            <li><a href="modelo.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>" class="liMenu"><%=tipoMenu2 %></a></li>
+                            <li><a href="ocorrencia.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>" class="liMenu"><%=tipoMenu3 %></a></li>
+                            <li><a href="importacao.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>" class="liMenu"><%=tipoMenu4 %></a></li>
+                            <li><a href="relatorios.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&tipoArvore=<%=tipoArvore%>&idioma=<%=idioma%>" class="liMenu"><%=tipoMenu5 %></a></li>
                            
                         </ul>    
 

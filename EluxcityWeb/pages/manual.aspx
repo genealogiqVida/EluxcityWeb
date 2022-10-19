@@ -10,6 +10,8 @@
        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>		
        <link rel="stylesheet" href="../includes/css/tooltipster.bundle.min.css" type="text/css" />
        <link rel="stylesheet" href="../includes/css/tooltipster-sideTip-punk.min.css" type="text/css" />
+       <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+       <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
        <script src="../includes/js/tooltipster.bundle.min.js"></script>
        <script src="../includes/js/loading.js"></script>
        <link href="../includes/css/loading.css" type="text/css" rel="stylesheet">
@@ -257,14 +259,20 @@
 </head>
 
 	<body style="overflow:auto; background-color:#e6e6e6"  id="tela">
-        <div class="container">
-         <div class="row">
-              <div class="col"> 
-                    <img src="../includes/images/logo_administrativo.png" class="imgTopo" />
+        <div class="container" style="padding: 0;">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a><img src="../includes/images/banner/banner_campanha.png" /></a></div>
+                    <div class="swiper-slide">
+                        <a target="_top" href="https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/common/resources/resourcedetail/simrs000000000053342/true"><img src="../includes/images/banner/banner-circular.png" /></a></div>
+                </div>
+                <div class="swiper-pagination"></div>
 
-              </div>
-          </div>
-       </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
       <div class="container">
          
           <div class="row">
@@ -278,29 +286,30 @@
                                
                               <table style="width:70%">
        <tr>
-           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('index.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>')"><label style="cursor: pointer"><b>Home</b></label></button></td>
-           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('https://eluxcitysb-teste.sabacloud.com/Saba/Web_spf/NA1TNB0106/app/team/overview')"><label style="cursor: pointer"><b>Gestão da equipe</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('index.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&dominio=<%=dominio%>')"><label style="cursor: pointer"><b>Home</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/team/overview')"><label style="cursor: pointer"><b>Gestão da equipe</b></label></button></td>
            <!--<td><button type="button" class="btn btn-warning" style="cursor: pointer"><label style="cursor: pointer"><b>Service Plus</b></label></button></td>-->
-           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('manual.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')"><label style="cursor: pointer"><b>Manual de serviços</b></label></button></td>
-           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('boletim.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')"><label style="cursor: pointer"><b>Boletins técnicos</b></label></button></td>
-           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('videos.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')"><label style="cursor: pointer"><b>Vídeos</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('manual.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>&dominio=<%=dominio%>')"><label style="cursor: pointer"><b>Manual de serviços</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('boletim.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>&dominio=<%=dominio%>')"><label style="cursor: pointer"><b>Boletins técnicos</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('videos.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>&dominio=<%=dominio%>')"><label style="cursor: pointer"><b>Vídeos</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('circulares.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>&dominio=<%=dominio%>')"><label style="cursor: pointer"><b>Circulares</b></label></button></td>
        </tr>
 
    </table>
 
                                       
 
-                                      <table style="width:75%">
+                                      <%--<table style="width:75%">
        <tr>
            <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('index.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>')"><label style="cursor: pointer"><b>Home</b></label></button></td>
-           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('https://eluxcitysb-teste.sabacloud.com/Saba/Web_spf/NA1TNB0106/app/team/overview')"><label style="cursor: pointer"><b>Gestão da equipe</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/team/overview')"><label style="cursor: pointer"><b>Gestão da equipe</b></label></button></td>
            <!--<td><button type="button" class="btn btn-warning" style="cursor: pointer"><label style="cursor: pointer"><b>Service Plus</b></label></button></td>-->
         <td><button type="button" class="btn btn-warning" style="cursor: default; background-color:#f7f0e9"><label><b>Manual de serviços</b></label></button></td>
                <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('boletim.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')"><label style="cursor: pointer"><b>Boletins técnicos</b></label></button></td>
            <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('videos.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')"><label style="cursor: pointer"><b>Vídeos</b></label></button></td>
        </tr>
 
-   </table>
+   </table>--%>
 
 
 
@@ -308,11 +317,12 @@
 
 <table style="width:60%">
        <tr>
-           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('index.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>')"><label style="cursor: pointer"><b>Home</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('index.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&dominio=<%=dominio%>')"><label style="cursor: pointer"><b>Home</b></label></button></td>
            <!--<td><button type="button" class="btn btn-warning" style="cursor: pointer"><label style="cursor: pointer"><b>Service Plus</b></label></button></td>-->
            <td><button type="button" class="btn btn-warning" style="cursor: default; background-color:#f7f0e9"><label><b>Manual de serviços</b></label></button></td>
-           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('boletim.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')"><label style="cursor: pointer"><b>Boletins técnicos</b></label></button></td>
-           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('videos.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')"><label style="cursor: pointer"><b>Vídeos</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('boletim.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>&dominio=<%=dominio%>')"><label style="cursor: pointer"><b>Boletins técnicos</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('videos.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>&dominio=<%=dominio%>')"><label style="cursor: pointer"><b>Vídeos</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('circulares.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>&dominio=<%=dominio%>')"><label style="cursor: pointer"><b>Circulares</b></label></button></td>
        </tr>
 
    </table>
@@ -495,26 +505,30 @@
             <div class="container" style="background: #011E41; justify-content: flex-start; padding-left: 50px; display: flex; flex-wrap: wrap">
                 <div class="row" style="margin-top: 30px; width: 100%">
                     <div class="col-md-12">
-                        <div class="row" style="flex-wrap: nowrap;">
-                            <div class="col-3">
+                        <div class="row flex-container" style="flex-wrap: nowrap;">
+                            <div class="col-4">
                                 <ul class="list-unstyled">
-                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="https://eluxcitysb.sabacloud.com/Saba/Web_spf/NA1TNB0106/app/me/plans" target="_top" style="color: #FFF; text-decoration: solid">Treinamentos</a></li>
-                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Fale com a engenharia</a></li>
-                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" target="_top" style="color: #FFF; text-decoration: solid">Check list</a></li>
-                                    <li style="font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Peças e acessórios</a></li>
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/me/plans" target="_top" style="color: #FFF; text-decoration: solid">Treinamentos</a></li>
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" onclick="alert('Em breve - Página em construção');" style="color: #FFF; text-decoration: solid">Fale com a engenharia</a></li>
+                                    <li style="margin-bottom: 10px; font-size: 20px; cursor: pointer;"><a onclick="carregaTela('default.aspx?url=https://use-api.sabacloud.com&certificate=<%=certificate %>&userName=<%=username%>&idioma=pt-BR&urlVolta=https://server.impulse.net.br/eluxcity/pages/index.aspx&tipoArvore=Arvore%20Produtos')" style="color: #FFF; text-decoration: solid">Check list</a></li>
+                                    <li style="font-size: 20px;"><a target="_blank" href="http://vistaexplodida.eluxinfo.com.br/" style="color: #FFF; text-decoration: solid">Peças e acessórios</a></li>
                                 </ul>
                             </div>
-                            <div class="col-9">
+                            <div class="col-8">
                                 <ul class="list-unstyled">
-                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Política de privacidade</a></li>
-                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Termos de uso</a></li>
-                                    <!--<li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Ajuda</a></li>-->
+                                    <%if (dominio != "BRA - Consumer Care")
+                                        { %>
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" onclick="alert('Em breve - Página em construção');" style="color: #FFF; text-decoration: solid; cursor: pointer">Extrato de Coroas</a></li>
+                                    <%} %>
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a target="_blank" href="https://institucional.electrolux.com.br/politicas" style="color: #FFF; text-decoration: solid">Política de privacidade</a></li>
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" onclick="alert('Em breve - Página em construção');" style="color: #FFF; text-decoration: solid">Termos de uso</a></li>
+                                    <li style="margin-bottom: 10px; font-size: 20px; cursor: pointer;"><a href="" onclick="alert('Em breve - Página em construção');" style="color: #FFF; text-decoration: solid">Ajuda</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12" style="display: flex; justify-content: right">
-                                <img src="../includes/images/logo_rodape_resize.png" style="height: 60px"/>
+                                <img src="../includes/images/logo_rodape_resize.png" style="height: 35px"/>
                             </div>
                             
                         </div>
@@ -523,7 +537,24 @@
                 </div>
             </div>
         </footer> 
-   
+       <script>
+           const swiper = new Swiper('.swiper', {
+               loop: true,
+
+               autoplay: {
+                   delay: 15000,
+               },
+
+               pagination: {
+                   el: '.swiper-pagination',
+               },
+
+               navigation: {
+                   nextEl: '.swiper-button-next',
+                   prevEl: '.swiper-button-prev',
+               },
+           });
+       </script>
 	</body>
 
 </html>

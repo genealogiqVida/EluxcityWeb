@@ -29,6 +29,14 @@ namespace EluxcityWeb.Controller
 
        }
 
+       public List<ConteudoOrdenadoAnoDTO> carregaCircularesOrdenadoAno(string username)
+       {
+           this.getInstance();
+           return service.carregaCircularesOrdenadoAno(username);
+
+
+       }
+
        public List<ConteudoDTO> carregaCirculares(string username)
        {
            this.getInstance();
@@ -69,7 +77,7 @@ namespace EluxcityWeb.Controller
 
        }
 
-       public List<ConteudoDTO> carregaBoletimServico(string username)
+       public List<ConteudoOrdenadoAnoDTO> carregaBoletimServico(string username)
        {
            this.getInstance();
            return service.carregaBoletimServico(username);

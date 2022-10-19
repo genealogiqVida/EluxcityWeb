@@ -16,10 +16,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/Newtonsoft.Json.dll">
-      <publishTime>03/11/2021 15:01:19</publishTime>
+      <publishTime>11/03/2021 15:01:19</publishTime>
     </File>
     <File Include="bin/RestSharp.dll">
-      <publishTime>03/11/2021 15:13:47</publishTime>
+      <publishTime>11/03/2021 15:13:47</publishTime>
     </File>
     <File Include="includes/css/app.min.css">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -145,7 +145,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="includes/images/circulares.png">
-      <publishTime>04/11/2021 16:53:35</publishTime>
+      <publishTime>11/04/2021 16:53:35</publishTime>
     </File>
     <File Include="includes/images/img_defaul.png">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -154,16 +154,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="includes/images/logo_contactcenter.png">
-      <publishTime>12/01/2022 16:06:34</publishTime>
+      <publishTime>01/12/2022 16:06:34</publishTime>
     </File>
     <File Include="includes/images/manuais.png">
-      <publishTime>05/11/2021 02:44:31</publishTime>
+      <publishTime>11/05/2021 02:44:31</publishTime>
     </File>
     <File Include="includes/images/proprietario.png">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="includes/images/rodape.png">
-      <publishTime>12/01/2022 15:45:24</publishTime>
+      <publishTime>01/12/2022 15:45:24</publishTime>
     </File>
     <File Include="includes/images/ui-bg_flat_0_aaaaaa_40x100.png">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -244,19 +244,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="includes/js/index_1.js">
-      <publishTime>03/11/2021 16:59:07</publishTime>
+      <publishTime>11/03/2021 16:59:07</publishTime>
     </File>
     <File Include="includes/js/index_10.js">
-      <publishTime>03/11/2021 17:01:00</publishTime>
+      <publishTime>11/03/2021 17:01:00</publishTime>
     </File>
     <File Include="includes/js/index_11.js">
-      <publishTime>03/11/2021 17:01:00</publishTime>
+      <publishTime>11/03/2021 17:01:00</publishTime>
     </File>
     <File Include="includes/js/index_18.js">
-      <publishTime>03/11/2021 17:01:00</publishTime>
+      <publishTime>11/03/2021 17:01:00</publishTime>
     </File>
     <File Include="includes/js/index_2.js">
-      <publishTime>03/11/2021 17:01:00</publishTime>
+      <publishTime>11/03/2021 17:01:00</publishTime>
     </File>
     <File Include="includes/js/index_20.js">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -286,25 +286,25 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="includes/js/index_3.js">
-      <publishTime>03/11/2021 17:01:00</publishTime>
+      <publishTime>11/03/2021 17:01:00</publishTime>
     </File>
     <File Include="includes/js/index_4.js">
-      <publishTime>03/11/2021 17:01:00</publishTime>
+      <publishTime>11/03/2021 17:01:00</publishTime>
     </File>
     <File Include="includes/js/index_5.js">
-      <publishTime>03/11/2021 17:01:00</publishTime>
+      <publishTime>11/03/2021 17:01:00</publishTime>
     </File>
     <File Include="includes/js/index_6.js">
-      <publishTime>03/11/2021 17:01:00</publishTime>
+      <publishTime>11/03/2021 17:01:00</publishTime>
     </File>
     <File Include="includes/js/index_7.js">
-      <publishTime>03/11/2021 17:01:00</publishTime>
+      <publishTime>11/03/2021 17:01:00</publishTime>
     </File>
     <File Include="includes/js/index_8.js">
-      <publishTime>03/11/2021 17:01:00</publishTime>
+      <publishTime>11/03/2021 17:01:00</publishTime>
     </File>
     <File Include="includes/js/index_9.js">
-      <publishTime>03/11/2021 17:01:00</publishTime>
+      <publishTime>11/03/2021 17:01:00</publishTime>
     </File>
     <File Include="includes/js/input-mask.js">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -394,7 +394,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>03/11/2021 15:13:47</publishTime>
+      <publishTime>11/03/2021 15:13:47</publishTime>
     </File>
     <File Include="pages/administrador.aspx">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -499,7 +499,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="pages/index.aspx">
-      <publishTime>01/11/2021 08:28:18</publishTime>
+      <publishTime>11/01/2021 08:28:18</publishTime>
     </File>
     <File Include="pages/loading.css">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -523,7 +523,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/11/2021 10:08:39</publishTime>
+      <publishTime>11/05/2021 10:08:39</publishTime>
     </File>
   </ItemGroup>
 </Project>

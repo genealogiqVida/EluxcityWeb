@@ -15,11 +15,13 @@ namespace EluxcityWeb.pages
     public partial class tecnico : System.Web.UI.Page
     {
         protected String idUser = "";
-        protected String url = "https://eluxcitysb-api.sabacloud.com";
-        protected String usuario = "felipe.miranda";
+        protected String url = "https://use-api.sabacloud.com";
+        protected String usuario = "administrador";
         protected String senha = "elux123";
         protected String username = "";
+        protected String personNO = "";
         protected String certificate = "";
+        protected String nomeCompleto = "";
 
         protected StringBuilder myStringBuilderLancamento = new StringBuilder();
         protected StringBuilder myStringBuilderProva = new StringBuilder();
@@ -56,6 +58,10 @@ namespace EluxcityWeb.pages
          protected String Refrigeracao = "N";
 
          protected String equipe = "N";
+
+        protected int habilidades = 0;
+
+        protected String dominio = "";
       
         protected override void OnInit(EventArgs e)
         {
@@ -64,6 +70,12 @@ namespace EluxcityWeb.pages
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+
+            dominio = this.Request.Params.Get("dominio");
+            if(dominio == null)
+            {
+                dominio = "";
+            }
 
             equipe = this.Request.Params.Get("equipe");
             if (equipe == null)
@@ -83,10 +95,22 @@ namespace EluxcityWeb.pages
                 username = "";
             }
 
+            personNO = this.Request.Params.Get("personNO");
+            if (personNO == null)
+            {
+                personNO = "";
+            }
+
             certificate = this.Request.Params.Get("certificate");
             if (certificate == null)
             {
                 certificate = "";
+            }
+
+            nomeCompleto = this.Request.Params.Get("nomeCompleto");
+            if (nomeCompleto == null)
+            {
+                nomeCompleto = "";
             }
 
 
@@ -123,11 +147,11 @@ namespace EluxcityWeb.pages
 
 
             //carrega carrossel lançamentos
-            List<ConteudoDTO> list = action.carregaLancamentos(username);
+            List<ConteudoDTO> list = action.carregaLancamentos(personNO);
             foreach (ConteudoDTO conteudoDTO in list)
             {
                 myStringBuilderLancamento.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                myStringBuilderLancamento.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/img_defaul.png\" />");
+                myStringBuilderLancamento.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderLancamento.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
                 myStringBuilderLancamento.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
                 myStringBuilderLancamento.Append(" </div>");
@@ -152,12 +176,12 @@ namespace EluxcityWeb.pages
             myStringBuilderProva.Append("<div class=\"items\" id=\"carousel_2-items\"  >");
 
             //carrega carrossel lançamentos
-            list = action.carregaProvasPraVoce(username);
+            list = action.carregaProvasPraVoce(personNO);
             foreach (ConteudoDTO conteudoDTO in list)
             {
 
                 myStringBuilderProva.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaCurso('"+conteudoDTO.getId()+"')\" >");
-                myStringBuilderProva.Append(" <img  loading=\"auto\" class=\"item-image\" src=\""+conteudoDTO.getUrlImagem()+"\" />");
+                myStringBuilderProva.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderProva.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">"+conteudoDTO.getTitulo()+"</div></div>");
                 myStringBuilderProva.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">"+conteudoDTO.getProprietario()+"</span></div>");
                 myStringBuilderProva.Append(" </div>");
@@ -184,12 +208,12 @@ namespace EluxcityWeb.pages
             myStringBuilderTreinamento.Append("<div class=\"items\" id=\"carousel_3-items\"  >");
 
               //carrega carrossel treinamento
-            list = action.carregaTreinamento(username);
+            list = action.carregaTreinamento(personNO);
             foreach (ConteudoDTO conteudoDTO in list)
             {
 
                 myStringBuilderTreinamento.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaCurso('"+conteudoDTO.getId()+"')\" >");
-                myStringBuilderTreinamento.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"https://static-na1.sabacloud.com/assets/s/1h7ilvlhtpjxu/spf/skin/wireframe/media/images/Course_280x140.png\" />");
+                myStringBuilderTreinamento.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderTreinamento.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">"+conteudoDTO.getTitulo()+"</div></div>");
                 myStringBuilderTreinamento.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">"+conteudoDTO.getProprietario()+"</span></div>");
                 myStringBuilderTreinamento.Append(" </div>");
@@ -215,7 +239,7 @@ namespace EluxcityWeb.pages
             myStringBuilderSugestao.Append("<div class=\"items\" id=\"carousel_4-items\"  >");
 
               //carrega carrossel sugestao
-            list = action.carregaSugestao(username);
+            list = action.carregaSugestao(personNO);
             foreach (ConteudoDTO conteudoDTO in list)
             {
 
@@ -246,13 +270,13 @@ namespace EluxcityWeb.pages
             myStringBuilderRecente.Append("<div class=\"items\" id=\"carousel_5-items\"  >");
 
               //carrega carrossel sugestao
-            list = action.carregaRecente(username);
+            list = action.carregaRecente(personNO);
             foreach (ConteudoDTO conteudoDTO in list)
             {
 
 
                 myStringBuilderRecente.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('"+conteudoDTO.getId()+"')\" >");
-                myStringBuilderRecente.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/img_defaul.png\" />");
+                myStringBuilderRecente.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderRecente.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">"+conteudoDTO.getTitulo()+"</div></div>");
                 myStringBuilderRecente.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">"+conteudoDTO.getProprietario()+"</span></div>");
                 myStringBuilderRecente.Append(" </div>");
@@ -278,13 +302,13 @@ namespace EluxcityWeb.pages
             myStringBuilderPopular.Append("<div class=\"items\" id=\"carousel_6-items\"  >");
 
               //carrega carrossel sugestao
-            list = action.carregaPopular(username);
+            list = action.carregaPopular(personNO);
             foreach (ConteudoDTO conteudoDTO in list)
             {
 
 
                 myStringBuilderPopular.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('"+conteudoDTO.getId()+"')\" >");
-                myStringBuilderPopular.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/img_defaul.png\" />");
+                myStringBuilderPopular.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                 myStringBuilderPopular.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">"+conteudoDTO.getTitulo()+"</div></div>");
                 myStringBuilderPopular.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">"+conteudoDTO.getProprietario()+"</span></div>");
                 myStringBuilderPopular.Append(" </div>");
@@ -298,6 +322,8 @@ namespace EluxcityWeb.pages
 
             if (Adegas.Equals("S"))
             {
+                habilidades++;
+
                 myStringBuilderPrimeira.Append("<div id=\"carousel_7\"  class=\"container\">");
                 myStringBuilderPrimeira.Append(" <div class=\"control-container\">");
                 myStringBuilderPrimeira.Append(" <div id=\"left-scroll-button_7\" onclick=\"leftScrollClick_7()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
@@ -311,13 +337,13 @@ namespace EluxcityWeb.pages
                 myStringBuilderPrimeira.Append("<div class=\"items\" id=\"carousel_7-items\"  >");
 
                 //carrega carrossel sugestao
-                list = action.carregaHabilidade(username, "1");
+                list = action.carregaHabilidade(personNO, "1");
                 foreach (ConteudoDTO conteudoDTO in list)
                 {
 
 
                     myStringBuilderPrimeira.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                    myStringBuilderPrimeira.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/img_defaul.png\" />");
+                    myStringBuilderPrimeira.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                     myStringBuilderPrimeira.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
                     myStringBuilderPrimeira.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
                     myStringBuilderPrimeira.Append(" </div>");
@@ -337,7 +363,7 @@ namespace EluxcityWeb.pages
 
             if (Ar_condicionado.Equals("S"))
             {
-
+                habilidades++;
                 myStringBuilderSegunda.Append("<div id=\"carousel_8\"  class=\"container\">");
                 myStringBuilderSegunda.Append(" <div class=\"control-container\">");
                 myStringBuilderSegunda.Append(" <div id=\"left-scroll-button_8\" onclick=\"leftScrollClick_8()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
@@ -352,12 +378,12 @@ namespace EluxcityWeb.pages
                 myStringBuilderSegunda.Append("<div class=\"items\" id=\"carousel_8-items\"  >");
 
                 //carrega carrossel sugestao
-                list = action.carregaHabilidade(username, "2");
+                list = action.carregaHabilidade(personNO, "2");
                 foreach (ConteudoDTO conteudoDTO in list)
                 {
 
                     myStringBuilderSegunda.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                    myStringBuilderSegunda.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/img_defaul.png\" />");
+                    myStringBuilderSegunda.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                     myStringBuilderSegunda.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
                     myStringBuilderSegunda.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
                     myStringBuilderSegunda.Append(" </div>");
@@ -372,7 +398,7 @@ namespace EluxcityWeb.pages
 
             if (Aspirador.Equals("S"))
             {
-
+                habilidades++;
                 myStringBuilderTerceira.Append("<div id=\"carousel_9\"  class=\"container\">");
                 myStringBuilderTerceira.Append(" <div class=\"control-container\">");
                 myStringBuilderTerceira.Append(" <div id=\"left-scroll-button_9\" onclick=\"leftScrollClick_9()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
@@ -386,14 +412,14 @@ namespace EluxcityWeb.pages
                 myStringBuilderTerceira.Append("<div class=\"items\" id=\"carousel_9-items\"  >");
 
                 //carrega carrossel sugestao
-                list = action.carregaHabilidade(username, "3");
+                list = action.carregaHabilidade(personNO, "3");
                 foreach (ConteudoDTO conteudoDTO in list)
                 {
 
 
 
                     myStringBuilderTerceira.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                    myStringBuilderTerceira.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/img_defaul.png\" />");
+                    myStringBuilderTerceira.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
                     myStringBuilderTerceira.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
                     myStringBuilderTerceira.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
                     myStringBuilderTerceira.Append(" </div>");
@@ -405,289 +431,318 @@ namespace EluxcityWeb.pages
                 if (list.Count == 0) myStringBuilderTerceira = new StringBuilder();
             }
 
-            if (Conectados.Equals("S"))
+            if(habilidades < 3)
             {
-
-                myStringBuilder4.Append("<div id=\"carousel_20\"  class=\"container\">");
-                myStringBuilder4.Append(" <div class=\"control-container\">");
-                myStringBuilder4.Append(" <div id=\"left-scroll-button_20\" onclick=\"leftScrollClick_20()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder4.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
-                myStringBuilder4.Append(" </div>");
-                myStringBuilder4.Append(" <div id=\"right-scroll-button_20\" onclick=\"rightScrollClick_20()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder4.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
-                myStringBuilder4.Append("</div>");
-                myStringBuilder4.Append(" </div>");
-
-                myStringBuilder4.Append("<div class=\"items\" id=\"carousel_20-items\"  >");
-
-                //carrega carrossel sugestao
-                list = action.carregaHabilidade(username, "4");
-                foreach (ConteudoDTO conteudoDTO in list)
+                if (Conectados.Equals("S"))
                 {
-                    myStringBuilder4.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                    myStringBuilder4.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/img_defaul.png\" />");
-                    myStringBuilder4.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
-                    myStringBuilder4.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                    habilidades++;
+                    myStringBuilder4.Append("<div id=\"carousel_20\"  class=\"container\">");
+                    myStringBuilder4.Append(" <div class=\"control-container\">");
+                    myStringBuilder4.Append(" <div id=\"left-scroll-button_20\" onclick=\"leftScrollClick_20()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder4.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
                     myStringBuilder4.Append(" </div>");
+                    myStringBuilder4.Append(" <div id=\"right-scroll-button_20\" onclick=\"rightScrollClick_20()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder4.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
+                    myStringBuilder4.Append("</div>");
+                    myStringBuilder4.Append(" </div>");
+
+                    myStringBuilder4.Append("<div class=\"items\" id=\"carousel_20-items\"  >");
+
+                    //carrega carrossel sugestao
+                    list = action.carregaHabilidade(personNO, "4");
+                    foreach (ConteudoDTO conteudoDTO in list)
+                    {
+                        myStringBuilder4.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
+                        myStringBuilder4.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
+                        myStringBuilder4.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
+                        myStringBuilder4.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                        myStringBuilder4.Append(" </div>");
+                    }
+
+                    myStringBuilder4.Append("</div></div>");
+
+                    if (list.Count == 0) myStringBuilder4 = new StringBuilder();
+
                 }
-
-                myStringBuilder4.Append("</div></div>");
-
-                if (list.Count == 0) myStringBuilder4 = new StringBuilder();
-
             }
 
-            if (Eletroportateis.Equals("S"))
+            if(habilidades < 3)
             {
-
-                myStringBuilder5.Append("<div id=\"carousel_21\"  class=\"container\">");
-                myStringBuilder5.Append(" <div class=\"control-container\">");
-                myStringBuilder5.Append(" <div id=\"left-scroll-button_21\" onclick=\"leftScrollClick_21()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder5.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
-                myStringBuilder5.Append(" </div>");
-                myStringBuilder5.Append(" <div id=\"right-scroll-button_21\" onclick=\"rightScrollClick_21()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder5.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
-                myStringBuilder5.Append("</div>");
-                myStringBuilder5.Append(" </div>");
-
-                myStringBuilder5.Append("<div class=\"items\" id=\"carousel_21-items\"  >");
-
-                //carrega carrossel sugestao
-                list = action.carregaHabilidade(username, "5");
-                foreach (ConteudoDTO conteudoDTO in list)
+                if (Eletroportateis.Equals("S"))
                 {
-                    myStringBuilder5.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                    myStringBuilder5.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/img_defaul.png\" />");
-                    myStringBuilder5.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
-                    myStringBuilder5.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                    habilidades++;
+                    myStringBuilder5.Append("<div id=\"carousel_21\"  class=\"container\">");
+                    myStringBuilder5.Append(" <div class=\"control-container\">");
+                    myStringBuilder5.Append(" <div id=\"left-scroll-button_21\" onclick=\"leftScrollClick_21()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder5.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
                     myStringBuilder5.Append(" </div>");
+                    myStringBuilder5.Append(" <div id=\"right-scroll-button_21\" onclick=\"rightScrollClick_21()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder5.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
+                    myStringBuilder5.Append("</div>");
+                    myStringBuilder5.Append(" </div>");
+
+                    myStringBuilder5.Append("<div class=\"items\" id=\"carousel_21-items\"  >");
+
+                    //carrega carrossel sugestao
+                    list = action.carregaHabilidade(personNO, "5");
+                    foreach (ConteudoDTO conteudoDTO in list)
+                    {
+                        myStringBuilder5.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
+                        myStringBuilder5.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
+                        myStringBuilder5.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
+                        myStringBuilder5.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                        myStringBuilder5.Append(" </div>");
+                    }
+
+                    myStringBuilder5.Append("</div></div>");
+
+                    if (list.Count == 0) myStringBuilder5 = new StringBuilder();
+
                 }
-
-                myStringBuilder5.Append("</div></div>");
-
-                if (list.Count == 0) myStringBuilder5 = new StringBuilder();
-
             }
 
-            if (Fogoes.Equals("S"))
-            {
-
-                myStringBuilder6.Append("<div id=\"carousel_22\"  class=\"container\">");
-                myStringBuilder6.Append(" <div class=\"control-container\">");
-                myStringBuilder6.Append(" <div id=\"left-scroll-button_22\" onclick=\"leftScrollClick_22()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder6.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
-                myStringBuilder6.Append(" </div>");
-                myStringBuilder6.Append(" <div id=\"right-scroll-button_22\" onclick=\"rightScrollClick_22()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder6.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
-                myStringBuilder6.Append("</div>");
-                myStringBuilder6.Append(" </div>");
-
-                myStringBuilder6.Append("<div class=\"items\" id=\"carousel_22-items\"  >");
-
-                //carrega carrossel sugestao
-                list = action.carregaHabilidade(username, "6");
-                foreach (ConteudoDTO conteudoDTO in list)
+            if (habilidades < 3)
+            { 
+                if (Fogoes.Equals("S"))
                 {
-                    myStringBuilder6.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                    myStringBuilder6.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/img_defaul.png\" />");
-                    myStringBuilder6.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
-                    myStringBuilder6.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                    habilidades++;
+                    myStringBuilder6.Append("<div id=\"carousel_22\"  class=\"container\">");
+                    myStringBuilder6.Append(" <div class=\"control-container\">");
+                    myStringBuilder6.Append(" <div id=\"left-scroll-button_22\" onclick=\"leftScrollClick_22()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder6.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
                     myStringBuilder6.Append(" </div>");
+                    myStringBuilder6.Append(" <div id=\"right-scroll-button_22\" onclick=\"rightScrollClick_22()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder6.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
+                    myStringBuilder6.Append("</div>");
+                    myStringBuilder6.Append(" </div>");
+
+                    myStringBuilder6.Append("<div class=\"items\" id=\"carousel_22-items\"  >");
+
+                    //carrega carrossel sugestao
+                    list = action.carregaHabilidade(personNO, "6");
+                    foreach (ConteudoDTO conteudoDTO in list)
+                    {
+                        myStringBuilder6.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
+                        myStringBuilder6.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
+                        myStringBuilder6.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
+                        myStringBuilder6.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                        myStringBuilder6.Append(" </div>");
+                    }
+
+                    myStringBuilder6.Append("</div></div>");
+
+                    if (list.Count == 0) myStringBuilder6 = new StringBuilder();
+
                 }
-
-                myStringBuilder6.Append("</div></div>");
-
-                if (list.Count == 0) myStringBuilder6 = new StringBuilder();
-
             }
 
-            if (Lavadora.Equals("S"))
-            {
-
-                myStringBuilder7.Append("<div id=\"carousel_23\"  class=\"container\">");
-                myStringBuilder7.Append(" <div class=\"control-container\">");
-                myStringBuilder7.Append(" <div id=\"left-scroll-button_23\" onclick=\"leftScrollClick_23()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder7.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
-                myStringBuilder7.Append(" </div>");
-                myStringBuilder7.Append(" <div id=\"right-scroll-button_23\" onclick=\"rightScrollClick_23()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder7.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
-                myStringBuilder7.Append("</div>");
-                myStringBuilder7.Append(" </div>");
-
-                myStringBuilder7.Append("<div class=\"items\" id=\"carousel_23-items\"  >");
-
-                //carrega carrossel sugestao
-                list = action.carregaHabilidade(username, "7");
-                foreach (ConteudoDTO conteudoDTO in list)
+            if (habilidades < 3)
+            { 
+                if (Lavadora.Equals("S"))
                 {
-                    myStringBuilder7.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                    myStringBuilder7.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/img_defaul.png\" />");
-                    myStringBuilder7.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
-                    myStringBuilder7.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                    habilidades++;
+                    myStringBuilder7.Append("<div id=\"carousel_23\"  class=\"container\">");
+                    myStringBuilder7.Append(" <div class=\"control-container\">");
+                    myStringBuilder7.Append(" <div id=\"left-scroll-button_23\" onclick=\"leftScrollClick_23()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder7.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
                     myStringBuilder7.Append(" </div>");
+                    myStringBuilder7.Append(" <div id=\"right-scroll-button_23\" onclick=\"rightScrollClick_23()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder7.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
+                    myStringBuilder7.Append("</div>");
+                    myStringBuilder7.Append(" </div>");
+
+                    myStringBuilder7.Append("<div class=\"items\" id=\"carousel_23-items\"  >");
+
+                    //carrega carrossel sugestao
+                    list = action.carregaHabilidade(personNO, "7");
+                    foreach (ConteudoDTO conteudoDTO in list)
+                    {
+                        myStringBuilder7.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
+                        myStringBuilder7.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
+                        myStringBuilder7.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
+                        myStringBuilder7.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                        myStringBuilder7.Append(" </div>");
+                    }
+
+                    myStringBuilder7.Append("</div></div>");
+
+                    if (list.Count == 0) myStringBuilder7 = new StringBuilder();
+
                 }
-
-                myStringBuilder7.Append("</div></div>");
-
-                if (list.Count == 0) myStringBuilder7 = new StringBuilder();
-
             }
 
-            if (Lavadora_alta_pressao.Equals("S"))
-            {
-
-                myStringBuilder8.Append("<div id=\"carousel_24\"  class=\"container\">");
-                myStringBuilder8.Append(" <div class=\"control-container\">");
-                myStringBuilder8.Append(" <div id=\"left-scroll-button_24\" onclick=\"leftScrollClick_24()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder8.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
-                myStringBuilder8.Append(" </div>");
-                myStringBuilder8.Append(" <div id=\"right-scroll-button_24\" onclick=\"rightScrollClick_24()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder8.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
-                myStringBuilder8.Append("</div>");
-                myStringBuilder8.Append(" </div>");
-
-                myStringBuilder8.Append("<div class=\"items\" id=\"carousel_24-items\"  >");
-
-                //carrega carrossel sugestao
-                list = action.carregaHabilidade(username, "8");
-                foreach (ConteudoDTO conteudoDTO in list)
+            if (habilidades < 3)
+            { 
+                if (Lavadora_alta_pressao.Equals("S"))
                 {
-                    myStringBuilder8.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                    myStringBuilder8.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/img_defaul.png\" />");
-                    myStringBuilder8.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
-                    myStringBuilder8.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                    habilidades++;
+                    myStringBuilder8.Append("<div id=\"carousel_24\"  class=\"container\">");
+                    myStringBuilder8.Append(" <div class=\"control-container\">");
+                    myStringBuilder8.Append(" <div id=\"left-scroll-button_24\" onclick=\"leftScrollClick_24()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder8.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
                     myStringBuilder8.Append(" </div>");
+                    myStringBuilder8.Append(" <div id=\"right-scroll-button_24\" onclick=\"rightScrollClick_24()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder8.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
+                    myStringBuilder8.Append("</div>");
+                    myStringBuilder8.Append(" </div>");
+
+                    myStringBuilder8.Append("<div class=\"items\" id=\"carousel_24-items\"  >");
+
+                    //carrega carrossel sugestao
+                    list = action.carregaHabilidade(personNO, "8");
+                    foreach (ConteudoDTO conteudoDTO in list)
+                    {
+                        myStringBuilder8.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
+                        myStringBuilder8.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
+                        myStringBuilder8.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
+                        myStringBuilder8.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                        myStringBuilder8.Append(" </div>");
+                    }
+
+                    myStringBuilder8.Append("</div></div>");
+
+                    if (list.Count == 0) myStringBuilder8 = new StringBuilder();
+
                 }
-
-                myStringBuilder8.Append("</div></div>");
-
-                if (list.Count == 0) myStringBuilder8 = new StringBuilder();
-
             }
 
-            if (Lava_louca.Equals("S"))
+            if (habilidades < 3)
             {
-
-                myStringBuilder9.Append("<div id=\"carousel_25\"  class=\"container\">");
-                myStringBuilder9.Append(" <div class=\"control-container\">");
-                myStringBuilder9.Append(" <div id=\"left-scroll-button_25\" onclick=\"leftScrollClick_25()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder9.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
-                myStringBuilder9.Append(" </div>");
-                myStringBuilder9.Append(" <div id=\"right-scroll-button_25\" onclick=\"rightScrollClick_25()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder9.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
-                myStringBuilder9.Append("</div>");
-                myStringBuilder9.Append(" </div>");
-
-                myStringBuilder9.Append("<div class=\"items\" id=\"carousel_25-items\"  >");
-
-                //carrega carrossel sugestao
-                list = action.carregaHabilidade(username, "9");
-                foreach (ConteudoDTO conteudoDTO in list)
+                if (Lava_louca.Equals("S"))
                 {
-                    myStringBuilder9.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                    myStringBuilder9.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/img_defaul.png\" />");
-                    myStringBuilder9.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
-                    myStringBuilder9.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                    habilidades++;
+                    myStringBuilder9.Append("<div id=\"carousel_25\"  class=\"container\">");
+                    myStringBuilder9.Append(" <div class=\"control-container\">");
+                    myStringBuilder9.Append(" <div id=\"left-scroll-button_25\" onclick=\"leftScrollClick_25()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder9.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
                     myStringBuilder9.Append(" </div>");
+                    myStringBuilder9.Append(" <div id=\"right-scroll-button_25\" onclick=\"rightScrollClick_25()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder9.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
+                    myStringBuilder9.Append("</div>");
+                    myStringBuilder9.Append(" </div>");
+
+                    myStringBuilder9.Append("<div class=\"items\" id=\"carousel_25-items\"  >");
+
+                    //carrega carrossel sugestao
+                    list = action.carregaHabilidade(personNO, "9");
+                    foreach (ConteudoDTO conteudoDTO in list)
+                    {
+                        myStringBuilder9.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
+                        myStringBuilder9.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
+                        myStringBuilder9.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
+                        myStringBuilder9.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                        myStringBuilder9.Append(" </div>");
+                    }
+
+                    myStringBuilder9.Append("</div></div>");
+
+                    if (list.Count == 0) myStringBuilder9 = new StringBuilder();
+
                 }
-
-                myStringBuilder9.Append("</div></div>");
-
-                if (list.Count == 0) myStringBuilder9 = new StringBuilder();
-
             }
 
-            if (Micro_ondas.Equals("S"))
+            if (habilidades < 3)
             {
-
-                myStringBuilder10.Append("<div id=\"carousel_26\"  class=\"container\">");
-                myStringBuilder10.Append(" <div class=\"control-container\">");
-                myStringBuilder10.Append(" <div id=\"left-scroll-button_26\" onclick=\"leftScrollClick_26()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder10.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
-                myStringBuilder10.Append(" </div>");
-                myStringBuilder10.Append(" <div id=\"right-scroll-button_26\" onclick=\"rightScrollClick_26()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder10.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
-                myStringBuilder10.Append("</div>");
-                myStringBuilder10.Append(" </div>");
-
-                myStringBuilder10.Append("<div class=\"items\" id=\"carousel_26-items\"  >");
-
-                //carrega carrossel sugestao
-                list = action.carregaHabilidade(username, "10");
-                foreach (ConteudoDTO conteudoDTO in list)
+                if (Micro_ondas.Equals("S"))
                 {
-                    myStringBuilder10.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                    myStringBuilder10.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/img_defaul.png\" />");
-                    myStringBuilder10.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
-                    myStringBuilder10.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                    habilidades++;
+                    myStringBuilder10.Append("<div id=\"carousel_26\"  class=\"container\">");
+                    myStringBuilder10.Append(" <div class=\"control-container\">");
+                    myStringBuilder10.Append(" <div id=\"left-scroll-button_26\" onclick=\"leftScrollClick_26()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder10.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
                     myStringBuilder10.Append(" </div>");
+                    myStringBuilder10.Append(" <div id=\"right-scroll-button_26\" onclick=\"rightScrollClick_26()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder10.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
+                    myStringBuilder10.Append("</div>");
+                    myStringBuilder10.Append(" </div>");
+
+                    myStringBuilder10.Append("<div class=\"items\" id=\"carousel_26-items\"  >");
+
+                    //carrega carrossel sugestao
+                    list = action.carregaHabilidade(personNO, "10");
+                    foreach (ConteudoDTO conteudoDTO in list)
+                    {
+                        myStringBuilder10.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
+                        myStringBuilder10.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
+                        myStringBuilder10.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
+                        myStringBuilder10.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                        myStringBuilder10.Append(" </div>");
+                    }
+
+                    myStringBuilder10.Append("</div></div>");
+
+                    if (list.Count == 0) myStringBuilder10 = new StringBuilder();
+
                 }
-
-                myStringBuilder10.Append("</div></div>");
-
-                if (list.Count == 0) myStringBuilder10 = new StringBuilder();
-
             }
 
-            if (Purificador.Equals("S"))
+            if (habilidades < 3)
             {
-                myStringBuilder11.Append("<div id=\"carousel_27\"  class=\"container\">");
-                myStringBuilder11.Append(" <div class=\"control-container\">");
-                myStringBuilder11.Append(" <div id=\"left-scroll-button_27\" onclick=\"leftScrollClick_27()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder11.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
-                myStringBuilder11.Append(" </div>");
-                myStringBuilder11.Append(" <div id=\"right-scroll-button_27\" onclick=\"rightScrollClick_27()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder11.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
-                myStringBuilder11.Append("</div>");
-                myStringBuilder11.Append(" </div>");
-
-                myStringBuilder11.Append("<div class=\"items\" id=\"carousel_27-items\"  >");
-
-                //carrega carrossel sugestao
-                list = action.carregaHabilidade(username, "11");
-                foreach (ConteudoDTO conteudoDTO in list)
+                if (Purificador.Equals("S"))
                 {
-                    myStringBuilder11.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                    myStringBuilder11.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/img_defaul.png\" />");
-                    myStringBuilder11.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
-                    myStringBuilder11.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                    habilidades++;
+                    myStringBuilder11.Append("<div id=\"carousel_27\"  class=\"container\">");
+                    myStringBuilder11.Append(" <div class=\"control-container\">");
+                    myStringBuilder11.Append(" <div id=\"left-scroll-button_27\" onclick=\"leftScrollClick_27()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder11.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
                     myStringBuilder11.Append(" </div>");
+                    myStringBuilder11.Append(" <div id=\"right-scroll-button_27\" onclick=\"rightScrollClick_27()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder11.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
+                    myStringBuilder11.Append("</div>");
+                    myStringBuilder11.Append(" </div>");
+
+                    myStringBuilder11.Append("<div class=\"items\" id=\"carousel_27-items\"  >");
+
+                    //carrega carrossel sugestao
+                    list = action.carregaHabilidade(personNO, "11");
+                    foreach (ConteudoDTO conteudoDTO in list)
+                    {
+                        myStringBuilder11.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
+                        myStringBuilder11.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
+                        myStringBuilder11.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
+                        myStringBuilder11.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                        myStringBuilder11.Append(" </div>");
+                    }
+
+                    myStringBuilder11.Append("</div></div>");
+
+                    if (list.Count == 0) myStringBuilder11 = new StringBuilder();
                 }
-
-                myStringBuilder11.Append("</div></div>");
-
-                if (list.Count == 0) myStringBuilder11 = new StringBuilder();
             }
 
-            if (Refrigeracao.Equals("S"))
+            if (habilidades < 3)
             {
-                myStringBuilder12.Append("<div id=\"carousel_28\"  class=\"container\">");
-                myStringBuilder12.Append(" <div class=\"control-container\">");
-                myStringBuilder12.Append(" <div id=\"left-scroll-button_28\" onclick=\"leftScrollClick_28()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder12.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
-                myStringBuilder12.Append(" </div>");
-                myStringBuilder12.Append(" <div id=\"right-scroll-button_28\" onclick=\"rightScrollClick_28()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
-                myStringBuilder12.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
-                myStringBuilder12.Append("</div>");
-                myStringBuilder12.Append(" </div>");
-
-                myStringBuilder12.Append("<div class=\"items\" id=\"carousel_28-items\"  >");
-
-                //carrega carrossel sugestao
-                list = action.carregaHabilidade(username, "12");
-                foreach (ConteudoDTO conteudoDTO in list)
+                if (Refrigeracao.Equals("S"))
                 {
-                    myStringBuilder12.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
-                    myStringBuilder12.Append(" <img  loading=\"auto\" class=\"item-image\" src=\"../includes/images/img_defaul.png\" />");
-                    myStringBuilder12.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
-                    myStringBuilder12.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                    habilidades++;
+                    myStringBuilder12.Append("<div id=\"carousel_28\"  class=\"container\">");
+                    myStringBuilder12.Append(" <div class=\"control-container\">");
+                    myStringBuilder12.Append(" <div id=\"left-scroll-button_28\" onclick=\"leftScrollClick_28()\" class=\"left-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder12.Append("  <i class=\"fa fa-chevron-left\" aria-hidden=\"true\"></i>");
                     myStringBuilder12.Append(" </div>");
+                    myStringBuilder12.Append(" <div id=\"right-scroll-button_28\" onclick=\"rightScrollClick_28()\" class=\"right-scroll button scroll\" style=\"cursor:pointer; opacity:1;\">");
+                    myStringBuilder12.Append(" <i class=\"fa fa-chevron-right\" aria-hidden=\"true\"></i>");
+                    myStringBuilder12.Append("</div>");
+                    myStringBuilder12.Append(" </div>");
+
+                    myStringBuilder12.Append("<div class=\"items\" id=\"carousel_28-items\"  >");
+
+                    //carrega carrossel sugestao
+                    list = action.carregaHabilidade(personNO, "12");
+                    foreach (ConteudoDTO conteudoDTO in list)
+                    {
+                        myStringBuilder12.Append("<div class=\"item\"  style=\"cursor:pointer;\"  onclick=\"carregaConteudo('" + conteudoDTO.getId() + "')\" >");
+                        myStringBuilder12.Append(" <img  loading=\"auto\" class=\"item-image\" src=" + conteudoDTO.getUrlImagem() + " />");
+                        myStringBuilder12.Append("<div id=\"ind_desc1_1\" class=\"item-description opacity-none\"><div class=\"text\">" + conteudoDTO.getTitulo() + "</div></div>");
+                        myStringBuilder12.Append("<div style=\"top: 7px;position: relative;\"><img src=\"../includes/images/proprietario.png\" style=\"width: 12px;margin-right: 5px;\"><span style=\"font-size: 10;font-family: Arial;color: #92999f;\">" + conteudoDTO.getProprietario() + "</span></div>");
+                        myStringBuilder12.Append(" </div>");
+                    }
+
+                    myStringBuilder12.Append("</div></div>");
+
+                    if (list.Count == 0) myStringBuilder12 = new StringBuilder();
+
                 }
-
-                myStringBuilder12.Append("</div></div>");
-
-                if (list.Count == 0) myStringBuilder12 = new StringBuilder();
-
             }
 
 
@@ -713,6 +768,12 @@ namespace EluxcityWeb.pages
             if (username == null)
             {
                 username = "";
+            }
+
+            personNO = this.Request.Params.Get("personNO");
+            if (personNO == null)
+            {
+                personNO = "";
             }
 
             certificate = this.Request.Params.Get("certificate");

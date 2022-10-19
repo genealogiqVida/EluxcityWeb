@@ -4,7 +4,7 @@
     string nome = "";
     string pais = "";
     string lblUtil = "Foi Útil:";
-   string idioma = "";
+    string idioma = "";
     string tipoArvore = "";
     string username = "";
     HttpCookie cookie = Request.Cookies["tipoAcesso"];
@@ -24,12 +24,17 @@
         tipoAcesso = tipoAcesso.Split(',')[0];
     }
 
+    tipoAcesso = "usuario";
+
 
     cookie = Request.Cookies["pais"];
     if (cookie != null)
     {
         pais = cookie.Value.ToString();
         pais = pais.Replace("%20", " ");
+    }else
+    {
+        pais = "Brazil";
     }
 
     string urlVolta = "";
@@ -54,6 +59,9 @@
     {
         idioma = cookie.Value.ToString();
         idioma = idioma.Replace("%20", " ");
+    }else
+    {
+        idioma = "pt-BR";
     }
 
 
@@ -69,6 +77,9 @@
     {
         tipoArvore = cookie.Value.ToString();
         tipoArvore = tipoArvore.Replace("%20", " ");
+    }else
+    {
+        tipoArvore = "Arvore Produtos";
     }
 
    // try { tipoArvore = Session["tipoArvore"].ToString(); }
@@ -85,8 +96,8 @@
     string lblVoltar = "Voltar";
     string lblMenu2 = "Ocorrência";
     string lblCadastro = "Cadastro";
-   string lblSim = "Sim";
-   string lblNao = "Não";
+    string lblSim = "Sim";
+    string lblNao = "Não";
     string lblListagem = "Listagem";
     string lblNova = "Nova Pergunta";
     string lblArvore = "Arvore de Decisão";
@@ -106,8 +117,8 @@
         lblLista = "List of Questions";
         lblCancelar = "Cancel";
         lblSalvar = "Save";
-         lblLinha = "Line";
-         lblProduto = "Product";
+        lblLinha = "Line";
+        lblProduto = "Product";
         lblMenu1 = "Model";
         lblUtil = "Was useful:";
         lblMenu2 = "Ocurrencia";
@@ -162,15 +173,22 @@
 
     string idUser = Request.Params.Get("idUser");
     string user = Request.Params.Get("usuario");
-    if (idUser.IndexOf(',') != -1)
+    if(idUser != "" && idUser != null)
     {
-        idUser = idUser.Split(',')[0];
-    }
-    if (user.IndexOf(',') != -1)
+        if (idUser.IndexOf(',') != -1)
+        {
+            idUser = idUser.Split(',')[0];
+        }
+        if (user.IndexOf(',') != -1)
+        {
+            user = user.Split(',')[0];
+        }
+    }else
     {
-        user = user.Split(',')[0];
+        idUser = "";
     }
-    urlVolta = "index.aspx?idUser=" + idUser + "&username=" + user;
+    
+    urlVolta = "index.aspx?idUser=" + idUser + "&username=" + user + "&tipoAcesso=" + tipoAcesso;
 
 
 %>
@@ -694,7 +712,7 @@
                 carregaDadosTabela(cod_pergunta);
             } else {*/
                 // ver depois pra passar os parametros
-                document.location.href = "ocorrenciaUsuario.aspx";
+                document.location.href = "ocorrenciaUsuario.aspx?tipoAcesso=usuario&idUser=&usuario=<%=username%>&pais=<%=pais%>&tipoArvore=<%=tipoArvore%>";
            // }
           
            
@@ -828,19 +846,6 @@
     </script>
 <body>
      <div class="container-fluid">
-     <table border=0 style="width: 100%"><Tr>
-          <Td  align="left" style="width: 5%">  <img src="../includes/arvore/imagens/logo.png" class="img-responsive"/></img></Td>
-          
-             <Td  align="center" style="width: 45%" align="center"><span id="labelCliente">&nbsp;</span></Td>
-          
-       <td align="right"><span id="labelUsuario"><%=tipoArvore%></span></td>   <td align="right"><span id="labelUsuario">User:</span></td><td><span id="conteudoUsuario">&nbsp;<%=nome %></span></td>  
-    
-         
-   
-          
-      </Tr></table>
-
-
 
 
          <br />

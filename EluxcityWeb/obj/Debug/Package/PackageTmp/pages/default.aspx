@@ -25,7 +25,7 @@
 
         var dominio = "";
         var pais = "";
-        var idioma = "";
+        var idioma = "<%=idiomaLogin%>";
         var tipoAcesso = "";
         var tipoArvore = '<%=tipoArvore%>';
         var nome = "";
@@ -216,6 +216,7 @@
 
                             SetCookie("usuario", userName, 1);
                             SetCookie("idUser", idUser, 1);
+                            SetCookie("tipoArvore", tipoArvore, 1);
 
                             if (dominio == 'Consumer Care') {
                                 var dados = '<table>' +
@@ -245,7 +246,7 @@
                         // document.getElementById('arvore').innerHTML = dados;
                     }
 
-                            carregaPrincipal(tipoAcesso);
+                    carregaPrincipal(tipoAcesso);
 
                 }
             });
@@ -410,7 +411,8 @@
             //if (tipoAcesso == 'usuario') {
 
             //} else {
-            document.location = "principal.aspx?tipoArvore=" + tipoArvore + "&idUser=" + idUser + "&usuario=" + userName + "&username=" + userName + "&tipoAcesso=" + tipoAcesso;
+            console.log('Tipo arvore: ', tipoArvore);
+            document.location = "principal.aspx?tipoArvore=" + tipoArvore + "&idUser=" + idUser + "&usuario=" + userName + "&username=" + userName + "&tipoAcesso=" + tipoAcesso + "&nome=" + nome;
             //}
 
             

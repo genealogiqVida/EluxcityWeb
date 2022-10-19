@@ -28,6 +28,25 @@ namespace EluxcityWeb.Model
             return dao.carregandoCoroas(username);
         }
 
-       
+        public List<CoroasEspeciaisDTO> carregaCoroasEspeciais(string username)
+        {
+            this.getInstance();
+            return dao.carregandoCoroasEspeciais(username);
+        }
+
+        public String carregaDataAtualizacao(string username)
+        {
+            this.getInstance();
+            return dao.carregandoDataAtualizacao(username);
+        }
+
+        public bool verificaPerfilAdministrador(string username)
+        {
+            this.getInstance();
+            return dao.verificandoPerfilAdministrador(username);
+        }
+
+
+
     }
 }

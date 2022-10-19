@@ -16,8 +16,8 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
-    <IISExpressAnonymousAuthentication />
-    <IISExpressWindowsAuthentication />
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
     <TargetFrameworkProfile />
     <Use64BitIISExpress />
@@ -290,7 +290,74 @@
     <Content Include="includes\imagens\ui-icons_cd0a0a_256x240.png" />
     <Content Include="includes\imagens\util.png" />
     <Content Include="includes\imagens\warning.png" />
+    <Content Include="includes\images\banner\banner_reciclagem.png" />
+    <Content Include="includes\images\banner\banner_campanha.png" />
+    <Content Include="includes\images\banner\banner-circular.png" />
+    <Content Include="includes\images\banner\banner.png" />
+    <Content Include="includes\images\banner\Banner_4.png" />
+    <Content Include="includes\images\banner\Banner_3.png" />
+    <Content Include="includes\images\banner\Banner_1.png" />
+    <Content Include="includes\images\banner\Banner_2.png" />
+    <Content Include="includes\images\banner\banner-semana-refrigeracao.png" />
+    <Content Include="includes\images\boletins\BT.png" />
+    <Content Include="includes\images\boletins\BT_adega.jpg" />
+    <Content Include="includes\images\boletins\BT_AirFryer.png" />
+    <Content Include="includes\images\boletins\BT_Altapressao.png" />
+    <Content Include="includes\images\boletins\BT_Aspirador.png" />
+    <Content Include="includes\images\boletins\BT_Bebedouro.png" />
+    <Content Include="includes\images\boletins\BT_Cafeteira.png" />
+    <Content Include="includes\images\boletins\BT_Cervejeira.png" />
+    <Content Include="includes\images\boletins\BT_Chaleira.png" />
+    <Content Include="includes\images\boletins\BT_Coifas.png" />
+    <Content Include="includes\images\boletins\BT_condicionador.png" />
+    <Content Include="includes\images\boletins\BT_Cooktop.png" />
+    <Content Include="includes\images\boletins\BT_Depurador.png" />
+    <Content Include="includes\images\boletins\BT_Fogao.png" />
+    <Content Include="includes\images\boletins\BT_Forno.png" />
+    <Content Include="includes\images\boletins\BT_Frigobar.png" />
+    <Content Include="includes\images\boletins\BT_Geladeira.png" />
+    <Content Include="includes\images\boletins\BT_lavadora.png" />
+    <Content Include="includes\images\boletins\BT_Lavaseca.png" />
+    <Content Include="includes\images\boletins\BT_loucas.png" />
+    <Content Include="includes\images\boletins\BT_micro.png" />
+    <Content Include="includes\images\boletins\BT_Panela.png" />
+    <Content Include="includes\images\boletins\BT_Purificador.png" />
+    <Content Include="includes\images\boletins\BT_secadora.png" />
+    <Content Include="includes\images\boletins\BT_Torradeira.png" />
+    <Content Include="includes\images\boletins\la_cards_icones_eluxcity_Ferro de Passar_v2-01.png" />
+    <Content Include="includes\images\boletins\la_cards_icones_eluxcity_Liquidificador_v2-01.png" />
+    <Content Include="includes\images\boletins\la_cards_icones_eluxcity_Mixer_v2-01.png" />
+    <Content Include="includes\images\boletins\la_cards_icones_eluxcity_Processador_v1-01.png" />
+    <Content Include="includes\images\boletins\la_cards_icones_eluxcity_Vaporizador de Piso_v1-01.png" />
+    <Content Include="includes\images\boletins\la_cards_icones_Utilidades Domesticas_v2-01.png" />
     <Content Include="includes\images\circulares.png" />
+    <Content Include="includes\images\circulares\0.png" />
+    <Content Include="includes\images\circulares\2005.png" />
+    <Content Include="includes\images\circulares\2006.png" />
+    <Content Include="includes\images\circulares\2007.png" />
+    <Content Include="includes\images\circulares\2008.png" />
+    <Content Include="includes\images\circulares\2009.png" />
+    <Content Include="includes\images\circulares\2010.png" />
+    <Content Include="includes\images\circulares\2011.png" />
+    <Content Include="includes\images\circulares\2012.png" />
+    <Content Include="includes\images\circulares\2013.png" />
+    <Content Include="includes\images\circulares\2014.png" />
+    <Content Include="includes\images\circulares\2015.png" />
+    <Content Include="includes\images\circulares\2016.png" />
+    <Content Include="includes\images\circulares\2017.png" />
+    <Content Include="includes\images\circulares\2018.png" />
+    <Content Include="includes\images\circulares\2019.png" />
+    <Content Include="includes\images\circulares\2020.png" />
+    <Content Include="includes\images\circulares\2021.png" />
+    <Content Include="includes\images\circulares\2022.png" />
+    <Content Include="includes\images\circulares\2023.png" />
+    <Content Include="includes\images\circulares\2024.png" />
+    <Content Include="includes\images\circulares\2025.png" />
+    <Content Include="includes\images\circulares\2026.png" />
+    <Content Include="includes\images\circulares\2027.png" />
+    <Content Include="includes\images\circulares\2028.png" />
+    <Content Include="includes\images\circulares\2029.png" />
+    <Content Include="includes\images\circulares\2030.png" />
     <Content Include="includes\images\logo_rodape_resize.png" />
     <Content Include="includes\images\img_defaul.png" />
     <Content Include="includes\images\loading.gif" />
@@ -298,8 +365,85 @@
     <Content Include="includes\images\logo_contactcenter.png" />
     <Content Include="includes\images\logo_rodape.png" />
     <Content Include="includes\images\manuais.png" />
+    <Content Include="includes\images\manuais\Manual.png" />
+    <Content Include="includes\images\manuais\Manual_adega.png" />
+    <Content Include="includes\images\manuais\Manual_AirFryer.png" />
+    <Content Include="includes\images\manuais\Manual_Altapressão.png" />
+    <Content Include="includes\images\manuais\Manual_Aspirador.png" />
+    <Content Include="includes\images\manuais\Manual_Bebedouro.png" />
+    <Content Include="includes\images\manuais\Manual_Cafeteira.png" />
+    <Content Include="includes\images\manuais\Manual_Cervejeira.png" />
+    <Content Include="includes\images\manuais\Manual_Chaleira.png" />
+    <Content Include="includes\images\manuais\Manual_Coifas.png" />
+    <Content Include="includes\images\manuais\Manual_condicionador.png" />
+    <Content Include="includes\images\manuais\Manual_Cooktop.png" />
+    <Content Include="includes\images\manuais\Manual_Depurador.png" />
+    <Content Include="includes\images\manuais\Manual_Ferro.png" />
+    <Content Include="includes\images\manuais\Manual_Fogao.png" />
+    <Content Include="includes\images\manuais\Manual_Forno.png" />
+    <Content Include="includes\images\manuais\Manual_Frigobar.png" />
+    <Content Include="includes\images\manuais\Manual_Geladeira.png" />
+    <Content Include="includes\images\manuais\Manual_lavadora.png" />
+    <Content Include="includes\images\manuais\Manual_Lavaseca.png" />
+    <Content Include="includes\images\manuais\Manual_Liquidificador.png" />
+    <Content Include="includes\images\manuais\Manual_loucas.png" />
+    <Content Include="includes\images\manuais\Manual_micro.png" />
+    <Content Include="includes\images\manuais\Manual_Mixer.png" />
+    <Content Include="includes\images\manuais\Manual_Panela.png" />
+    <Content Include="includes\images\manuais\Manual_Processador.png" />
+    <Content Include="includes\images\manuais\Manual_Purificador.png" />
+    <Content Include="includes\images\manuais\Manual_secadora.png" />
+    <Content Include="includes\images\manuais\Manual_Torradeira.png" />
+    <Content Include="includes\images\manuais\Manual_UD.png" />
+    <Content Include="includes\images\manuais\Manual_Vaporizador.png" />
     <Content Include="includes\images\proprietario.png" />
+    <Content Include="includes\images\provas\AC.png" />
+    <Content Include="includes\images\provas\ACF.png" />
+    <Content Include="includes\images\provas\ADM.png" />
+    <Content Include="includes\images\provas\DW.png" />
+    <Content Include="includes\images\provas\EC.png" />
+    <Content Include="includes\images\provas\FC.png" />
+    <Content Include="includes\images\provas\FPP.png" />
+    <Content Include="includes\images\provas\FPS.png" />
+    <Content Include="includes\images\provas\HP.png" />
+    <Content Include="includes\images\provas\IOT.png" />
+    <Content Include="includes\images\provas\LV.png" />
+    <Content Include="includes\images\provas\MWO.png" />
+    <Content Include="includes\images\provas\RI.png" />
+    <Content Include="includes\images\provas\SA.png" />
+    <Content Include="includes\images\provas\WC.png" />
     <Content Include="includes\images\rodape.png" />
+    <Content Include="includes\images\videos\la_cards_icones_Utilidades Domesticas_v1-08.png" />
+    <Content Include="includes\images\videos\la_cards_icones_videos.png" />
+    <Content Include="includes\images\videos\Video_adega.png" />
+    <Content Include="includes\images\videos\Video_Air Fryer.png" />
+    <Content Include="includes\images\videos\Video_Altapressão.png" />
+    <Content Include="includes\images\videos\Video_Aspirador.png" />
+    <Content Include="includes\images\videos\Video_Bebedouro.png" />
+    <Content Include="includes\images\videos\Video_Cafeteira.png" />
+    <Content Include="includes\images\videos\Video_Cervejeira.png" />
+    <Content Include="includes\images\videos\Video_Chaleira.png" />
+    <Content Include="includes\images\videos\Video_Coifas.png" />
+    <Content Include="includes\images\videos\Video_condicionador.png" />
+    <Content Include="includes\images\videos\Video_Cooktop.png" />
+    <Content Include="includes\images\videos\Video_Depurador.png" />
+    <Content Include="includes\images\videos\Video_Ferro.png" />
+    <Content Include="includes\images\videos\Video_Fogao.png" />
+    <Content Include="includes\images\videos\Video_Forno.png" />
+    <Content Include="includes\images\videos\Video_Frigobar.png" />
+    <Content Include="includes\images\videos\Video_Geladeira.png" />
+    <Content Include="includes\images\videos\Video_lavadora.png" />
+    <Content Include="includes\images\videos\Video_Lavaseca.png" />
+    <Content Include="includes\images\videos\Video_Liquidificador.png" />
+    <Content Include="includes\images\videos\Video_loucas.png" />
+    <Content Include="includes\images\videos\Video_micro.png" />
+    <Content Include="includes\images\videos\Video_Mixer.png" />
+    <Content Include="includes\images\videos\Video_Panela.png" />
+    <Content Include="includes\images\videos\Video_Processador.png" />
+    <Content Include="includes\images\videos\Video_Purificador.png" />
+    <Content Include="includes\images\videos\Video_secadora.png" />
+    <Content Include="includes\images\videos\Video_Torradeira.png" />
+    <Content Include="includes\images\videos\Video_Vaporizador.png" />
     <Content Include="includes\js\ajaxupload.js" />
     <Content Include="includes\js\bootstrap-multiselect-esp.js" />
     <Content Include="includes\js\bootstrap-multiselect-ing.js" />
@@ -334,6 +478,7 @@
     <Content Include="includes\js\jquery.dataTables.min.js" />
     <Content Include="includes\js\jquery.modal.js" />
     <Content Include="includes\js\popper.min.js" />
+    <Content Include="includes\js\slideShow.js" />
     <Content Include="includes\slick\ajax-loader.gif" />
     <Content Include="includes\slick\fonts\slick.svg" />
     <Content Include="includes\slick\slick-theme.css" />
@@ -422,6 +567,7 @@
     <Content Include="includes\tinymce\LICENSE.TXT" />
     <Content Include="pages\administrador.aspx" />
     <Content Include="pages\boletim.aspx" />
+    <Content Include="pages\circulares.aspx" />
     <Content Include="pages\consultar.aspx" />
     <Content Include="pages\contactcenter.aspx" />
     <Content Include="pages\default.aspx" />
@@ -711,6 +857,13 @@
     </Compile>
     <Compile Include="pages\boletim.aspx.designer.cs">
       <DependentUpon>boletim.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\circulares.aspx.cs">
+      <DependentUpon>circulares.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\circulares.aspx.designer.cs">
+      <DependentUpon>circulares.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\consultar.aspx.cs">
       <DependentUpon>consultar.aspx</DependentUpon>

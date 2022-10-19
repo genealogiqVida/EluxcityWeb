@@ -22,11 +22,12 @@ namespace EluxcityWeb.pages
     {
         protected String idUser = "";
         protected String username = "";
-        protected String url = "https://eluxcitysb-api.sabacloud.com";
-        protected String usuario = "felipe.miranda";
+        protected String personNO = "";
+        protected String url = "https://use-api.sabacloud.com";
+        protected String usuario = "administrador";
         protected String senha = "elux123";
     
-        protected String perfil = "tecnico";
+        protected String perfil = "administrador";
         protected String certificateLogin = "";
 
 
@@ -43,6 +44,8 @@ namespace EluxcityWeb.pages
         protected String Purificador = "N";
         protected String Refrigeracao = "N";
         protected String equipe = "N";
+        protected String dominio = "";
+        protected String nomeCompleto = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -83,63 +86,75 @@ namespace EluxcityWeb.pages
                      var request = new RestRequest(Method.GET);
                      request.AddHeader("SabaCertificate", certificate);
                      IRestResponse response = client.Execute(request);
-                     if (response.StatusCode.Equals(HttpStatusCode.OK))
+
+                    if (response.StatusCode.Equals(HttpStatusCode.OK))
                      {
                          ret = response.Content.ToString();
 
                          Newtonsoft.Json.Linq.JToken token1 = Newtonsoft.Json.Linq.JObject.Parse(ret);
-                         username = (String)token1.SelectToken("person_no");
+                         personNO = (String)token1.SelectToken("person_no");
+                         username = (String)token1.SelectToken("username");
 
-                         if(idUser.IndexOf("emplo") != -1) {
-                              username = (String)token1.SelectToken("ss_no");
-                              if (username == null)
-                              {
-                                  username = (String)token1.SelectToken("username");
-                              }
-                              if (username.Equals(""))
-                              {
-                                  username = (String)token1.SelectToken("username");
-                              }
-                         }
-
-                         if (username == null)
-                         {
-                             username = (String)token1.SelectToken("person_no");
-                         }
-
-                         if (username == null)
-                         {
-                             username = (String)token1.SelectToken("username");
-                         }
+                        Newtonsoft.Json.Linq.JToken securityDomain = token1.SelectToken("securityDomain");
+                         dominio = (String)securityDomain.SelectToken("displayName");
 
                          Newtonsoft.Json.Linq.JToken token2 = token1.SelectToken("jobtype_id");
                          String displayName = (String)token2.SelectToken("displayName");
-                       
-                          Newtonsoft.Json.Linq.JToken token3 = token1.SelectToken("customValues");
+
+                        String fName = (String)token1.SelectToken("fname");
+                        String lname = (String)token1.SelectToken("lname");
+
+                        nomeCompleto = fName + " " + lname;
+
+                        Newtonsoft.Json.Linq.JToken token3 = token1.SelectToken("customValues");
+#pragma warning disable CS0168 // A variável "ex" está declarada, mas nunca é usada
                           try { Boolean ExCustom2 = (Boolean)token3.SelectToken("ExCustom2"); if (ExCustom2) Adegas = "S"; }
                           catch (Exception ex) { }
+#pragma warning restore CS0168 // A variável "ex" está declarada, mas nunca é usada
+#pragma warning disable CS0168 // A variável "ex" está declarada, mas nunca é usada
                           try { Boolean ExCustom3 = (Boolean)token3.SelectToken("ExCustom3"); if (ExCustom3) Ar_condicionado = "S"; }
                           catch (Exception ex) { }
+#pragma warning restore CS0168 // A variável "ex" está declarada, mas nunca é usada
+#pragma warning disable CS0168 // A variável "ex" está declarada, mas nunca é usada
                           try { Boolean ExCustom4 = (Boolean)token3.SelectToken("ExCustom4"); if (ExCustom4) Aspirador = "S"; }
                           catch (Exception ex) { }
+#pragma warning restore CS0168 // A variável "ex" está declarada, mas nunca é usada
+#pragma warning disable CS0168 // A variável "ex" está declarada, mas nunca é usada
                           try { Boolean ExCustom5 = (Boolean)token3.SelectToken("ExCustom5"); if (ExCustom5) Conectados = "S"; }
                           catch (Exception ex) { }
+#pragma warning restore CS0168 // A variável "ex" está declarada, mas nunca é usada
+#pragma warning disable CS0168 // A variável "ex" está declarada, mas nunca é usada
                           try { Boolean ExCustom6 = (Boolean)token3.SelectToken("ExCustom6"); if (ExCustom6) Eletroportateis = "S"; }
                           catch (Exception ex) { }
+#pragma warning restore CS0168 // A variável "ex" está declarada, mas nunca é usada
+#pragma warning disable CS0168 // A variável "ex" está declarada, mas nunca é usada
                           try { Boolean ExCustom7 = (Boolean)token3.SelectToken("ExCustom7"); if (ExCustom7) Fogoes = "S"; }
                           catch (Exception ex) { }
+#pragma warning restore CS0168 // A variável "ex" está declarada, mas nunca é usada
+#pragma warning disable CS0168 // A variável "ex" está declarada, mas nunca é usada
                           try { Boolean ExCustom8 = (Boolean)token3.SelectToken("ExCustom8"); if (ExCustom8) Lavadora = "S"; }
                           catch (Exception ex) { }
+#pragma warning restore CS0168 // A variável "ex" está declarada, mas nunca é usada
+#pragma warning disable CS0168 // A variável "ex" está declarada, mas nunca é usada
                           try { Boolean ExCustom9 = (Boolean)token3.SelectToken("ExCustom9"); if (ExCustom9) Lavadora_alta_pressao = "S"; }
                           catch (Exception ex) { }
+#pragma warning restore CS0168 // A variável "ex" está declarada, mas nunca é usada
+#pragma warning disable CS0168 // A variável "ex" está declarada, mas nunca é usada
                           try { Boolean ExCustom10 = (Boolean)token3.SelectToken("ExCustom10"); if (ExCustom10) Lava_louca = "S"; }
                           catch (Exception ex) { }
+#pragma warning restore CS0168 // A variável "ex" está declarada, mas nunca é usada
+#pragma warning disable CS0168 // A variável "ex" está declarada, mas nunca é usada
                           try { Boolean ExCustom11 = (Boolean)token3.SelectToken("ExCustom11"); if (ExCustom11) Micro_ondas = "S"; }
                           catch (Exception ex) { }
+#pragma warning restore CS0168 // A variável "ex" está declarada, mas nunca é usada
+#pragma warning disable CS0168 // A variável "ex" está declarada, mas nunca é usada
                           try { Boolean ExCustom12 = (Boolean)token3.SelectToken("ExCustom12"); if (ExCustom12) Purificador = "S"; }
                           catch (Exception ex) { }
+#pragma warning restore CS0168 // A variável "ex" está declarada, mas nunca é usada
+#pragma warning disable CS0168 // A variável "ex" está declarada, mas nunca é usada
                           try { Boolean ExCustom13 = (Boolean)token3.SelectToken("ExCustom13"); if (ExCustom13) Refrigeracao = "S"; }
                           catch (Exception ex) { }
+#pragma warning restore CS0168 // A variável "ex" está declarada, mas nunca é usada
 
                          
                          
@@ -195,21 +210,18 @@ namespace EluxcityWeb.pages
 
             if (perfil.Equals("administrativo"))
             {
-                Response.Redirect("administrador.aspx?idUser=" + idUser + "&username=" + username + "&certificate=" + certificateLogin + "&equipe=" + equipe);
+                Response.Redirect("administrador.aspx?idUser=" + idUser + "&username=" + username + "&personNO=" + personNO + "&certificate=" + certificateLogin + "&equipe=" + equipe + "&dominio=" + dominio + "&nomeCompleto=" + nomeCompleto);
 
             }
             else if (perfil.Equals("proprietário"))
             {
-                Response.Redirect("proprietario.aspx?idUser=" + idUser + "&username=" + username + "&certificate=" + certificateLogin + "&equipe=" + equipe);
+                Response.Redirect("proprietario.aspx?idUser=" + idUser + "&username=" + username + "&personNO=" + personNO + "&certificate=" + certificateLogin + "&equipe=" + equipe + "&dominio=" + dominio + "&nomeCompleto=" + nomeCompleto);
             }else{
 
-                Response.Redirect("tecnico.aspx?idUser=" + idUser + "&username=" + username + "&certificate=" + certificateLogin
+                Response.Redirect("tecnico.aspx?idUser=" + idUser + "&username=" + username + "&personNO=" + personNO + "&certificate=" + certificateLogin
                    + "&Adegas=" + Adegas + "&Ar_condicionado=" + Ar_condicionado + "&Aspirador=" + Aspirador + "&Conectados=" + Conectados + "&Eletroportateis=" + Eletroportateis + "&Fogoes=" + Fogoes
-                    + "&Lavadora=" + Lavadora + "&Lavadora_alta_pressao=" + Lavadora_alta_pressao + "&Lava_louca=" + Lava_louca + "&Micro_ondas=" + Micro_ondas + "&Purificador=" + Purificador + "&Refrigeracao=" + Refrigeracao + "&equipe=" + equipe);
+                    + "&Lavadora=" + Lavadora + "&Lavadora_alta_pressao=" + Lavadora_alta_pressao + "&Lava_louca=" + Lava_louca + "&Micro_ondas=" + Micro_ondas + "&Purificador=" + Purificador + "&Refrigeracao=" + Refrigeracao + "&equipe=" + equipe + "&dominio=" + dominio + "&nomeCompleto=" + nomeCompleto);
             }
-
-           
-
         }
     }
 }

@@ -12,6 +12,7 @@ namespace EluxcityWeb.DTO
        private String titulo;
        private String urlImagem;
        private String proprietario;
+       private String nameFolder;
      
  
        public string getProprietario()
@@ -56,6 +57,16 @@ namespace EluxcityWeb.DTO
        {
            this.titulo = titulo;
        }
+
+       public String getNameFolder()
+        {
+            return this.nameFolder;
+        }
+
+        public void setNameFolder(string nameFolder)
+        {
+            this.nameFolder = nameFolder;
+        }
 
     }
 }
