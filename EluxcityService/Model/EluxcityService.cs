@@ -87,6 +87,11 @@ namespace EluxcityWeb.Model
             return dao.carregandoBoletimServico(username);
         }
 
+        public List<ConteudoOrdenadoTipoProdutoDTO> carregaBoletimServicoOrdenadoProduto(string username, string idioma)
+        {
+            this.getInstance();
+            return dao.carregandoBoletimServicoOrdenadoProduto(username, idioma);
+        }
         public List<ConteudoDTO> carregaTreinamentoEquipeAdministrativa(string username)
         {
             this.getInstance();

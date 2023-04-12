@@ -32,6 +32,46 @@ namespace EluxcityWeb.pages
         protected StringBuilder myStringBuilderTerceira = new StringBuilder();
 
         protected String dominio = "";
+        protected String nomeCompleto = "";
+
+        protected String btnManualServicos = "Manual de Serviços";
+        protected String btnBoletinsTecnicos = "Boletins técnicos";
+        protected String btnVideos = "Vídeos";
+        protected String msgCarrosselVazio = "Não existem conteúdos/cursos a serem exibidos aqui";
+        protected String tituloGeladeiras = "Vídeos de geladeiras";
+        protected String tituloArCondicionado = "Vídeos de Ar condicionado";
+        protected String tituloSecadoras = "Vídeos de secadoras";
+        protected String tituloFogoes = "Vídeos de fogões";
+        protected String tituloMaquinasLavar = "Vídeos de máquinas de lavar";
+        protected String tituloCondicionadoresAr = "Vídeos de condicionadores de Ar";
+        protected String tituloEletroportateis = "Vídeos de eletroportáteis";
+        protected String tituloFornos = "Vídeos de fornos";
+        protected String tituloLavaLoucas = "Vídeos de Lava Louças";
+
+        protected String idioma = "";
+        protected String pais = "";
+
+        protected List<String> dominiosLatam = new List<string>()
+        {
+            "ARG - Consumer Care",
+            "CHI - Consumer Care",
+            "COL - Consumer Care",
+            "ECU - Consumer Care",
+            "PER - Consumer Care",
+            "PUB - Consumer Care",
+            "ARG - Service Center",
+            "CHI - Service Center",
+            "COL - Service Center",
+            "ECU - Service Center",
+            "PER - Service Center",
+            "PUB - Service Center"
+        };
+
+        protected List<String> dominiosUWM = new List<string>()
+        {
+            "UWM - Consumer Care",
+            "UWM - Service Center"
+        };
 
         protected override void OnInit(EventArgs e)
         {
@@ -45,6 +85,18 @@ namespace EluxcityWeb.pages
             if (dominio == null)
             {
                 dominio = "";
+            }
+
+            idioma = this.Request.Params.Get("idioma");
+            if (idioma == null)
+            {
+                idioma = "";
+            }
+
+            pais = this.Request.Params.Get("pais");
+            if (pais == null)
+            {
+                pais = "";
             }
 
             idUser = this.Request.Params.Get("idUser");
@@ -69,6 +121,45 @@ namespace EluxcityWeb.pages
             if (certificate == null)
             {
                 certificate = "";
+            }
+
+            nomeCompleto = this.Request.Params.Get("nomeCompleto");
+            if (nomeCompleto == null)
+            {
+                nomeCompleto = "";
+            }
+
+            if (dominiosLatam.Contains(dominio))
+            {
+                btnManualServicos = "Manual de Servicio";
+                btnBoletinsTecnicos = "Boletines Tecnicos";
+                btnVideos = "Vídeos";
+                msgCarrosselVazio = "No hay contenidos/cursos para mostrar aquí";
+                tituloGeladeiras = "Videos Frigorifico";
+                tituloArCondicionado = "Videos de Aire Acondicionado";
+                tituloSecadoras = "Videos de secadoras";
+                tituloFogoes = "Videos de estufas";
+                tituloMaquinasLavar = "Videos de lavadoras";
+                tituloCondicionadoresAr = "Videos de aires acondicionados";
+                tituloEletroportateis = "Videos Electroportateis";
+                tituloFornos = "Videos de horno";
+                tituloLavaLoucas = "Videos Lavavajillas";
+            }
+            else if (dominiosUWM.Contains(dominio))
+            {
+                btnManualServicos = "Service Manual";
+                btnBoletinsTecnicos = "Technical Bulletins";
+                btnVideos = "Videos";
+                msgCarrosselVazio = "There are no contents/courses to display here";
+                tituloGeladeiras = "Fridge Videos";
+                tituloArCondicionado = "Air Conditioning Videos";
+                tituloSecadoras = "Videos of dryers";
+                tituloFogoes = "Videos of stoves";
+                tituloMaquinasLavar = "Videos of washing machines";
+                tituloCondicionadoresAr = "Videos of air conditioners";
+                tituloEletroportateis = "Electroportateis Videos";
+                tituloFornos = "Oven Videos";
+                tituloLavaLoucas = "Dishwasher Videos";
             }
 
             EluxcityAction action = new EluxcityAction();

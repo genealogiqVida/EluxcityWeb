@@ -54,7 +54,10 @@
     {
         pais = cookie.Value.ToString();
         pais = pais.Replace("%20", " ");
-    }else
+    }
+
+    pais = Request.Params.Get("pais");
+    if(pais == null)
     {
         pais = "Brazil";
     }
@@ -66,7 +69,11 @@
         idioma = idioma.Replace("%20", " ");
     }else
     {
-        idioma = "pt-BR";
+        idioma = Request.Params.Get("idioma");
+        if(idioma == null)
+        {
+            idioma = "pt-BR";
+        }
     }
 
 
@@ -167,7 +174,13 @@
 
     string codigoPais = pais;
     if (pais.Equals("Brazil"))
+    {
         codigoPais = "2";
+    }else
+    {
+        codigoPais = "1";
+    }
+        
 
 
 

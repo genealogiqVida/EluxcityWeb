@@ -332,6 +332,10 @@ namespace EluxcityWeb.DAO
             string virgula = "";
             string sql = "";
             SqlConnection con = null;
+            if (pais != "0" && pais != "2")
+            {
+                pais = "1";
+            }
             try
             {
 
@@ -575,6 +579,10 @@ namespace EluxcityWeb.DAO
         {
             string sql = "";
             string dados = "<option value=\"\"> </option>";
+            if (codPais != "2")
+            {
+                codPais = "1";
+            }
             SqlConnection con = null;
             try
             {
@@ -638,6 +646,10 @@ namespace EluxcityWeb.DAO
         {
             string sql = "";
             string dados = "<option value=\"\"> </option>";
+            if (codPais != "2")
+            {
+                codPais = "1";
+            }
             SqlConnection con = null;
             try
             {
@@ -690,6 +702,10 @@ namespace EluxcityWeb.DAO
         {
             SqlConnection con = null;
             string dados = "<option value=\"\"> </option>";
+            if (codPais != "2")
+            {
+                codPais = "1";
+            }
             try
             {
                  con = getConexao();
@@ -732,6 +748,10 @@ namespace EluxcityWeb.DAO
         {
             SqlConnection con = null;
             string dados = "<option value=\"\"> </option>";
+            if (codPais != "2")
+            {
+                codPais = "1";
+            }
             try
             {
                 con = getConexao();

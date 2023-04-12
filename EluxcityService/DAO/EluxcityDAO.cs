@@ -22,7 +22,7 @@ namespace EluxcityWeb.DAO
             {
                 string sql = "";
                 con = getConexao();
-                sql = " SELECT a.id, a.name, a.created_by, a.url_video, a.type, a.canal_video, a.name_folder "+
+                sql = " SELECT a.id, a.name, a.created_by, a.url_video, a.type, a.canal_video, a.name_folder, a.updated_on "+
                           "FROM content a "+
                           "inner join content_group b on b.id_content = a.id "+
                           "inner join user_group c on c.id_group = b.id_group "+
@@ -40,6 +40,8 @@ namespace EluxcityWeb.DAO
                     dto.setTitulo(dr["name"].ToString());
                     dto.setProprietario(dr["created_by"].ToString());
                     dto.setNameFolder(dr["name_folder"].ToString().ToUpper());
+                    dto.setUpdated_On(Convert.ToDateTime(dr["updated_on"].ToString()));
+                    dto.setUpdated_On(Convert.ToDateTime(dr["updated_on"].ToString()));
 
                     if (dr["type"].ToString() == "video")
                     {
@@ -556,6 +558,8 @@ namespace EluxcityWeb.DAO
 
             finally { con.Close(); }
 
+            list.OrderByDescending(e => e.getUpdated_On());
+
             return list;
         }
 
@@ -593,6 +597,8 @@ namespace EluxcityWeb.DAO
                     dto.setNameFolder(dr["name_folder"].ToString());
                     string updatedOn = dr["updated_on"].ToString();
                     DateTime dateTime = Convert.ToDateTime(updatedOn);
+                    dto.setUpdated_On(dateTime);
+
                     if (dto.getNameFolder() != null && dto.getNameFolder() != "")
                     {
                         if (dto.getNameFolder().Contains("2005"))
@@ -1300,7 +1306,7 @@ namespace EluxcityWeb.DAO
             {
                 string sql = "";
                 con = getConexao();
-                sql = " SELECT  a.id, a.name, a.created_by, a.url_video, a.type, a.name_folder " +
+                sql = " SELECT  a.id, a.name, a.created_by, a.url_video, a.type, a.name_folder, a.updated_on " +
                           "FROM content a " +
                           "inner join content_group b on b.id_content = a.id " +
                           "inner join user_group c on c.id_group = b.id_group " +
@@ -1318,6 +1324,8 @@ namespace EluxcityWeb.DAO
                     dto.setTitulo(dr["name"].ToString());
                     dto.setProprietario(dr["created_by"].ToString());
                     dto.setNameFolder(dr["name_folder"].ToString());
+                    dto.setUpdated_On(Convert.ToDateTime(dr["updated_on"].ToString()));
+
                     if (dto.getNameFolder() != null && dto.getNameFolder() != "")
                     {
                         if (dto.getNameFolder().Contains("2005"))
@@ -1431,6 +1439,8 @@ namespace EluxcityWeb.DAO
                     {
                         dto.setUrlImagem("../includes/images/circulares/0.png");
                     }
+
+                    list.Add(dto);
                 }
 
 
@@ -1438,6 +1448,8 @@ namespace EluxcityWeb.DAO
             catch (Exception e) { }
 
             finally { con.Close(); }
+
+            list.OrderByDescending(e => e.getUpdated_On());
 
             return list;
         }
@@ -1452,7 +1464,7 @@ namespace EluxcityWeb.DAO
             {
                 string sql = "";
                 con = getConexao();
-                sql = " SELECT a.id, a.name, a.created_by, a.url_video, a.type, a.name_folder " +
+                sql = " SELECT a.id, a.name, a.created_by, a.url_video, a.type, a.name_folder, a.updated_on " +
                           "FROM content a " +
                           "inner join content_group b on b.id_content = a.id " +
                           "inner join user_group c on c.id_group = b.id_group " +
@@ -1470,6 +1482,7 @@ namespace EluxcityWeb.DAO
                     dto.setTitulo(dr["name"].ToString());
                     dto.setProprietario(dr["created_by"].ToString());
                     dto.setNameFolder(dr["name_folder"].ToString().ToUpper());
+                    dto.setUpdated_On(Convert.ToDateTime(dr["updated_on"].ToString()));
 
                     if (dto.getNameFolder() != "" && dto.getNameFolder() != null)
                     {
@@ -1584,6 +1597,8 @@ namespace EluxcityWeb.DAO
 
             finally { con.Close(); }
 
+            list.OrderByDescending(e => e.getUpdated_On());
+
             return list;
         }
 
@@ -1596,7 +1611,7 @@ namespace EluxcityWeb.DAO
             {
                 string sql = "";
                 con = getConexao();
-                sql = " SELECT  a.id, a.name, a.created_by, a.url_video, a.type, a.name_folder " +
+                sql = " SELECT  a.id, a.name, a.created_by, a.url_video, a.type, a.name_folder, a.updated_on " +
                           "FROM content a " +
                           "inner join content_group b on b.id_content = a.id " +
                           "inner join user_group c on c.id_group = b.id_group " +
@@ -1614,6 +1629,7 @@ namespace EluxcityWeb.DAO
                     dto.setTitulo(dr["name"].ToString());
                     dto.setProprietario(dr["created_by"].ToString());
                     dto.setNameFolder(dr["name_folder"].ToString().ToUpper());
+                    dto.setUpdated_On(Convert.ToDateTime(dr["updated_on"].ToString()));
 
                     if (dto.getNameFolder() != "" && dto.getNameFolder() != null)
                     {
@@ -1740,6 +1756,8 @@ namespace EluxcityWeb.DAO
 
             finally { con.Close(); }
 
+            list.OrderByDescending(e => e.getUpdated_On());
+
             return list;
         }
 
@@ -1755,7 +1773,7 @@ namespace EluxcityWeb.DAO
                 con = getConexao();
              
 
-                sql = " SELECT a.id, a.name, a.created_by, a.url_video, a.type , a.name_folder " +
+                sql = " SELECT a.id, a.name, a.created_by, a.url_video, a.type , a.name_folder, a.updated_on " +
                           "FROM content a " +
                           "inner join content_group b on b.id_content = a.id " +
                           "inner join user_group c on c.id_group = b.id_group " +
@@ -1773,6 +1791,7 @@ namespace EluxcityWeb.DAO
                     dto.setTitulo(dr["name"].ToString());
                     dto.setProprietario(dr["created_by"].ToString());
                     dto.setNameFolder(dr["name_folder"].ToString().ToUpper());
+                    dto.setUpdated_On(Convert.ToDateTime(dr["updated_on"].ToString()));
 
                     if (dto.getNameFolder() != "" && dto.getNameFolder() != null)
                     {
@@ -1899,6 +1918,8 @@ namespace EluxcityWeb.DAO
 
             finally { con.Close(); }
 
+            list.OrderByDescending(e => e.getUpdated_On());
+
             return list;
         }
 
@@ -1912,7 +1933,7 @@ namespace EluxcityWeb.DAO
                 string sql = "";
                 con = getConexao();
 
-                sql = " SELECT a.id, a.name, a.created_by, a.url_video, a.type , a.name_folder, a.canal_video " +
+                sql = " SELECT a.id, a.name, a.created_by, a.url_video, a.type , a.name_folder, a.canal_video, a.updated_on " +
                          "FROM content a " +
                          "inner join content_group b on b.id_content = a.id " +
                          "inner join user_group c on c.id_group = b.id_group " +
@@ -1932,6 +1953,7 @@ namespace EluxcityWeb.DAO
                     dto.setTitulo(dr["name"].ToString());
                     dto.setProprietario(dr["created_by"].ToString());
                     dto.setNameFolder(dr["canal_video"].ToString());
+                    dto.setUpdated_On(Convert.ToDateTime(dr["updated_on"].ToString()));
 
                     if (dto.getNameFolder() != "" && dto.getNameFolder() != null)
                     {
@@ -2105,11 +2127,506 @@ namespace EluxcityWeb.DAO
 
             finally { con.Close(); }
 
+            list.OrderByDescending(e => e.getUpdated_On());
+
             return list;
         }
 
+        public List<ConteudoOrdenadoTipoProdutoDTO> carregandoBoletimServicoOrdenadoProduto(string username, string idioma)
+        {
+            if(idioma.Equals("") || idioma == null)
+            {
+                idioma = "pt-BR";
+            }
+            List<ConteudoDTO> list = new List<ConteudoDTO>();
+            List<ConteudoOrdenadoTipoProdutoDTO> listOrdenadaProduto = new List<ConteudoOrdenadoTipoProdutoDTO>();
+            ConteudoOrdenadoTipoProdutoDTO conteudoOrdenadoProdutoDTO = new ConteudoOrdenadoTipoProdutoDTO();
 
-        public List<ConteudoOrdenadoAnoDTO> carregandoBoletimServico(string username)
+            SqlConnection con = null;
+            try
+            {
+                string sql = "";
+                con = getConexao();
+
+                sql = " SELECT a.id, a.name, a.created_by, a.url_video, a.type , a.name_folder, a.updated_on " +
+                      "FROM content a " +
+                      "inner join content_group b on b.id_content = a.id " +
+                      "inner join user_group c on c.id_group = b.id_group " +
+                      "where c.id_user = '" + username + "' and a.type in ('boletim') " +
+                      "order by a.updated_on desc";
+
+                SqlCommand comando = new SqlCommand(sql, con);
+                con.Open();
+                SqlDataReader dr = comando.ExecuteReader();
+                string produtoCorrente = "";
+                while (dr.Read())
+                {
+                    var count = dr.FieldCount;
+                    ConteudoDTO dto = new ConteudoDTO();
+                    dto.setId(dr["id"].ToString());
+                    dto.setTitulo(dr["name"].ToString());
+                    dto.setNameFolder(dr["name_folder"].ToString().ToUpper());
+                    dto.setProprietario(dr["created_by"].ToString());
+                    string updatedOn = dr["updated_on"].ToString();
+                    DateTime dateTime = Convert.ToDateTime(updatedOn);
+                    dto.setUpdated_On(dateTime);
+
+                    string tipoProduto = "";
+
+                    if (dto.getNameFolder() != "" && dto.getNameFolder() != null)
+                    {
+                        if (dto.getNameFolder().Contains("REFRIGERADO"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_Geladeira.png");
+                            if(idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Refrigerators";
+                            }else
+                            {
+                                tipoProduto = "Refrigeradores";
+                            }
+                        }
+                        else if (dto.getNameFolder().Contains("ADEGA"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_adega.jpg");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Cellars";
+                            }
+                            else if(idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Bodegas";
+                            }else
+                            {
+                                tipoProduto = "Adegas";
+                            }
+                        }
+                        else if (dto.getNameFolder().Contains("PREPARAÇÃO DE ALIMENTOS"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_AirFryer.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Food Preparation";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Preparación de comida";
+                            }
+                            else
+                            {
+                                tipoProduto = "Preparação de Alimentos";
+                            }
+                        }
+                        else if (dto.getNameFolder().Contains("ALTA PRESSÃO"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_Altapressao.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "High pressure";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Alta presión";
+                            }
+                            else
+                            {
+                                tipoProduto = "Alta Pressão";
+                            }
+                        }
+                        else if (dto.getNameFolder().Contains("ASPIRADOR"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_Aspirador.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Vacuum cleaners";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Aspiradoras";
+                            }
+                            else
+                            {
+                                tipoProduto = "Aspiradores";
+                            }
+                            
+                        }
+                        else if (dto.getNameFolder().Contains("BEBEDOURO"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_Bebedouro.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Drinking fountains";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Fuentes de agua potable";
+                            }
+                            else
+                            {
+                                tipoProduto = "Bebedouros";
+                            }
+                            
+                        }
+                        else if (dto.getNameFolder().Contains("BEBIDAS QUENTES"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_Cafeteira.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Hot beverages";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Bebidas calientes";
+                            }
+                            else
+                            {
+                                tipoProduto = "Bebidas Quentes";
+                            }
+                            
+                        }
+                        else if (dto.getNameFolder().Contains("CERVEJEIRA"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_Cervejeira.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Breweries";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Cervecerías";
+                            }
+                            else
+                            {
+                                tipoProduto = "Cervejeiras";
+                            }
+                            
+                        }
+                        else if (dto.getNameFolder().Contains("COIFAS"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_Coifas.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Hoods";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Capuchas";
+                            }
+                            else
+                            {
+                                tipoProduto = "Coifas";
+                            }
+                            
+                        }
+                        else if (dto.getNameFolder().Contains("CONDICIONADO"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_condicionador.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Conditioners";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Acondicionadores";
+                            }
+                            else
+                            {
+                                tipoProduto = "Condicionadores";
+                            }
+                            
+                        }
+                        else if (dto.getNameFolder().Contains("COOKTOP"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_cooktop.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Cooktops";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Cooktops";
+                            }
+                            else
+                            {
+                                tipoProduto = "Cooktops";
+                            }
+                        }
+                        else if (dto.getNameFolder().Contains("DEPURADOR"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_depurador.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Debuggers";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Depuradores";
+                            }
+                            else
+                            {
+                                tipoProduto = "Depuradores";
+                            }
+                        }
+                        else if (dto.getNameFolder().Contains("FOGÕES"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_Fogao.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Stoves";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Estufas";
+                            }
+                            else
+                            {
+                                tipoProduto = "Fogões";
+                            }
+                        }
+                        else if (dto.getNameFolder().Contains("FORNO"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_Forno.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Ovens";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Hornos";
+                            }
+                            else
+                            {
+                                tipoProduto = "Fornos";
+                            }
+                        }
+                        else if (dto.getNameFolder().Contains("FRIGOBAR"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_Frigobar.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Fridges";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Frigoríficos";
+                            }
+                            else
+                            {
+                                tipoProduto = "Frigobares";
+                            }
+                        }
+                        else if (dto.getNameFolder().Contains("LAVA E SECA"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_lavaseca.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Wash and dry";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Lavar y secar";
+                            }
+                            else
+                            {
+                                tipoProduto = "Lava e Seca";
+                            }
+                        }
+                        else if (dto.getNameFolder().Contains("LAVADORA"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_Lavadora.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Washers";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Arandelas";
+                            }
+                            else
+                            {
+                                tipoProduto = "Lavadoras";
+                            }
+                        }
+                        else if (dto.getNameFolder().Contains("LAVA-LOUÇAS") || dto.getNameFolder().Contains("LAVA-LOUÇA") || dto.getNameFolder().Contains("LAVA LOUÇA"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_loucas.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Dishwasher";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Lava platos";
+                            }
+                            else
+                            {
+                                tipoProduto = "Lava-Louças";
+                            }
+                        }
+                        else if (dto.getNameFolder().Contains("MICRO-ONDAS"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_micro.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Microwave";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Microonda";
+                            }
+                            else
+                            {
+                                tipoProduto = "Micro-Ondas";
+                            }
+                        }
+                        else if (dto.getNameFolder().Contains("COZIMENTO ELÉTRICO"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_Panela.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Electric Cooking";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Cocina eléctrica";
+                            }
+                            else
+                            {
+                                tipoProduto = "Cozimento Elétrico";
+                            }
+                        }
+                        else if (dto.getNameFolder().Contains("PURIFICADOR"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_Purificador.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Purifiers";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Purificadores";
+                            }
+                            else
+                            {
+                                tipoProduto = "Purificadores";
+                            }
+                        }
+                        else if (dto.getNameFolder().Contains("SECADORA"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_secadora.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Dryers";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Secadoras";
+                            }
+                            else
+                            {
+                                tipoProduto = "Secadoras";
+                            }
+                        }
+                        else if (dto.getNameFolder().Contains("TORRADEIRA"))
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT_Torradeira.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Toasters";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Tostadoras";
+                            }
+                            else
+                            {
+                                tipoProduto = "Torradeiras";
+                            }
+                        }
+                        else
+                        {
+                            dto.setUrlImagem("../includes/images/boletins/BT.png");
+                            if (idioma.Equals("en-US"))
+                            {
+                                tipoProduto = "Other products";
+                            }
+                            else if (idioma.Equals("es-ES"))
+                            {
+                                tipoProduto = "Otros productos";
+                            }
+                            else
+                            {
+                                tipoProduto = "Outros Produtos";
+                            }
+                        }
+                    }
+                    else
+                    {
+                        dto.setUrlImagem("../includes/images/boletins/BT.png");
+                        if (idioma.Equals("en-US"))
+                        {
+                            tipoProduto = "Other products";
+                        }
+                        else if (idioma.Equals("es-ES"))
+                        {
+                            tipoProduto = "Otros productos";
+                        }
+                        else
+                        {
+                            tipoProduto = "Outros Produtos";
+                        }
+                    }
+
+                    if(listOrdenadaProduto.Count() == 0)
+                    {
+                        conteudoOrdenadoProdutoDTO.setTipoProduto(tipoProduto);
+                        list.Add(dto);
+                        conteudoOrdenadoProdutoDTO.setConteudos(list);
+                        listOrdenadaProduto.Add(conteudoOrdenadoProdutoDTO);
+                    }else
+                    {
+                        int idxListaProdutoBuscado = -1;
+                        for (var i = 0; i < listOrdenadaProduto.Count(); i++)
+                        {
+                            if(listOrdenadaProduto[i].getTipoProduto() == tipoProduto)
+                            {
+                                idxListaProdutoBuscado = i;
+                                break;
+                            }
+                        }
+
+                        if(idxListaProdutoBuscado >= 0)
+                        {
+                            listOrdenadaProduto[idxListaProdutoBuscado].getConteudos().Add(dto);
+                        }else
+                        {
+                            conteudoOrdenadoProdutoDTO = new ConteudoOrdenadoTipoProdutoDTO();
+                            list = new List<ConteudoDTO>();
+                            conteudoOrdenadoProdutoDTO.setTipoProduto(tipoProduto);
+                            list.Add(dto);
+                            conteudoOrdenadoProdutoDTO.setConteudos(list);
+                            listOrdenadaProduto.Add(conteudoOrdenadoProdutoDTO);
+                        }
+                    }
+                }
+
+                if (listOrdenadaProduto.Count > 0)
+                {
+                    listOrdenadaProduto.Sort((p, q) => p.getTipoProduto().CompareTo(q.getTipoProduto()));
+                }
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            finally { con.Close(); }
+
+            return listOrdenadaProduto;
+        }
+
+
+            public List<ConteudoOrdenadoAnoDTO> carregandoBoletimServico(string username)
         {
             List<ConteudoDTO> list = new List<ConteudoDTO>();
             List<ConteudoOrdenadoAnoDTO> listOrdenadaAno = new List<ConteudoOrdenadoAnoDTO>();
@@ -2120,7 +2637,6 @@ namespace EluxcityWeb.DAO
             {
                 string sql = "";
                 con = getConexao();
-
 
                 /*sql = " SELECT a.id, a.name, a.created_by, a.url_video, a.type , a.name_folder " +
                       "FROM content a " +
@@ -2151,6 +2667,7 @@ namespace EluxcityWeb.DAO
                     dto.setProprietario(dr["created_by"].ToString());
                     string updatedOn = dr["updated_on"].ToString();
                     DateTime dateTime = Convert.ToDateTime(updatedOn);
+                    dto.setUpdated_On(dateTime);
 
                     if(dto.getNameFolder() != "" && dto.getNameFolder() != null) 
                     {
@@ -2521,6 +3038,7 @@ namespace EluxcityWeb.DAO
                     dto.setTitulo(dr["title"].ToString());
                     dto.setUrlImagem(dr["url_imagem"].ToString());
                     dto.setProprietario(dr["owner"].ToString());
+                    dto.setUpdated_On(Convert.ToDateTime(dr["updated_on"].ToString()));
 
                     var splitTitulo = dto.getTitulo().Split('.');
                     if (splitTitulo.Length > 1)
@@ -2596,6 +3114,8 @@ namespace EluxcityWeb.DAO
 
             finally { con.Close(); }
 
+            list.OrderByDescending(e => e.getUpdated_On());
+
             return list;
         }
 
@@ -2624,6 +3144,7 @@ namespace EluxcityWeb.DAO
                     dto.setTitulo(dr["name_training"].ToString());
                     dto.setProprietario(dr["created_by"].ToString());
                     dto.setUrlImagem(dr["url_imagem"].ToString());
+
                     list.Add(dto);
                 }
 
@@ -2657,6 +3178,7 @@ namespace EluxcityWeb.DAO
                     dto.setId(dr["id_training"].ToString());
                     dto.setTitulo(dr["name_training"].ToString());
                     dto.setProprietario(dr["created_by"].ToString());
+
                     list.Add(dto);
                 }
 
@@ -2690,6 +3212,7 @@ namespace EluxcityWeb.DAO
                     dto.setId(dr["id_training"].ToString());
                     dto.setTitulo(dr["name_training"].ToString());
                     dto.setProprietario(dr["created_by"].ToString());
+
                     list.Add(dto);
                 }
 
@@ -2861,6 +3384,7 @@ namespace EluxcityWeb.DAO
                     dto.setTitulo(dr["title"].ToString());
                     dto.setUrlImagem(dr["url_imagem"].ToString());
                     dto.setProprietario(dr["owner"].ToString());
+                    dto.setUpdated_On(Convert.ToDateTime(dr["updated_on"].ToString()));
                     list.Add(dto);
                 }
 
@@ -2869,6 +3393,8 @@ namespace EluxcityWeb.DAO
             catch (Exception e) { }
 
             finally { con.Close(); }
+
+            list.OrderByDescending(e => e.getUpdated_On());
 
             return list;
         }
@@ -2899,6 +3425,8 @@ namespace EluxcityWeb.DAO
                     dto.setTitulo(dr["title"].ToString());
                     dto.setUrlImagem(dr["url_imagem"].ToString());
                     dto.setProprietario(dr["owner"].ToString());
+                    dto.setUpdated_On(Convert.ToDateTime(dr["updated_on"].ToString()));
+
                     list.Add(dto);
                 }
 
@@ -2907,6 +3435,8 @@ namespace EluxcityWeb.DAO
             catch (Exception e) { }
 
             finally { con.Close(); }
+
+            list.OrderByDescending(e => e.getUpdated_On());
 
             return list;
         }
@@ -2921,7 +3451,7 @@ namespace EluxcityWeb.DAO
                 string sql = "";
                 con = getConexao();
              
-                sql = " SELECT a.id, a.name, a.created_by, a.url_video, a.type, a.canal_video " +
+                sql = " SELECT a.id, a.name, a.created_by, a.url_video, a.type, a.canal_video, a.updated_on " +
                         "FROM content a " +
                         "inner join content_group b on b.id_content = a.id " +
                         "inner join user_group c on c.id_group = b.id_group " +
@@ -2939,6 +3469,7 @@ namespace EluxcityWeb.DAO
                     dto.setTitulo(dr["name"].ToString());
                     dto.setProprietario(dr["created_by"].ToString());
                     dto.setNameFolder(dr["canal_video"].ToString());
+                    dto.setUpdated_On(Convert.ToDateTime(dr["updated_on"].ToString()));
 
                     if (dto.getNameFolder() != "" && dto.getNameFolder() != null)
                     {
@@ -3112,6 +3643,10 @@ namespace EluxcityWeb.DAO
             catch (Exception e) { }
 
             finally { con.Close(); }
+
+            list.OrderByDescending(e => e.getUpdated_On());
+
+            list.OrderByDescending(e => e.getUpdated_On());
 
             return list;
         }

@@ -13,7 +13,7 @@ namespace EluxcityWeb.DTO
        private String urlImagem;
        private String proprietario;
        private String nameFolder;
-     
+       private DateTime updated_on;
  
        public string getProprietario()
        {
@@ -66,6 +66,16 @@ namespace EluxcityWeb.DTO
         public void setNameFolder(string nameFolder)
         {
             this.nameFolder = nameFolder;
+        }
+
+        public String getUpdated_On()
+        {
+            return this.nameFolder;
+        }
+
+        public void setUpdated_On(DateTime updated_on)
+        {
+            this.updated_on = updated_on;
         }
 
     }

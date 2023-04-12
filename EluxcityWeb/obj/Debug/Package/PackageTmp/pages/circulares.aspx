@@ -260,13 +260,15 @@
 </head>
 
 	<body style="overflow:auto; background-color:#e6e6e6"  id="tela">
+        <%if (dominio.Equals("BRA - Consumer Care")) {%>
         <div class="container" style="padding: 0;">
             <div class="swiper">
                 <div class="swiper-wrapper">
+                    <%--<div class="swiper-slide">
+<a target="_top" href="https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/shared;spf-url=pages%2Fblogpostdetailview%2Fspage000000000010500%2Fnews%2Fcampanha-use:-quanto-mais,-melhor-%257C-fevereiro-2023"><img src="../includes/images/banner/banner-pontos-extras-fevereiro.png" /></a></div>--%>                    <div class="swiper-slide">
+                        <a target="_top" href="https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/shared;spf-url=pages%2Fblogpostdetailview%2Fspage000000000010480%2Fnews%2Facesse-os-aplicativos-da-use-onde-e-como-quiser!%25C2%25A0"><img src="../includes/images/banner/banner-use-quando-onde-quiser.png" /></a></div>
                     <div class="swiper-slide">
-                        <a><img src="../includes/images/banner/banner_campanha.png" /></a></div>
-                    <div class="swiper-slide">
-                        <a target="_top" href="https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/common/resources/resourcedetail/simrs000000000053342/true"><img src="../includes/images/banner/banner-circular.png" /></a></div>
+                        <a target="_top" href="https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/shared;spf-url=common%2Fchanneldetail%2Fteams000000000004863"><img src="../includes/images/banner/bra-consumer-care/banner_consumer_care.png" /></a></div>
                 </div>
                 <div class="swiper-pagination"></div>
 
@@ -274,7 +276,26 @@
                 <div class="swiper-button-next"></div>
             </div>
         </div>
-      <div class="container">
+        <%}else
+        {%>
+        <div class="container" style="padding: 0;">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <a target="_top" href="https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/shared;spf-url=pages%2Fblogpostdetailview%2Fspage000000000010520%2Fnews%2Fcampanha-use:-quanto-mais,-melhor-%257C-mar%25C3%25A7o-2023"><img src="../includes/images/banner/banner_pontos_extras_marco.png" /></a></div>                   
+                    <div class="swiper-slide">
+                        <a target="_top" href="https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/shared;spf-url=pages%2Fblogpostdetailview%2Fspage000000000010480%2Fnews%2Facesse-os-aplicativos-da-use-onde-e-como-quiser!%25C2%25A0"><img src="../includes/images/banner/banner-use-quando-onde-quiser.png" /></a></div>
+                    <div class="swiper-slide">
+                        <a target="_top" href="https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/me/learningeventdetail/cours000000000009320?returnurl=common%2Fsearchresults%2Ftreinamento%20online%20exclusivo%20para%20mulheres%2FALL%3Freferrer%3Dtrue&embeddedInTorque=true"><img src="../includes/images/banner/banner-treinamento-tecnico.png" /></a></div>
+                </div>
+                <div class="swiper-pagination"></div>
+
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+        <%} %>
+      <div class="container" style="overflow-y: scroll !important; overflow-x: hidden !important; max-height: 1100px;">
          
           <div class="row">
               <div class="col"> 
@@ -285,15 +306,17 @@
                           <div class="container">
 <% if(equipe.ToString().Equals("S")) { %>    
                                
-                              <table style="width:75%">
+                              <table style="width:85%">
        <tr>
-           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('index.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&dominio=<%=dominio%>')"><label style="cursor: pointer"><b>Home</b></label></button></td>
+           <td><a target="_top" href="https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/shared;spf-url=common%2Fchanneldetail%2Fteams000000000004863"><button type="button" class="btn btn-warning" style="cursor: pointer"><label style="cursor: pointer"><b>Conheça a USE</b></label></button></a></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('index.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&dominio=<%=dominio%>&nomeCompleto=<%=nomeCompleto%>')"><label style="cursor: pointer"><b>Home</b></label></button></td>
            <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/team/overview')"><label style="cursor: pointer"><b>Gestão da equipe</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('minhacoroa.aspx?url=https://use-api.sabacloud.com&certificate=<%=certificate %>&userName=<%=username%>&nomeCompleto=<%=nomeCompleto %>&equipe=<%=equipe %>&idUser=<%=idUser %>&dominio<%=dominio %>')"><label style="cursor: pointer"><b>Extrato de Coroas</b></label></button></td>
            <!--<td><button type="button" class="btn btn-warning" style="cursor: pointer"><label style="cursor: pointer"><b>Service Plus</b></label></button></td>-->
-        <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('manual.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&dominio=<%=dominio%>')"><label style="cursor: pointer"><b>Manual de serviços</b></label></button></td>
-           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('boletim.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')"><label style="cursor: pointer"><b>Boletins técnicos</b></label></button></td>
+        <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('manual.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&dominio=<%=dominio%>&nomeCompleto=<%=nomeCompleto%>')"><label style="cursor: pointer"><b>Manual de serviços</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('boletim.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>&dominio=<%=dominio%>&nomeCompleto=<%=nomeCompleto%>')"><label style="cursor: pointer"><b>Boletins técnicos</b></label></button></td>
                <td><button type="button" class="btn btn-warning" style=" background-color:#f7f0e9" ><label><b>Circulares</b></label></button></td>
-           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('videos.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>&dominio=<%=dominio%>')"><label style="cursor: pointer"><b>Vídeos</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('videos.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>&dominio=<%=dominio%>&nomeCompleto=<%=nomeCompleto%>')"><label style="cursor: pointer"><b>Vídeos</b></label></button></td>
        </tr>
 
    </table>
@@ -302,14 +325,17 @@
 
 
 
-                              <table style="width:60%">
+                              <table style="width:80%">
        <tr>
-           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('index.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>')"><label style="cursor: pointer"><b>Home</b></label></button></td>
+           <td><a target="_top" href="https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/shared;spf-url=common%2Fchanneldetail%2Fteams000000000004863"><button type="button" class="btn btn-warning" style="cursor: pointer"><label style="cursor: pointer"><b>Conheça a USE</b></label></button></a></td>
+
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('index.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&dominio=<%=dominio%>&nomeCompleto=<%=nomeCompleto%>')"><label style="cursor: pointer"><b>Home</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('minhacoroa.aspx?url=https://use-api.sabacloud.com&certificate=<%=certificate %>&userName=<%=username%>&nomeCompleto=<%=nomeCompleto %>&equipe=<%=equipe %>&idUser=<%=idUser %>&dominio<%=dominio %>')"><label style="cursor: pointer"><b>Extrato de Coroas</b></label></button></td>
            <!--<td><button type="button" class="btn btn-warning" style="cursor: pointer"><label style="cursor: pointer"><b>Service Plus</b></label></button></td>-->
-           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('manual.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>')"><label style="cursor: pointer"><b>Manual de serviços</b></label></button></td>
-           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('boletim.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')"><label style="cursor: pointer"><b>Boletins técnicos</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('manual.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&dominio=<%=dominio%>&nomeCompleto=<%=nomeCompleto%>')"><label style="cursor: pointer"><b>Manual de serviços</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('boletim.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>&dominio=<%=dominio%>&nomeCompleto=<%=nomeCompleto%>')"><label style="cursor: pointer"><b>Boletins técnicos</b></label></button></td>
             <td><button type="button" class="btn btn-warning"  style=" background-color:#f7f0e9" ><label><b>Circulares</b></label></button></td>
-           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('videos.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')"><label style="cursor: pointer"><b>Vídeos</b></label></button></td>
+           <td><button type="button" class="btn btn-warning" style="cursor: pointer" onclick="carregaTela('videos.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>&dominio=<%=dominio%>&nomeCompleto=<%=nomeCompleto%>')"><label style="cursor: pointer"><b>Vídeos</b></label></button></td>
        </tr>
 
    </table>
@@ -387,15 +413,15 @@
                                 <ul class="list-unstyled">
                                     <li style="margin-bottom: 10px; font-size: 20px;"><a href="https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/me/plans" target="_top" style="color: #FFF; text-decoration: solid">Treinamentos</a></li>
                                     <li style="margin-bottom: 10px; font-size: 20px;"><a href="" onclick="alert('Em breve - Página em construção');" style="color: #FFF; text-decoration: solid">Fale com a engenharia</a></li>
-                                    <li style="margin-bottom: 10px; font-size: 20px; cursor: pointer;"><a onclick="carregaTela('default.aspx?url=https://use-api.sabacloud.com&certificate=<%=certificate %>&userName=<%=username%>&idioma=pt-BR&urlVolta=https://server.impulse.net.br/eluxcity/pages/index.aspx&tipoArvore=Arvore%20Produtos')" style="color: #FFF; text-decoration: solid">Check list</a></li>
+                                    <li style="margin-bottom: 10px; font-size: 20px; cursor: pointer;"><a onclick="carregaTela('default.aspx?url=https://use-api.sabacloud.com&certificate=<%=certificate %>&idUser=<%=idUser %>&userName=<%=username%>&idioma=pt-BR&urlVolta=https://server.impulse.net.br/eluxcity/pages/index.aspx&tipoArvore=Arvore%20Produtos')" style="color: #FFF; text-decoration: solid">Check list</a></li>
                                     <li style="font-size: 20px;"><a target="_blank" href="http://vistaexplodida.eluxinfo.com.br/" style="color: #FFF; text-decoration: solid">Peças e acessórios</a></li>
                                 </ul>
                             </div>
                             <div class="col-8">
                                 <ul class="list-unstyled">
-                                    <%if (dominio != "BRA - Consumer Care")
+                                    <%if (dominio != "BRA - Consumer Care" && dominio != "BRA - Service Center")
                                         { %>
-                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" onclick="alert('Em breve - Página em construção');" style="color: #FFF; text-decoration: solid; cursor: pointer">Extrato de Coroas</a></li>
+                                    <li style="margin-bottom: 10px; font-size: 20px;"><a onclick="carregaTela('minhacoroa.aspx?url=https://use-api.sabacloud.com&certificate=<%=certificate %>&userName=<%=username%>&nomeCompleto=<%=nomeCompleto %>&equipe=<%=equipe %>&idUser=<%=idUser %>&dominio<%=dominio %>')" style="color: #FFF; text-decoration: solid; cursor: pointer">Extrato de Coroas</a></li>
                                     <%} %>
                                     <li style="margin-bottom: 10px; font-size: 20px;"><a target="_blank" href="https://institucional.electrolux.com.br/politicas" style="color: #FFF; text-decoration: solid">Política de privacidade</a></li>
                                     <li style="margin-bottom: 10px; font-size: 20px;"><a href="" onclick="alert('Em breve - Página em construção');" style="color: #FFF; text-decoration: solid">Termos de uso</a></li>

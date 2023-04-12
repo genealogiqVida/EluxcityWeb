@@ -24,6 +24,8 @@ namespace EluxcityWeb.pages
         protected bool isAdmin = false;
         protected String dominio = "";
         protected String personNO = "";
+
+        protected List<String> dominiosOcultarLinkExtrato = new List<String>();
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -75,6 +77,9 @@ namespace EluxcityWeb.pages
                 dominio = "";
             }
 
+            dominiosOcultarLinkExtrato.Add("BRA - Service Center");
+            dominiosOcultarLinkExtrato.Add("BRA - Consumer Care");
+
             CoroasAction action = new CoroasAction();
 
             dataAtualizacao = action.carregaDataAtualizacao(username);
@@ -89,16 +94,34 @@ namespace EluxcityWeb.pages
             int linha = 0;
             foreach (CoroasDTO coroasDTO in list)
             {
-                saldo = saldo + int.Parse(coroasDTO.getCoroas());
+                if (coroasDTO.getCoroas() != "")
+                {
+                    saldo = saldo + int.Parse(coroasDTO.getCoroas());
+                }
                 if (linha == 0)
                 {
-                    myStringBuilderCoroas.Append("<tr style=\"font-size: 14px; line-height: 25px; background-color: #D4F6FF;\"><td style=\"padding:0px 0px 0px 10px;\">" + coroasDTO.getDescricao() + "</td><td align=\"center\">" + coroasDTO.getQuantidade() + "</td><td align=\"center\">" + coroasDTO.getCoroas() + "</td></tr>");
+                    if(coroasDTO.getDescricao() == "Avaliações com Êxito")
+                    {
+                        myStringBuilderCoroas.Append("<tr style=\"font-size: 14px; line-height: 25px; background-color: #D4F6FF;\"><td style=\"padding:0px 0px 0px 10px;\">" + coroasDTO.getDescricao() + "</td><td align=\"center\">" + coroasDTO.getQuantidade() + "</td><td align=\"center\">" + coroasDTO.getCoroas() + "</td><td><img title=\"As coroas de 'Avaliações com Êxito' possuem o seguinte cálculo: Nota da prova * 100\" style=\"height: 15px; \" src=\"../includes/icons/info-solid.svg\"></td></tr>");
+                    }
+                    else
+                    {
+                        myStringBuilderCoroas.Append("<tr style=\"font-size: 14px; line-height: 25px; background-color: #D4F6FF;\"><td style=\"padding:0px 0px 0px 10px;\">" + coroasDTO.getDescricao() + "</td><td align=\"center\">" + coroasDTO.getQuantidade() + "</td><td align=\"center\">" + coroasDTO.getCoroas() + "</td></tr>");
+                    }
 
                 }
                 else
                 {
                     linha = -1;
-                    myStringBuilderCoroas.Append("<tr style=\"font-size: 14px; line-height: 25px; \"><td style=\"padding:0px 0px 0px 10px;\">" + coroasDTO.getDescricao() + "</td><td align=\"center\">" + coroasDTO.getQuantidade() + "</td><td align=\"center\">" + coroasDTO.getCoroas() + "</td></tr>");
+                    if(coroasDTO.getDescricao() == "Avaliações com Êxito")
+                    {
+                        myStringBuilderCoroas.Append("<tr style=\"font-size: 14px; line-height: 25px; \"><td style=\"padding:0px 0px 0px 10px;\">" + coroasDTO.getDescricao() + "</td><td align=\"center\">" + coroasDTO.getQuantidade() + "</td><td align=\"center\">" + coroasDTO.getCoroas() + "</td><td><img title=\"As coroas de 'Avaliações com Êxito' possuem o seguinte cálculo: Nota da prova * 100\" style=\"height: 15px; \" src=\"../includes/icons/info-solid.svg\"></td></tr>");
+
+                    }
+                    else
+                    {
+                        myStringBuilderCoroas.Append("<tr style=\"font-size: 14px; line-height: 25px; \"><td style=\"padding:0px 0px 0px 10px;\">" + coroasDTO.getDescricao() + "</td><td align=\"center\">" + coroasDTO.getQuantidade() + "</td><td align=\"center\">" + coroasDTO.getCoroas() + "</td></tr>");
+                    }
      
                 }
                 linha++;

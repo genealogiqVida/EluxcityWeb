@@ -85,6 +85,12 @@ namespace EluxcityWeb.Controller
 
        }
 
+       public List<ConteudoOrdenadoTipoProdutoDTO> carregaBoletimServicoOrdenadoProduto(string username, string idioma)
+        {
+            this.getInstance();
+            return service.carregaBoletimServicoOrdenadoProduto(username, idioma);
+        }
+
        public List<ConteudoDTO> carregaPopular(string username)
        {
            this.getInstance();

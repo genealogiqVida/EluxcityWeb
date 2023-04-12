@@ -54,6 +54,9 @@ namespace EluxcityWeb.pages
 
         protected String dominio = "";
 
+        protected String idioma = "";
+        protected String pais = "";
+
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -66,6 +69,18 @@ namespace EluxcityWeb.pages
             if (dominio == null)
             {
                 dominio = "";
+            }
+
+            idioma = this.Request.Params.Get("idioma");
+            if (idioma == null)
+            {
+                idioma = "";
+            }
+
+            pais = this.Request.Params.Get("pais");
+            if (pais == null)
+            {
+                pais = "";
             }
 
             idUser = this.Request.Params.Get("idUser");

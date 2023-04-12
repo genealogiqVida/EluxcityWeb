@@ -412,7 +412,7 @@
 
             //} else {
             console.log('Tipo arvore: ', tipoArvore);
-            document.location = "principal.aspx?tipoArvore=" + tipoArvore + "&idUser=" + idUser + "&usuario=" + userName + "&username=" + userName + "&tipoAcesso=" + tipoAcesso + "&nome=" + nome;
+            document.location = "principal.aspx?tipoArvore=" + tipoArvore + "&idUser=" + idUser + "&usuario=" + userName + "&username=" + userName + "&tipoAcesso=" + tipoAcesso + "&nome=" + nome + "&idioma=" + idioma + "&pais=" + '<%=pais%>' + "&idUser=" + '<%=idUser%>';
             //}
 
             

@@ -32,8 +32,41 @@ namespace EluxcityWeb.pages
         protected StringBuilder myStringBuilderSegunda = new StringBuilder();
         protected StringBuilder myStringBuilderTerceira = new StringBuilder();
         protected List<StringBuilderPorAnoDTO> listStringBuilderAno = new List<StringBuilderPorAnoDTO>();
+        protected List<StringBuilderPorProdutoDTO> listStringBuilderProduto = new List<StringBuilderPorProdutoDTO>();
 
         protected String dominio = "";
+        protected String nomeCompleto = "";
+
+        protected String btnManualServicos = "Manual de Serviços";
+        protected String btnBoletinsTecnicos = "Boletins técnicos";
+        protected String btnVideos = "Vídeos";
+        protected String msgCarrosselVazio = "Não existem conteúdos/cursos a serem exibidos aqui";
+        protected String tituloCarrossel = "Boletins técnicos - ";
+
+        protected String idioma = "";
+        protected String pais = "";
+
+        protected List<String> dominiosLatam = new List<string>()
+        {
+            "ARG - Consumer Care",
+            "CHI - Consumer Care",
+            "COL - Consumer Care",
+            "ECU - Consumer Care",
+            "PER - Consumer Care",
+            "PUB - Consumer Care",
+            "ARG - Service Center",
+            "CHI - Service Center",
+            "COL - Service Center",
+            "ECU - Service Center",
+            "PER - Service Center",
+            "PUB - Service Center"
+        };
+
+        protected List<String> dominiosUWM = new List<string>()
+        {
+            "UWM - Consumer Care",
+            "UWM - Service Center"
+        };
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -46,6 +79,18 @@ namespace EluxcityWeb.pages
             if (dominio == null)
             {
                 dominio = "";
+            }
+
+            idioma = this.Request.Params.Get("idioma");
+            if (idioma == null)
+            {
+                idioma = "";
+            }
+
+            pais = this.Request.Params.Get("pais");
+            if (pais == null)
+            {
+                pais = "";
             }
 
             idUser = this.Request.Params.Get("idUser");
@@ -72,23 +117,54 @@ namespace EluxcityWeb.pages
                 certificate = "";
             }
 
+            nomeCompleto = this.Request.Params.Get("nomeCompleto");
+            if (nomeCompleto == null)
+            {
+                nomeCompleto = "";
+            }
+
+            if(dominiosLatam.Contains(dominio))
+            {
+                btnManualServicos = "Manual de Servicio";
+                btnBoletinsTecnicos = "Boletines Tecnicos";
+                btnVideos = "Vídeos";
+                msgCarrosselVazio = "No hay contenidos/cursos para mostrar aquí";
+                tituloCarrossel = "Boletines Tecnicos - ";
+            }else if (dominiosUWM.Contains(dominio))
+            {
+                btnManualServicos = "Service Manual";
+                btnBoletinsTecnicos = "Technical Bulletins";
+                btnVideos = "Videos";
+                msgCarrosselVazio = "There are no contents/courses to display here";
+                tituloCarrossel = "Technical Bulletins - ";
+            }
+
             EluxcityAction action = new EluxcityAction();
 
             int w = Screen.PrimaryScreen.Bounds.Width;
 
 
 
-            
 
 
-            //carrega carrossel lançamentos
-            List<ConteudoOrdenadoAnoDTO> list = action.carregaBoletimServico(username);
-            StringBuilderPorAnoDTO builderPorAnoDTO = new StringBuilderPorAnoDTO();
-            string anoCorrente = "";
+
+            //carrega carrossel boletins
+            //List<ConteudoOrdenadoAnoDTO> list = action.carregaBoletimServico(username);
+            //StringBuilderPorAnoDTO builderPorAnoDTO = new StringBuilderPorAnoDTO();
+            List<ConteudoOrdenadoTipoProdutoDTO> list = action.carregaBoletimServicoOrdenadoProduto(username, idioma);
+            StringBuilderPorProdutoDTO builderPorProdutoDTO = new StringBuilderPorProdutoDTO();
+            string produtoCorrente = "";
+            var countStart20 = 20;
             for(var i = 0; i < list.Count; i++)
             {
-                anoCorrente = list[i].getAno();
+                produtoCorrente = list[i].getTipoProduto();
                 var idCarousel = i + 1;
+                if (idCarousel == 12) idCarousel = 18;
+                if (idCarousel > 12)
+                {
+                    idCarousel = countStart20;
+                    countStart20++;
+                }
                 string carousel = "carousel_" + idCarousel.ToString();
                 string carouselItems = "carousel_" + idCarousel.ToString() + "-items";
                 string leftScrollButton = "left-scroll-button_" + idCarousel.ToString();
@@ -126,12 +202,12 @@ namespace EluxcityWeb.pages
                 }
 
                 myStringBuilderLancamento.Append("</div></div>");
-                builderPorAnoDTO.setAno(anoCorrente);
-                builderPorAnoDTO.setStringBuilder(myStringBuilderLancamento);
-                listStringBuilderAno.Add(builderPorAnoDTO);
+                builderPorProdutoDTO.setTipoProduto(produtoCorrente);
+                builderPorProdutoDTO.setStringBuilder(myStringBuilderLancamento);
+                listStringBuilderProduto.Add(builderPorProdutoDTO);
 
                 myStringBuilderLancamento = new StringBuilder();
-                builderPorAnoDTO = new StringBuilderPorAnoDTO();
+                builderPorProdutoDTO = new StringBuilderPorProdutoDTO();
             }
             /*foreach (ConteudoOrdenadoAnoDTO conteudoDTO in list)
             {

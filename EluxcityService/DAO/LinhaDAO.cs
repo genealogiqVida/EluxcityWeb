@@ -338,6 +338,10 @@ namespace EluxcityWeb.DAO
             SqlConnection con = null;
             string dados = "";
             string virgula = "";
+            if(codPais != "2")
+            {
+                codPais = "1";
+            }
             try
             {
 

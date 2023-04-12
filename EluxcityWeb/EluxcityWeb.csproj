@@ -13,7 +13,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EluxcityWeb</RootNamespace>
     <AssemblyName>EluxcityWeb</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
@@ -75,6 +75,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".well-known\pki-validation\56377BFE306AD0D078DECEBDE0631B6B.txt" />
     <Content Include=".well-known\pki-validation\B5BF9D3ED2417D2902590333942CD8A1.txt" />
     <Content Include="includes\arvore\css\bootstrap-fileinput.css" />
     <Content Include="includes\arvore\css\bootstrap-multiselect.css" />
@@ -250,6 +251,7 @@
     <Content Include="includes\css\jquery-ui-1.10.4.custom.css" />
     <Content Include="includes\css\jquery.dataTables.min.css" />
     <Content Include="includes\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="includes\icons\info-solid.svg" />
     <Content Include="includes\imagens\avaliar.png" />
     <Content Include="includes\imagens\blank.png" />
     <Content Include="includes\imagens\comentario.png" />
@@ -290,8 +292,16 @@
     <Content Include="includes\imagens\ui-icons_cd0a0a_256x240.png" />
     <Content Include="includes\imagens\util.png" />
     <Content Include="includes\imagens\warning.png" />
-    <Content Include="includes\images\banner\banner_reciclagem.png" />
+    <Content Include="includes\images\banner\2023_banner.png" />
+    <Content Include="includes\images\banner\banner-pontos-extras-fevereiro.png" />
+    <Content Include="includes\images\banner\banner-treinamento-tecnico.png" />
+    <Content Include="includes\images\banner\banner-mais-melhor.png" />
+    <Content Include="includes\images\banner\banner-use-quando-onde-quiser.png" />
     <Content Include="includes\images\banner\banner_campanha.png" />
+    <Content Include="includes\images\banner\banner_mais_melhor_novo.png" />
+    <Content Include="includes\images\banner\banner_pontos_extras_marco.png" />
+    <Content Include="includes\images\banner\banner_reciclagem.png" />
+    <Content Include="includes\images\banner\banner_campanha_antigo.png" />
     <Content Include="includes\images\banner\banner-circular.png" />
     <Content Include="includes\images\banner\banner.png" />
     <Content Include="includes\images\banner\Banner_4.png" />
@@ -299,6 +309,11 @@
     <Content Include="includes\images\banner\Banner_1.png" />
     <Content Include="includes\images\banner\Banner_2.png" />
     <Content Include="includes\images\banner\banner-semana-refrigeracao.png" />
+    <Content Include="includes\images\banner\bra-consumer-care\banner_consumer_care.png" />
+    <Content Include="includes\images\banner\semana-refrigeracao.png" />
+    <Content Include="includes\images\banner\latam-uwm\banner.png" />
+    <Content Include="includes\images\banner\latam\banner-latam.png" />
+    <Content Include="includes\images\banner\semana-refrigeracao.jpg" />
     <Content Include="includes\images\boletins\BT.png" />
     <Content Include="includes\images\boletins\BT_adega.jpg" />
     <Content Include="includes\images\boletins\BT_AirFryer.png" />
@@ -567,6 +582,7 @@
     <Content Include="includes\tinymce\LICENSE.TXT" />
     <Content Include="pages\administrador.aspx" />
     <Content Include="pages\boletim.aspx" />
+    <Content Include="pages\braConsumerCare.aspx" />
     <Content Include="pages\circulares.aspx" />
     <Content Include="pages\consultar.aspx" />
     <Content Include="pages\contactcenter.aspx" />
@@ -588,6 +604,8 @@
     <Content Include=".ebextensions\https-redirect-single-instance-dotnet.config" />
     <Content Include=".ebextensions\https-singleinstance-securitygroup.config" />
     <Content Include=".ebextensions\https-instancecert.config" />
+    <Content Include="pages\principalLatam.aspx" />
+    <Content Include="pages\principalLatamUWM.aspx" />
     <Content Include="pages\UploadHandler.ashx" />
     <Content Include="includes\fonts\electroluxsans_1_thin-webfont.eot" />
     <Content Include="includes\fonts\electroluxsans_1_thin-webfont.ttf" />
@@ -858,6 +876,13 @@
     <Compile Include="pages\boletim.aspx.designer.cs">
       <DependentUpon>boletim.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\braConsumerCare.aspx.cs">
+      <DependentUpon>braConsumerCare.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\braConsumerCare.aspx.designer.cs">
+      <DependentUpon>braConsumerCare.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\circulares.aspx.cs">
       <DependentUpon>circulares.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -954,6 +979,20 @@
     <Compile Include="pages\principal.aspx.cs">
       <DependentUpon>principal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\principalLatam.aspx.cs">
+      <DependentUpon>principalLatam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\principalLatam.aspx.designer.cs">
+      <DependentUpon>principalLatam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\principalLatamUWM.aspx.cs">
+      <DependentUpon>principalLatamUWM.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\principalLatamUWM.aspx.designer.cs">
+      <DependentUpon>principalLatamUWM.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\produto.aspx.cs">
       <DependentUpon>produto.aspx</DependentUpon>

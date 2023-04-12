@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>EluxcityService</RootNamespace>
     <AssemblyName>EluxcityService</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -62,9 +64,11 @@
     <Compile Include="DAO\ProdutoDAO.cs" />
     <Compile Include="DTO\ConteudoDTO.cs" />
     <Compile Include="DTO\ConteudoOrdenadoAnoDTO.cs" />
+    <Compile Include="DTO\ConteudoOrdenadoTipoProdutoDTO.cs" />
     <Compile Include="DTO\CoroasDTO.cs" />
     <Compile Include="DTO\CoroasEspeciaisDTO.cs" />
     <Compile Include="DTO\StringBuilderPorAnoDTO.cs" />
+    <Compile Include="DTO\StringBuilderPorProdutoDTO.cs" />
     <Compile Include="Model\ComentarioService.cs" />
     <Compile Include="Model\CoroasService.cs" />
     <Compile Include="Model\EluxcityService.cs" />

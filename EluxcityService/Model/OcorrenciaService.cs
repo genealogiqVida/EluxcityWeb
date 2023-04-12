@@ -178,6 +178,11 @@ namespace EluxcityWeb.Model
                 pais = dao.carregaCodigoPais(pais);
             }
 
+            if(pais != "2")
+            {
+                pais = "1";
+            }
+
             return dao.carregandoComboModelo(codigo, idioma, tipoArvore, pais);
         }
 

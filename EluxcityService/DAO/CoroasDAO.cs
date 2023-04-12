@@ -21,31 +21,84 @@ namespace EluxcityWeb.DAO
             {
                 con = getConexao();
 
-                sql = " select a.descricaoAcao, sum(ar.qtdeAcoes) as qtdeAcoes, sum((ar.qtdeAcoes * a.qtd_coroas)) as coroas from Acao_Realizada ar "+
+                /*sql = " select a.descricaoAcao, sum(ar.qtdeAcoes) as qtdeAcoes, sum((ar.qtdeAcoes * a.qtd_coroas)) as coroas from Acao_Realizada ar "+
                         " inner join Usuario u on ar.idUsuario = u.idUsuario "+
                         " inner join Acao a on a.idAcao = ar.idAcao " +
-                        " where u.username = '" + username + "' group by a.descricaoAcao  order by a.descricaoAcao";
-          
+                        " where u.username = '" + username + "' group by a.descricaoAcao  order by a.descricaoAcao";*/
+
+                sql = " SELECT nome, data_atualizacao, numero_total_cursos, curso_online, baseado_web, sala_aula_virtual, presencial, numero_curriculos_concluidos, numero_curriculos_concluidos_antes_prazo, avaliacao_exito, avaliacao_exito_coroas FROM Situacao_Atual sa " +
+                      "  INNER JOIN Usuario u on sa.idUsuario = u.idUsuario "+
+                      "  WHERE u.username = '" + username + "' ";
+
                 SqlCommand comando = new SqlCommand(sql, con);
                 con.Open();
                 SqlDataReader dr = comando.ExecuteReader();
                 while (dr.Read())
                 {
-                    string descricaoAcao = dr["descricaoAcao"].ToString();
-                    string qtdeAcoes = dr["qtdeAcoes"].ToString();
-                    string coroas = dr["coroas"].ToString();
+                    string cursoOnline = dr["curso_online"].ToString();
+                    string baseadoWeb = dr["baseado_web"].ToString();
+                    string salaVirtual = dr["sala_aula_virtual"].ToString();
+                    string presencial = dr["presencial"].ToString();
+                    string avaliacaoExito = dr["avaliacao_exito"].ToString();
+                    string avaliacaoExitoCoroas = dr["avaliacao_exito_coroas"].ToString();
+
+                    string curriculosConcluidos = dr["numero_curriculos_concluidos"].ToString();
+                    string curriculosAntesPrazo = dr["numero_curriculos_concluidos_antes_prazo"].ToString();
+
+                    if(cursoOnline != "0")
+                    {
+                        int acoesCursoOnline = int.Parse(cursoOnline);
+                        int coroasCursoOnline = int.Parse(cursoOnline) * 50;
+                        if(baseadoWeb != "0")
+                        {
+                            acoesCursoOnline += int.Parse(baseadoWeb);
+                            coroasCursoOnline += int.Parse(baseadoWeb) * 50;
+                        }
+                        CoroasDTO cursoOnlineDTO = new CoroasDTO();
+                        cursoOnlineDTO.setDescricao("Curso Online");
+                        cursoOnlineDTO.setcoroas(coroasCursoOnline.ToString());
+                        cursoOnlineDTO.setQuantidade(acoesCursoOnline.ToString());
+                        list.Add(cursoOnlineDTO);
+                    }
+                    if(salaVirtual != "0")
+                    {
+                        int coroasSalaVirtual = int.Parse(salaVirtual) * 100;
+                        CoroasDTO salaVirtualDTO = new CoroasDTO();
+                        salaVirtualDTO.setDescricao("Sala de Aula Virtual");
+                        salaVirtualDTO.setcoroas(coroasSalaVirtual.ToString());
+                        salaVirtualDTO.setQuantidade(salaVirtual);
+                        list.Add(salaVirtualDTO);
+                    }
+                    if (presencial != "0")
+                    {
+                        int coroasPresencial = int.Parse(salaVirtual) * 100;
+                        CoroasDTO presencialDTO = new CoroasDTO();
+                        presencialDTO.setDescricao("Presencial");
+                        presencialDTO.setcoroas(coroasPresencial.ToString());
+                        presencialDTO.setQuantidade(presencial);
+                        list.Add(presencialDTO);
+                    }
+                    if (curriculosConcluidos != "0")
+                    {
+                        int coroasCurriculos = int.Parse(curriculosConcluidos) * 300;
+                        CoroasDTO curriculosDTO = new CoroasDTO();
+                        curriculosDTO.setDescricao("Trilhas Adquiridas");
+                        curriculosDTO.setcoroas(coroasCurriculos.ToString());
+                        curriculosDTO.setQuantidade(curriculosConcluidos);
+                        list.Add(curriculosDTO);
+                    }
+                    if(avaliacaoExito != "0")
+                    {
+                        CoroasDTO avaliacoesExitoDTO = new CoroasDTO();
+                        avaliacoesExitoDTO.setDescricao("Avaliações com Êxito");
+                        avaliacoesExitoDTO.setcoroas(avaliacaoExitoCoroas);
+                        avaliacoesExitoDTO.setQuantidade(avaliacaoExito);
+                        list.Add(avaliacoesExitoDTO);
+                    }
+
+                   // string coroasCurriculosAntesPrazo = (Int64.Parse(cursoOnline) * 50).ToString();
 
 
-                    if (coroas == null) coroas = "";
-                    if (qtdeAcoes == null) qtdeAcoes = "";
-                    if (descricaoAcao == null) descricaoAcao = "";
-
-                    CoroasDTO dto = new CoroasDTO();
-                    dto.setDescricao(descricaoAcao);
-                    dto.setcoroas(coroas);
-                    dto.setQuantidade(qtdeAcoes);
-
-                    list.Add(dto);
 
                 }
 

@@ -26,6 +26,12 @@ namespace EluxcityWeb.Model
             else if (codPais.Equals("Brazil"))
             {
                 codPais = "2";
+            }else if(codPais.Equals(""))
+            {
+                if(idioma.Equals("pt-BR"))
+                {
+                    codPais = "2";
+                }
             }
 
             try

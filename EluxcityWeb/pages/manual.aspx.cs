@@ -33,6 +33,46 @@ namespace EluxcityWeb.pages
         protected StringBuilder myStringBuilderTerceira = new StringBuilder();
 
         protected String dominio = "";
+        protected String nomeCompleto = "";
+
+        protected String btnManualServicos = "Manual de Serviços";
+        protected String btnBoletinsTecnicos = "Boletins técnicos";
+        protected String btnVideos = "Vídeos";
+        protected String msgCarrosselVazio = "Não existem conteúdos/cursos a serem exibidos aqui";
+        protected String tituloGeladeiras = "Manuais de geladeiras";
+        protected String tituloFogoes = "Manuais de fogões";
+        protected String tituloLavadoras = "Manuais de lavadoras";
+        protected String tituloSecadoras = "Manuais de secadoras";
+        protected String tituloLavaLoucas = "Manuais de lava-louças";
+        protected String tituloAspiradores = "Manuais de aspiradores";
+        protected String tituloCooktops = "Manuais de cooktops";
+        protected String tituloCoifas = "Manuais de coifas e depuradores";
+        protected String tituloPurificadores = "Manuais de purificadores";
+
+        protected String idioma = "";
+        protected String pais = "";
+
+        protected List<String> dominiosLatam = new List<string>()
+        {
+            "ARG - Consumer Care",
+            "CHI - Consumer Care",
+            "COL - Consumer Care",
+            "ECU - Consumer Care",
+            "PER - Consumer Care",
+            "PUB - Consumer Care",
+            "ARG - Service Center",
+            "CHI - Service Center",
+            "COL - Service Center",
+            "ECU - Service Center",
+            "PER - Service Center",
+            "PUB - Service Center"
+        };
+
+        protected List<String> dominiosUWM = new List<string>()
+        {
+            "UWM - Consumer Care",
+            "UWM - Service Center"
+        };
 
         protected override void OnInit(EventArgs e)
         {
@@ -46,6 +86,18 @@ namespace EluxcityWeb.pages
             if (dominio == null)
             {
                 dominio = "";
+            }
+
+            idioma = this.Request.Params.Get("idioma");
+            if (idioma == null)
+            {
+                idioma = "";
+            }
+
+            pais = this.Request.Params.Get("pais");
+            if (pais == null)
+            {
+                pais = "";
             }
 
             idUser = this.Request.Params.Get("idUser");
@@ -70,6 +122,45 @@ namespace EluxcityWeb.pages
             if (certificate == null)
             {
                 certificate = "";
+            }
+
+            nomeCompleto = this.Request.Params.Get("nomeCompleto");
+            if(nomeCompleto == null)
+            {
+                nomeCompleto = "";
+            }
+
+            if (dominiosLatam.Contains(dominio))
+            {
+                btnManualServicos = "Manual de Servicio";
+                btnBoletinsTecnicos = "Boletines Tecnicos";
+                btnVideos = "Vídeos";
+                msgCarrosselVazio = "No hay contenidos/cursos para mostrar aquí";
+                tituloGeladeiras = "Manuales de geladeiras";
+                tituloFogoes = "Manuales de estufas";
+                tituloLavadoras = "Manuales de lavadoras";
+                tituloSecadoras = "Manuales de secadora";
+                tituloLavaLoucas = "Manuales de Lavavajillas";
+                tituloAspiradores = "Manuales de aspiradoras";
+                tituloCooktops = "Manuales de cocinas";
+                tituloCoifas = "Manuales de campanas y fregadoras";
+                tituloPurificadores = "Manuales de limpieza";
+    }
+            else if (dominiosUWM.Contains(dominio))
+            {
+                btnManualServicos = "Service Manual";
+                btnBoletinsTecnicos = "Technical Bulletins";
+                btnVideos = "Videos";
+                msgCarrosselVazio = "There are no contents/courses to display here";
+                tituloGeladeiras = "Fridge Manuals";
+                tituloFogoes = "Stove Manuals";
+                tituloLavadoras = "Washer Manuals";
+                tituloSecadoras = "Dryer Manuals";
+                tituloLavaLoucas = "Dishwasher Manuals";
+                tituloAspiradores = "Vacuum Cleaner Manuals";
+                tituloCooktops = "Manuales de cocinas";
+                tituloCoifas = "Manuales de campanas y fregadoras";
+                tituloPurificadores = "Manuales de limpieza";
             }
 
             EluxcityAction action = new EluxcityAction();

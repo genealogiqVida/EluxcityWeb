@@ -402,6 +402,10 @@ namespace EluxcityWeb.DAO
             if (codLinha.Equals("")) codLinha = "0";
             if (codProduto.Equals("")) codProduto = "0";
             if (codProduto.Trim().Equals("")) codProduto = "0";
+            if(pais != "2")
+            {
+                pais = "1";
+            }
             try
             {
 

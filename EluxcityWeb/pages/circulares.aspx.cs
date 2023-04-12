@@ -34,6 +34,7 @@ namespace EluxcityWeb.pages
         protected List<StringBuilderPorAnoDTO> listStringBuilderAno = new List<StringBuilderPorAnoDTO>();
 
         protected String dominio = "";
+        protected String nomeCompleto = "";
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -70,6 +71,12 @@ namespace EluxcityWeb.pages
             if (certificate == null)
             {
                 certificate = "";
+            }
+
+            nomeCompleto = this.Request.Params.Get("nomeCompleto");
+            if (nomeCompleto == null)
+            {
+                nomeCompleto = "";
             }
 
             EluxcityAction action = new EluxcityAction();

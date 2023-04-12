@@ -24,6 +24,9 @@
     <link rel="stylesheet" type="text/css" href="../includes/arvore/css/estiloCoroas.css" />
     <script src="../includes/js/bootstrap5.min.js"></script>
     <link href="../includes/css/bootstrap5.min.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="../includes/js/index_0.js"></script>
 
@@ -35,6 +38,30 @@
             border-top: 2px solid #000000 !important;
             width: 600px !important;
         }
+
+        .tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
 
     </style>
 </head>
@@ -69,9 +96,16 @@
                 <td>      
                      <div id="cadastro" style="position: absolute; top:0px;" >
                          <br /><br />
-                         <div style="display: flex; justify-content: space-between">
+                         <div style="display: flex; justify-content: space-between; align-items: center">
                              <label style="font-size: 18px;"><b><%=nomeCompleto%></b></label>
-                             <label style="font-size: 18px;"><b><%=dataAtualizacao%></b></label>
+                             <div style="display: flex; align-items: center;">
+                                 <div style="    flex-direction: column; display: flex; text-align: right; margin-right: 20px;">
+                                     <label style="font-size: 18px;"><b>Saldo atualizado em:</b></label>
+                                     <label style="font-size: 18px;"><b><%=dataAtualizacao%></b></label>
+                                 </div>
+                                 <img title="Este saldo se refere aos cursos, provas e trilhas concluídos a partir de Abril/2018 e possui atualização diária (a cada 24h)." style="height: 15px;" src="../includes/icons/info-solid.svg"/>
+                             </div>
+                             
                          </div>
                          <hr />
                          <table style="width: 100%">   
@@ -88,11 +122,12 @@
                                          <tbody>
                                              <tr>
                                                  <td align="center">
-                                                     <button type="button" class="btn" style="background-color: #2AD2FF; font-weight: bold;">
-                                                     <span style="color: #FFFFFF;">Transferir Coroas</span></button></td>
+                                                     <button type="button" class="btn" style="background-color: #2AD2FF; font-weight: bold;" data-bs-toggle="modal" data-bs-target="#myModal">
+                                                     <span style="color: #FFFFFF;">Shopclub</span></button></td>
+                                                     
                                              </tr>
                                              <tr>
-                                                 <td align="center"><span>Shopclub</span></td>
+                                                 <td align="center"><span>Em breve</span></td>
                                              </tr>
                                          </tbody>
                                      </table>
@@ -162,7 +197,30 @@
         
          
 </div>
+    <!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Aviso</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body" style="height: fit-content !important;">
+        A troca das coroas no Shopclub estará disponível em breve
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
      <footer class="footer">
             <div class="container" style="background: #011E41; justify-content: flex-start; padding-left: 50px; display: flex; flex-wrap: wrap">
                 <div class="row" style="margin-top: 30px; width: 100%">
@@ -172,13 +230,12 @@
                                 <ul class="list-unstyled" style="display: flex; flex-direction: column; background-color: #011E41 !important;">
                                     <li style="margin-bottom: 10px; font-size: 20px;"><a href="https://use.sabacloud.com/Saba/Web_spf/NA1PRD0102/app/me/plans" target="_top" style="color: #FFF; text-decoration: solid">Treinamentos</a></li>
                                     <li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Fale com a engenharia</a></li>
-                                    <li style="margin-bottom: 10px; font-size: 20px; cursor: pointer;"><a onclick="carregaTela('default.aspx?url=https://use-api.sabacloud.com&certificate=<%=certificate%>&userName=<%=username%>&idioma=pt-BR&urlVolta=https://www.eluxcity.com/home.aspx&tipoArvore=Arvore%20Produtos&idUser=<%=idUser%>')" target="_top" style="color: #FFF; text-decoration: solid">Check list</a></li>
+                                    <li style="margin-bottom: 10px; font-size: 20px; cursor: pointer;"><a onclick="carregaTela('default.aspx?url=https://use-api.sabacloud.com&certificate=<%=certificate%>&userName=<%=username%>&idUser=<%=idUser %>&idioma=pt-BR&urlVolta=https://www.eluxcity.com/home.aspx&tipoArvore=Arvore%20Produtos&idUser=<%=idUser%>')" target="_top" style="color: #FFF; text-decoration: solid">Check list</a></li>
                                     <li style="font-size: 20px;"><a target="_blank"s href="http://vistaexplodida.eluxinfo.com.br/" style="color: #FFF; text-decoration: solid">Peças e acessórios</a></li>
                                 </ul>
                             </div>
                             <div class="col-8">
                                 <ul class="list-unstyled" style="display: flex; flex-direction: column; background-color: #011E41 !important;">
-                                    <li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid; cursor: pointer">Extrato de Coroas</a></li>
                                     <li style="margin-bottom: 10px; font-size: 20px;"><a target="_blank" href="https://institucional.electrolux.com.br/politicas" style="color: #FFF; text-decoration: solid">Política de privacidade</a></li>
                                     <li style="margin-bottom: 10px; font-size: 20px;"><a href="" style="color: #FFF; text-decoration: solid">Termos de uso</a></li>
                                     <li style="margin-bottom: 10px; font-size: 20px; cursor: pointer;"><a onclick="carregaTela('contactcenter.aspx?idUser=<%=idUser%>&username=<%=username%>&equipe=<%=equipe%>&certificate=<%=certificate%>')" style="color: #FFF; text-decoration: solid">Ajuda</a></li>
@@ -197,4 +254,15 @@
             </div>
         </footer>  
 </body>
+<script>
+    /*var myModal = document.getElementById('exampleModal')
+    var myInput = document.getElementById('myInput')
+
+    myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus()
+    })*/
+    function clickShopclub() {
+        alert("Em breve");
+    }
+</script>
 </html>

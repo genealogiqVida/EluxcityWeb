@@ -631,6 +631,10 @@ namespace EluxcityWeb.DAO
             string dados = "";
             string sql = "";
             string virgula = ""; SqlConnection conPEr = null;
+            if (codPais != "2")
+            {
+                codPais = "1";
+            }
             try
             {
 
@@ -787,6 +791,10 @@ namespace EluxcityWeb.DAO
             string sql = "";
             string qtde = "1";
             string virgula = ""; SqlConnection con = null;
+            if (codPais != "2")
+            {
+                codPais = "1";
+            }
             try
             {
                 con = getConexao();
@@ -951,6 +959,10 @@ namespace EluxcityWeb.DAO
         public string carregaComboOrdem(string codigoOcorrencia, string codPais, string tipoArvore, string idioma)
         {
             string dados = "<option value=\"\"> </option>"; SqlConnection con = null;
+            if (codPais != "2")
+            {
+                codPais = "1";
+            }
             try
             {
                   con = getConexao();

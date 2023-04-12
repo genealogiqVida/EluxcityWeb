@@ -46,6 +46,29 @@ namespace EluxcityWeb.pages
         protected String equipe = "N";
         protected String dominio = "";
         protected String nomeCompleto = "";
+        protected String pais = "";
+        protected String idioma = "";
+        protected List<String> dominiosLatam = new List<string>()
+        {
+            "ARG - Consumer Care",
+            "CHI - Consumer Care",
+            "COL - Consumer Care",
+            "ECU - Consumer Care",
+            "PER - Consumer Care",
+            "PUB - Consumer Care",
+            "ARG - Service Center",
+            "CHI - Service Center",
+            "COL - Service Center",
+            "ECU - Service Center",
+            "PER - Service Center",
+            "PUB - Service Center"
+        };
+
+        protected List<String> dominiosUWM = new List<string>()
+        {
+            "UWM - Consumer Care",
+            "UWM - Service Center"
+        };
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -60,6 +83,7 @@ namespace EluxcityWeb.pages
                 idUser = idUser.Split(',')[0];
 
             }
+
 
             try
             {
@@ -100,6 +124,7 @@ namespace EluxcityWeb.pages
 
                          Newtonsoft.Json.Linq.JToken token2 = token1.SelectToken("jobtype_id");
                          String displayName = (String)token2.SelectToken("displayName");
+                        pais = (String)token1.SelectToken("country");
 
                         String fName = (String)token1.SelectToken("fname");
                         String lname = (String)token1.SelectToken("lname");
@@ -156,19 +181,6 @@ namespace EluxcityWeb.pages
                           catch (Exception ex) { }
 #pragma warning restore CS0168 // A variável "ex" está declarada, mas nunca é usada
 
-                         
-                         
-                         
-                        
-                       
-                        
-                         
-                         
-                         
-                        
-                        
-                         
-
 
                            //verifica se tem equipe
                          client = new RestClient(url + "/v1/people/" + idUser + ":(teamInfo)?SabaCertificate=" + certificate);
@@ -208,19 +220,36 @@ namespace EluxcityWeb.pages
                 ex.StackTrace.ToString();
             }
 
-            if (perfil.Equals("administrativo"))
+            if (dominiosLatam.Contains(dominio))
             {
-                Response.Redirect("administrador.aspx?idUser=" + idUser + "&username=" + username + "&personNO=" + personNO + "&certificate=" + certificateLogin + "&equipe=" + equipe + "&dominio=" + dominio + "&nomeCompleto=" + nomeCompleto);
-
+                idioma = "es-ES";
+                Response.Redirect("principalLatam.aspx?idUser=" + idUser + "&username=" + username + "&personNO=" + personNO + "&certificate=" + certificateLogin + "&equipe=" + equipe + "&dominio=" + dominio + "&nomeCompleto=" + nomeCompleto + "&pais=" + pais + "&idioma=" + idioma);
+            } else if (dominio.Equals("BRA - Consumer Care"))
+            {
+                Response.Redirect("braConsumerCare.aspx?idUser=" + idUser + "&username=" + username + "&personNO=" + personNO + "&certificate=" + certificateLogin + "&equipe=" + equipe + "&dominio=" + dominio + "&nomeCompleto=" + nomeCompleto);
             }
-            else if (perfil.Equals("proprietário"))
+            else if (dominiosUWM.Contains(dominio)) 
             {
-                Response.Redirect("proprietario.aspx?idUser=" + idUser + "&username=" + username + "&personNO=" + personNO + "&certificate=" + certificateLogin + "&equipe=" + equipe + "&dominio=" + dominio + "&nomeCompleto=" + nomeCompleto);
-            }else{
+                idioma = "en-US";
+                Response.Redirect("principalLatamUWM.aspx?idUser=" + idUser + "&username=" + username + "&personNO=" + personNO + "&certificate=" + certificateLogin + "&equipe=" + equipe + "&dominio=" + dominio + "&nomeCompleto=" + nomeCompleto + "&pais=" + pais + "&idioma=" + idioma);
+            } else if (dominio.Equals("BRA - Service Center"))
+            {
+                if (perfil.Equals("administrativo"))
+                {
+                    Response.Redirect("administrador.aspx?idUser=" + idUser + "&username=" + username + "&personNO=" + personNO + "&certificate=" + certificateLogin + "&equipe=" + equipe + "&dominio=" + dominio + "&nomeCompleto=" + nomeCompleto);
 
-                Response.Redirect("tecnico.aspx?idUser=" + idUser + "&username=" + username + "&personNO=" + personNO + "&certificate=" + certificateLogin
-                   + "&Adegas=" + Adegas + "&Ar_condicionado=" + Ar_condicionado + "&Aspirador=" + Aspirador + "&Conectados=" + Conectados + "&Eletroportateis=" + Eletroportateis + "&Fogoes=" + Fogoes
-                    + "&Lavadora=" + Lavadora + "&Lavadora_alta_pressao=" + Lavadora_alta_pressao + "&Lava_louca=" + Lava_louca + "&Micro_ondas=" + Micro_ondas + "&Purificador=" + Purificador + "&Refrigeracao=" + Refrigeracao + "&equipe=" + equipe + "&dominio=" + dominio + "&nomeCompleto=" + nomeCompleto);
+                }
+                else if (perfil.Equals("proprietário"))
+                {
+                    Response.Redirect("proprietario.aspx?idUser=" + idUser + "&username=" + username + "&personNO=" + personNO + "&certificate=" + certificateLogin + "&equipe=" + equipe + "&dominio=" + dominio + "&nomeCompleto=" + nomeCompleto);
+                }
+                else
+                {
+
+                    Response.Redirect("tecnico.aspx?idUser=" + idUser + "&username=" + username + "&personNO=" + personNO + "&certificate=" + certificateLogin
+                        + "&Adegas=" + Adegas + "&Ar_condicionado=" + Ar_condicionado + "&Aspirador=" + Aspirador + "&Conectados=" + Conectados + "&Eletroportateis=" + Eletroportateis + "&Fogoes=" + Fogoes
+                        + "&Lavadora=" + Lavadora + "&Lavadora_alta_pressao=" + Lavadora_alta_pressao + "&Lava_louca=" + Lava_louca + "&Micro_ondas=" + Micro_ondas + "&Purificador=" + Purificador + "&Refrigeracao=" + Refrigeracao + "&equipe=" + equipe + "&dominio=" + dominio + "&nomeCompleto=" + nomeCompleto);
+                }
             }
         }
     }

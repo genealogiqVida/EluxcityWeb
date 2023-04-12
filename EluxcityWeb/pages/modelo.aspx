@@ -30,6 +30,21 @@
         pais = cookie.Value.ToString();
         pais = pais.Replace("%20", " ");
     }
+    else
+    {
+        pais = Request.Params.Get("pais");
+        if (pais != null)
+        {
+            if (pais.IndexOf(',') != -1)
+            {
+                pais = pais.Split(',')[0];
+            }
+        }else
+        {
+            pais = "Brazil";
+        }
+
+    }
 
     string urlVolta = "";
     //try
@@ -69,7 +84,7 @@
         tipoArvore = cookie.Value.ToString();
         tipoArvore = tipoArvore.Replace("%20", " ");
     }
-   // tipoArvore = Session["tipoArvore"].ToString();
+    // tipoArvore = Session["tipoArvore"].ToString();
     tipoArvore = tipoArvore.Replace("%20", " ");
 
     username = Request.Params.Get("username");
@@ -98,6 +113,11 @@
     if(idioma != null)
     {
         idioma = idioma.Replace("%20", " ");
+
+        if (idioma.IndexOf(',') != -1)
+        {
+            idioma = idioma.Split(',')[0];
+        }
     }else
     {
         idioma = "pt-BR";
@@ -118,73 +138,73 @@
     string lblCampo2 = "Enter the subcategory name";
     string lblCampo3 = "Introduzca el nombre del subcategoria";
     string informacao = "Nome da SubCategoria | Subcategory name | Nombre del Subcategoría";
-    
-    
-    
+
+
+
     string lblNome = "Nome Modelo:&nbsp;&nbsp;&nbsp;";
     string lblNome2 = "Nombre Modelo:";
     string lblNome3 = "Model name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
-   // if (pais.Equals("Brazil"))
+    // if (pais.Equals("Brazil"))
     //{
-         
 
-         if (tipoArvore.Equals("Arvore Solution Center"))
-         {
-             tipoMenu1 = "Produto:&nbsp;&nbsp;&nbsp;";
-             tipoMenu2 = "Modelo";
-             lblTitulo = "Cadastro de Modelo";
-             lblLista = "Listagem dos Modelos";
 
-             lblCampo1 = "Informe o nome do modelo";
-              lblCampo2 = "Enter the model name";
-              lblCampo3 = "Introduzca el nombre del modelo";
-              if (pais.Equals("Brazil"))
-              {
-                  informacao = "Nome do Modelo | Model name | Nombre del Modelo";
-              }
-              else
-              {
-                  if (idioma.Equals("en-US"))
-                  {
-                      informacao = "Model name";
-                  }
-                  else if (idioma.Equals("es-ES"))
-                  {
-                      informacao = "Nombre del Modelo";
-                  }
-                  else
-                  {
-                      informacao = "Nome do Modelo";
-                  }
-              }
-         }
-         
-   // }
-    
-        if (idioma.Equals("en-US"))
+    if (tipoArvore.Equals("Arvore Solution Center"))
+    {
+        tipoMenu1 = "Produto:&nbsp;&nbsp;&nbsp;";
+        tipoMenu2 = "Modelo";
+        lblTitulo = "Cadastro de Modelo";
+        lblLista = "Listagem dos Modelos";
+
+        lblCampo1 = "Informe o nome do modelo";
+        lblCampo2 = "Enter the model name";
+        lblCampo3 = "Introduzca el nombre del modelo";
+        if (pais.Equals("Brazil"))
         {
-            lblUsuario = "User";
-            lblTitulo = "Model Registration";
-            lblLista = "List of Models";
-            lblCancelar = "Cancel";
-            lblSalvar = "Save";
-            lblMenu1 = "Model";
-            lblPais = "Country:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-            lblMenu2 = "Ocurrencia";
+            informacao = "Nome do Modelo | Model name | Nombre del Modelo";
         }
-        else if (idioma.Equals("es-ES"))
+        else
         {
-            lblUsuario = "Usuario";
-            lblTitulo = "Registro del modelo";
-            lblLista = "Lista de modelos";
-            lblCancelar = "Cancel";
-            lblSalvar = "Guardar";
-            lblPais = "País:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-            lblMenu1 = "Modelo";
-            lblMenu2 = "Ocurrencia";
+            if (idioma.Equals("en-US"))
+            {
+                informacao = "Model name";
+            }
+            else if (idioma.Equals("es-ES"))
+            {
+                informacao = "Nombre del Modelo";
+            }
+            else
+            {
+                informacao = "Nome do Modelo";
+            }
         }
-    
+    }
+
+    // }
+
+    if (idioma.Equals("en-US"))
+    {
+        lblUsuario = "User";
+        lblTitulo = "Model Registration";
+        lblLista = "List of Models";
+        lblCancelar = "Cancel";
+        lblSalvar = "Save";
+        lblMenu1 = "Model";
+        lblPais = "Country:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        lblMenu2 = "Ocurrencia";
+    }
+    else if (idioma.Equals("es-ES"))
+    {
+        lblUsuario = "Usuario";
+        lblTitulo = "Registro del modelo";
+        lblLista = "Lista de modelos";
+        lblCancelar = "Cancel";
+        lblSalvar = "Guardar";
+        lblPais = "País:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        lblMenu1 = "Modelo";
+        lblMenu2 = "Ocurrencia";
+    }
+
 
 
 
@@ -192,14 +212,14 @@
     string tipoMenu4 = "Importação de Dados";
     string tipoMenu5 = "Relatórios de uso do Sistema";
 
-  string  lblLista1 = "Nome Modelo";
-   string lblLista2 = "Nombre Modelo";
-   string lblLista3 = "Model name";
+    string  lblLista1 = "Nome Modelo";
+    string lblLista2 = "Nombre Modelo";
+    string lblLista3 = "Model name";
 
 
     string tipoMenu0 = "Linha";
-   tipoMenu1 = "Categoria";
-     tipoMenu2 = "SubCategoria";
+    tipoMenu1 = "Categoria";
+    tipoMenu2 = "SubCategoria";
 
     if (idioma.Equals("en-US"))
     {
@@ -230,17 +250,17 @@
         tipoMenu1 = "Produto:&nbsp;&nbsp;&nbsp;";
         tipoMenu2 = "Modelo";
 
-         lblNome = "Modelo:&nbsp;&nbsp;&nbsp;";
-         lblNome2 = "Modelo:&nbsp;&nbsp;&nbsp;";
-         lblNome3 = "Model:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+        lblNome = "Modelo:&nbsp;&nbsp;&nbsp;";
+        lblNome2 = "Modelo:&nbsp;&nbsp;&nbsp;";
+        lblNome3 = "Model:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 
-         lblTitulo = "Cadastro de Modelo";
-         lblLista = "Listagem dos Modelos";
-         lblMenu1 = "Modelo";
-        
-         lblLista1  = "Modelo";
-         lblLista2 = "Modelo";
-         lblLista3 = "Model";
+        lblTitulo = "Cadastro de Modelo";
+        lblLista = "Listagem dos Modelos";
+        lblMenu1 = "Modelo";
+
+        lblLista1  = "Modelo";
+        lblLista2 = "Modelo";
+        lblLista3 = "Model";
 
         if (idioma.Equals("en-US"))
         {
@@ -259,7 +279,7 @@
             lblTitulo = "Registro del modelo";
             lblLista = "Lista de modelos";
             lblMenu1 = "Modelo";
-            
+
         }
 
     }
@@ -277,11 +297,11 @@
         lblNome = "SubCategoria:";
         lblNome2 = "SubCategoría:";
         lblNome3 = "Subcategory:&nbsp;";
-        
-        
+
+
         if (idioma.Equals("en-US"))
         {
-           
+
 
             lblTitulo = "Subcategory Registration";
             lblLista = "List of Subcategory";
@@ -291,11 +311,11 @@
         {
 
             lblMenu1 = "SubCategoría";
-             lblTitulo = "Registro del SubCategoría";
+            lblTitulo = "Registro del SubCategoría";
             lblLista = "Lista de SubCategoría";
 
         }
-        
+
     }
 
     string codigoPais = pais;
@@ -315,7 +335,7 @@
         user = user.Split(',')[0];
     }
     urlVolta = "index.aspx?idUser=" + idUser + "&username=" + user;
-    
+
 
 %>
 <!DOCTYPE html>
@@ -1271,12 +1291,12 @@
               <% if(pais.Equals("Brazil")){  %>
                          <ul>
                               <li><a class="liMenu" href="<%=urlVolta%>"  ><img src="../includes/arvore/imagens/home.png" class="img-responsive" style="cursor: pointer;" /></a></li>
-                          <li><a class="liMenu" href="linha.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>"  ><%=tipoMenu0 %></a></li>
-                            <li><a href="produto.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>" class="liMenu"><%=tipoMenu1.Replace(":", "") %></a></li>
-                            <li><a href="modelo.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>" class="liMenu"><%=tipoMenu2 %></a></li>
-                            <li><a href="ocorrencia.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>" class="liMenu"><%=tipoMenu3 %></a></li>
-                            <li><a href="importacao.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>" class="liMenu"><%=tipoMenu4 %></a></li>
-                            <li><a href="relatorios.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>" class="liMenu"><%=tipoMenu5 %></a></li>
+                          <li><a class="liMenu" href="linha.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&idioma=<%=idioma%>&pais=<%=pais%>"  ><%=tipoMenu0 %></a></li>
+                            <li><a href="produto.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&idioma=<%=idioma%>&pais=<%=pais%>" class="liMenu"><%=tipoMenu1.Replace(":", "") %></a></li>
+                            <li><a href="modelo.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&idioma=<%=idioma%>&pais=<%=pais%>" class="liMenu"><%=tipoMenu2 %></a></li>
+                            <li><a href="ocorrencia.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&idioma=<%=idioma%>&pais=<%=pais%>" class="liMenu"><%=tipoMenu3 %></a></li>
+                            <li><a href="importacao.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&idioma=<%=idioma%>&pais=<%=pais%>" class="liMenu"><%=tipoMenu4 %></a></li>
+                            <li><a href="relatorios.aspx?idUser=<%=idUser%>&username=<%=user%>&tipoAcesso=<%=tipoAcesso%>&usuario=<%=user%>&idioma=<%=idioma%>&pais=<%=pais%>" class="liMenu"><%=tipoMenu5 %></a></li>
                         </ul>    
 
               

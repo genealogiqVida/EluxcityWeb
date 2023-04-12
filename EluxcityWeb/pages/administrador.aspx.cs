@@ -39,6 +39,9 @@ namespace EluxcityWeb.pages
 
         protected String nomeCompleto = "";
 
+        protected String idioma = "";
+        protected String pais = "";
+
         protected override void OnInit(EventArgs e)
         {
             base.OnInit(e);
@@ -51,6 +54,18 @@ namespace EluxcityWeb.pages
             if (dominio == null)
             {
                 dominio = "";
+            }
+
+            idioma = this.Request.Params.Get("idioma");
+            if (idioma == null)
+            {
+                idioma = "";
+            }
+
+            pais = this.Request.Params.Get("pais");
+            if (pais == null)
+            {
+                pais = "";
             }
 
             equipe = this.Request.Params.Get("equipe");
@@ -172,7 +187,7 @@ namespace EluxcityWeb.pages
 
             myStringBuilderRecente.Append("<div class=\"items\" id=\"carousel_5-items\"  >");
 
-            //carrega carrossel sugestao
+            //carrega carrossel circulares
             list = action.carregaCirculares(personNO);
             foreach (ConteudoDTO conteudoDTO in list)
             {

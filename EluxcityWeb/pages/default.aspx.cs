@@ -17,7 +17,8 @@ namespace EluxcityWeb.pages
         protected String usuario = "";
         protected String urlVolta = "";
         protected String idiomaLogin = "";
-        protected String tipoArvore = ""; 
+        protected String tipoArvore = "";
+        protected String pais = "";
 
         protected void Page_Load(object sender, EventArgs e){}
 
@@ -56,6 +57,12 @@ namespace EluxcityWeb.pages
             if (urlVolta == null)
             {
                 urlVolta = "";
+            }
+
+            pais = this.Request.Params.Get("pais");
+            if (pais == null)
+            {
+                pais = "Brazil";
             }
 
             if (urlVolta.IndexOf(',') != -1)
